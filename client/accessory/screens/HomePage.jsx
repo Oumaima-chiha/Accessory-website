@@ -4,6 +4,7 @@ import React from "react";
 import { View, TextInput, ScrollView, Text, StyleSheet } from "react-native";
 import JewelryBox from "./JewleryBox";
 
+
 const HomePage = () => {
   return (
     <View style={styles.container}>

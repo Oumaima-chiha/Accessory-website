@@ -1,5 +1,7 @@
 import React from 'react';
 import { View, Image, Text, StyleSheet, ScrollView } from 'react-native';
+import { Images } from '../contants';
+
 
 const JewelryBox = () => {
   return (
@@ -8,7 +10,7 @@ const JewelryBox = () => {
         {/* Box 1 */}
         <View style={styles.box}>
           <Image
-            source={{ uri: 'URL_TO_YOUR_JEWELRY_IMAGE' }}
+            source={Images.RINGS}
             style={styles.image}
             resizeMode="cover"
           />
@@ -19,7 +21,7 @@ const JewelryBox = () => {
         {/* Box 2 */}
         <View style={styles.box}>
           <Image
-            source={{ uri: 'URL_TO_YOUR_ANOTHER_JEWELRY_IMAGE' }}
+            source={Images.RING}
             style={styles.image}
             resizeMode="cover"
           />
@@ -28,7 +30,7 @@ const JewelryBox = () => {
         </View>
         <View style={styles.box}>
           <Image
-            source={{ uri: 'URL_TO_YOUR_JEWELRY_IMAGE' }}
+            source={Images.RIING}
             style={styles.image}
             resizeMode="cover"
           />
@@ -39,7 +41,7 @@ const JewelryBox = () => {
         {/* Box 2 */}
         <View style={styles.box}>
           <Image
-            source={{ uri: 'URL_TO_YOUR_ANOTHER_JEWELRY_IMAGE' }}
+            source={Images.EARINGS}
             style={styles.image}
             resizeMode="cover"
           />
@@ -48,7 +50,7 @@ const JewelryBox = () => {
         </View>
         <View style={styles.box}>
           <Image
-            source={{ uri: 'URL_TO_YOUR_JEWELRY_IMAGE' }}
+            source={Images.HAIRCLIPS}
             style={styles.image}
             resizeMode="cover"
           />
@@ -59,7 +61,67 @@ const JewelryBox = () => {
         {/* Box 2 */}
         <View style={styles.box}>
           <Image
-            source={{ uri: 'URL_TO_YOUR_ANOTHER_JEWELRY_IMAGE' }}
+            source={Images.EARING}
+            style={styles.image}
+            resizeMode="cover"
+          />
+          <Text style={styles.price}>$150</Text>
+          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
+        </View>
+        <View style={styles.box}>
+          <Image
+            source={Images.RINGS}
+            style={styles.image}
+            resizeMode="cover"
+          />
+          <Text style={styles.price}>$100</Text>
+          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
+        </View>
+
+        {/* Box 2 */}
+        <View style={styles.box}>
+          <Image
+            source={Images.RING}
+            style={styles.image}
+            resizeMode="cover"
+          />
+          <Text style={styles.price}>$150</Text>
+          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
+        </View>
+          <View style={styles.box}>
+          <Image
+            source={Images.RINGS}
+            style={styles.image}
+            resizeMode="cover"
+          />
+          <Text style={styles.price}>$100</Text>
+          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
+        </View>
+
+        {/* Box 2 */}
+        <View style={styles.box}>
+          <Image
+            source={Images.RING}
+            style={styles.image}
+            resizeMode="cover"
+          />
+          <Text style={styles.price}>$150</Text>
+          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
+        </View>
+        <View style={styles.box}>
+          <Image
+            source={Images.RIING}
+            style={styles.image}
+            resizeMode="cover"
+          />
+          <Text style={styles.price}>$100</Text>
+          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
+        </View>
+
+        {/* Box 2 */}
+        <View style={styles.box}>
+          <Image
+            source={Images.EARINGS}
             style={styles.image}
             resizeMode="cover"
           />
