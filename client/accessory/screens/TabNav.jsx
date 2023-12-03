@@ -41,7 +41,7 @@ const TabNav = () => {
         component={Notification}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign name="notification" size={24} color="black" />
+            <AntDesign name="notification" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>
           ),
         }}
       ></Tab.Screen>
@@ -50,7 +50,7 @@ const TabNav = () => {
         component={Messages}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign name="message1" size={24} color="black" />
+            <AntDesign name="message1" size={24}  color={focused ? Colors.DEFAULT_RED : "black"} />
           ),
         }}
       ></Tab.Screen>
@@ -59,7 +59,7 @@ const TabNav = () => {
         component={Cart}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign name="shoppingcart" size={24} color="black" />
+            <AntDesign name="shoppingcart" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>
           ),
         }}
       ></Tab.Screen>

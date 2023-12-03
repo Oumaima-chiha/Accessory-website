@@ -1,23 +1,38 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Image, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { Images } from '../contants';
+import { useNavigation } from '@react-navigation/native';
 
 
 const JewelryBox = () => {
+    const navigation = useNavigation();
+    const handleItemPress = (item) => {
+        navigation.navigate('details', { item });
+      };
+      const jewelryItems = [
+        {
+          id: 1,
+          image: Images.RINGS,
+          name: 'Necklace 1',
+          description: 'Description of Necklace 1',
+          price: '$100',
+        },
+      ];
   return (
     <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         {/* Box 1 */}
-        <View style={styles.box}>
+        <TouchableOpacity style={styles.box} key={"1"} onPress={() => handleItemPress(jewelryItems[0])}>
+        
+       
           <Image
-            source={Images.RINGS}
+            source={Images.RING}
             style={styles.image}
             resizeMode="cover"
           />
           <Text style={styles.price}>$100</Text>
           <Text style={styles.description}>Description of the jewelry piece goes here</Text>
-        </View>
-
+</TouchableOpacity>
         {/* Box 2 */}
         <View style={styles.box}>
           <Image
