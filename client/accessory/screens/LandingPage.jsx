@@ -1,4 +1,3 @@
-// SplashScreen.js
 import React ,{useState}from 'react';
 import { View, ImageBackground, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Colors, Images, Fonts } from "../contants";
@@ -8,7 +7,7 @@ const LandingPage = ({ navigation }) => {
   const handleGetStarted = () => {
     setButtonPressed(true)
     
-    navigation.navigate('nav'); 
+    navigation.navigate('nav',{screen:'homeNav'}); 
   };
 
   return (

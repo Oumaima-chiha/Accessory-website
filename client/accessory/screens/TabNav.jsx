@@ -1,16 +1,23 @@
-// TabNav.js
-
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import { Colors } from "../contants";
-import { StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet } from "react-native";
 import HomePage from "./HomePage";
 import Notification from "./Notifcation";
-import Messages from "./Messages";
 import Cart from "./Cart";
+import Messages from "./Messages";
+import { createStackNavigator } from "@react-navigation/stack";
+import JewelryDetails from "./JewleryDetails";
 
 const Tab = createBottomTabNavigator();
+const HomeNav=createStackNavigator()
+const HomeNavigator=()=>(
+  <HomeNav.Navigator initialRouteName="home" >
+       <HomeNav.Screen name="home" component={HomePage} />
+      <HomeNav.Screen name="details" component={JewelryDetails} />
+  </HomeNav.Navigator>
+)
 
 const TabNav = () => {
   return (
@@ -23,8 +30,8 @@ const TabNav = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomePage}
+        name="homeNav"
+        component={HomeNavigator}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign

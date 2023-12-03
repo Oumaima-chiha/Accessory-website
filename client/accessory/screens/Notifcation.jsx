@@ -1,14 +1,14 @@
 import React from "react";
-import { View ,Text} from "react-native";
+import { View ,Text, SafeAreaView} from "react-native";
 
 const Notification =()=>{
     return(
         <>
-        <View>
+        <SafeAreaView>
             <Text>
                 Notification
             </Text>
-        </View>
+        </SafeAreaView>
         </>
     )
 }

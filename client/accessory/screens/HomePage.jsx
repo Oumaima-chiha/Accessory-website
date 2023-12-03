@@ -1,20 +1,31 @@
-// HomePage.js
 
 import React from "react";
-import { View, TextInput, ScrollView, Text, StyleSheet } from "react-native";
+import { View, TextInput, ScrollView, Text, StyleSheet,Image } from "react-native";
 import JewelryBox from "./JewleryBox";
+import { Images } from "../contants";
+
 
 
 const HomePage = () => {
   return (
     <View style={styles.container}>
-      <TextInput style={styles.searchBar} placeholder="Search..." />
+    <View style={styles.header}>
+      <View style={styles.searchContainer}>
+        <TextInput style={styles.searchBar} placeholder="Search..." />
+      </View>
+       <Image
+        source={Images.ACCESSORY}
+        style={styles.logo}
+        resizeMode="cover"
+      />
+    </View>
+     
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
         style={styles.categoriesContainer}
       >
-        <Text style={styles.category}>All</Text>
+        <View style={styles.category}><Text>All</Text></View>
         <Text style={styles.category}>Rings</Text>
         <Text style={styles.category}>Necklaces</Text>
         <Text style={styles.category}>Earings</Text>
@@ -23,6 +34,7 @@ const HomePage = () => {
         <Text style={styles.category}>Brooches</Text>
       </ScrollView>
       <JewelryBox/>
+
     </View>
   );
 };
@@ -40,12 +52,24 @@ const styles = StyleSheet.create({
   category: {
     paddingHorizontal: 10,
     margin: 10,
-    paddingVertical: 8,
+    justifyContent:"center",
+    alignItems:"center",
+    height:20,
     marginRight: 10,
     borderWidth: 1,
     borderColor: "lightgray",
-    borderRadius: 20,
+    borderRadius: 14,
   },
+ logo: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 200, 
+    width: '100%', 
+    zIndex: -1, 
+  },
+
 });
 
 export default HomePage;

@@ -4,6 +4,7 @@ import { Images } from '../contants';
 import { useNavigation } from '@react-navigation/native';
 
 
+
 const JewelryBox = () => {
     const navigation = useNavigation();
     const handleItemPress = (item) => {
@@ -19,7 +20,8 @@ const JewelryBox = () => {
         },
       ];
   return (
-    <ScrollView contentContainerStyle={styles.scrollView} showsVerticalScrollIndicator={false}>
+   
+    <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
       <View style={styles.container}>
         {/* Box 1 */}
         <TouchableOpacity style={styles.box} key={"1"} onPress={() => handleItemPress(jewelryItems[0])}>
@@ -147,7 +149,10 @@ const JewelryBox = () => {
 
         {/* Repeat additional boxes as needed */}
       </View>
+
     </ScrollView>
+   
+   
   );
 };
 
@@ -183,6 +188,11 @@ const styles = StyleSheet.create({
   },
   description: {
     textAlign: 'center',
+  },
+ 
+  scrollView: {
+    flexGrow: 1,
+    paddingBottom: 100, // Height of your Footer
   },
 });
 
