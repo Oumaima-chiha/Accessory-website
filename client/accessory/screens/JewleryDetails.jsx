@@ -1,52 +1,64 @@
-import React ,{useState} from 'react';
+import React, { useState,useCallback } from 'react';
 import { View, Image, Text, Button, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Images } from '../contants';
 import { AntDesign } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
 
 const JewelryDetails = ({ route }) => {
-  const {name, main_image, description,category,status } = route.params.jewelry;
+  const { item } = route.params;
+  const [mainImage, setMainImage] = useState(item.main_image);
 
   const handleAddToCart = () => {
-    // Implement logic to add item to cart
+    // Implement logic to add item to cartrr
   };
- 
+
+  const renderAdditionalImages = useCallback(() => {
+    const images = [item.main_image, ...item.extra_images];
+    return images.filter(image => image !== mainImage).map((image, index) => (
+      <TouchableOpacity key={index} onPress={() => handleImageSelect(image)}>
+        <Image source={{ uri: image }} style={styles.additionalImage} resizeMode="cover" />
+      </TouchableOpacity>
+    ));
+  }, [mainImage]);
+
+  const handleImageSelect = (mainImage) => {
+    setMainImage(mainImage);
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imageBar}>
-        <TouchableOpacity onPress={() =>handleItemPress(main_image)}>
-          <Image source={item.main_image} style={styles.mainImage} resizeMode="cover" />
+        <View style={styles.additionalImagesContainer}>
+          {renderAdditionalImages()}
+        </View>
+        <TouchableOpacity onPress={() => handleImageSelect(item.main_image)}>
+          <Image source={{ uri: mainImage }} style={styles.mainImage} resizeMode="cover" />
         </TouchableOpacity>
       </View>
       <View style={styles.details}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
-        <Text style={styles.price}>Price: {item.price}</Text>
+        <Text style={styles.price}>Price: ${item.price}</Text>
         <View style={styles.cartFrame}>
-         
-        <AntDesign name="shoppingcart" size={24}  color="black"/>
-            <Button title="Add to Cart" onPress={handleAddToCart} />
-          </View>
+          <AntDesign name="shoppingcart" size={24} color="black" />
+          <Button title="Add to Cart" onPress={handleAddToCart} />
+        </View>
       </View>
-  
     </ScrollView>
-   
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    marginVertical:20
+    marginVertical: 20,
   },
   imageBar: {
     flexDirection: 'row',
-    justifyContent:'center',
+    justifyContent: 'center',
     marginBottom: 20,
   },
   additionalImagesContainer: {
-    marginRight:moderateScale(10),
+    marginRight: moderateScale(10),
     alignItems: 'flex-start',
   },
   mainImage: {
@@ -54,17 +66,15 @@ const styles = StyleSheet.create({
     height: verticalScale(380),
     borderRadius: 8,
     marginBottom: 15,
-    resizeMode: 'cover', // Added resizeMode for clarity
-
+    resizeMode: 'cover',
   },
   additionalImage: {
     width: scale(100),
     height: verticalScale(120),
     borderRadius: 8,
     marginBottom: 10,
-    resizeMode: 'cover', // Added resizeMode for clarity
+    resizeMode: 'cover',
   },
-  
   details: {
     alignItems: 'flex-start',
   },
@@ -82,10 +92,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 15,
   },
-  addToCartContainer: {
-    alignItems: 'center',
-    marginBottom: 15,
-  },
   cartFrame: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -95,13 +101,6 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 10,
   },
-  cartIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 5,
-    // Additional styling for cart icon
-  },
-  // Reviews section styles...
 });
 
 export default JewelryDetails;

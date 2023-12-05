@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FlatList, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
 
 const JewelryItem = ({ item, onPress }) => {
@@ -16,8 +17,9 @@ const JewelryItem = ({ item, onPress }) => {
   );
 };
 
-const JewelryBox = ({ navigation }) => {
+const JewelryBox = () => {
   const [jewelryItems, setJewelryItems] = useState([]);
+  const navigation = useNavigation();
 
   const fetchData = async () => {
     try {
@@ -36,7 +38,7 @@ const JewelryBox = ({ navigation }) => {
   }, []);
 
   const handleItemPress = (item) => {
-    navigation.navigate('details', { jewelry: item });
+    navigation.navigate('details', { item });
   };
 
   const renderItem = ({ item }) => (
