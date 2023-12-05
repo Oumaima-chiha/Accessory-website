@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int       @id @default(autoincrement())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  fullname        String    @db.VarChar(255)
+  email           String    @unique @db.VarChar(255)
+  password        String    @db.VarChar(255)
+  profilePic      String?
+  hasNotification Boolean   @default(false)
+  hasNewMessage   Boolean   @default(false)
+  isVerified      Boolean   @default(false)
+  verifyToken     String?
+  otp             Int?
+  resetCode       Int?
+  role            Role
+  customer        Message[]
+}
+
+model Jewelry {
+  id            Int       @id @default(autoincrement())
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  name          String    @unique
+  description   String?
+  category      Category[]
+  main_image    String    @db.Text
+  extra_images  String[]  @default([]) @db.Text
+  status        Status    @default(Available)
+  messages      Message[]
+  payment       Payment[]
+  price         Float   
+  quantity       Int        @default(0)    
+}
+
+model Payment {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  quantity     Int      @default(1)
+  Jewelry      Jewelry? @relation(fields: [jewelryId], references: [id])
+  jewelryId    Int?
+ customerId   Int
+}
+
+model Message {
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  message    String   @db.Text
+  customer   User     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  sender     SENDER
+  customerId Int
+  ownerId    Int
+  Jewelry    Jewelry? @relation(fields: [jewelryId], references: [id])
+  jewelryId  Int?
+}
+
+enum Role {
+  CUSTOMER
+  OWNER
+}
+
+enum Category {
+  RINGS
+  EARINGS
+  HAIRCLIPS
+  HAIRBANDS
+  BRACLETS
+  NECKLACES
+  BROOCHES
+}
+
+enum SENDER {
+  owner
+  customer
+}
+
+enum Status {
+  Available
+  SoldOut
+}

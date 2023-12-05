@@ -1,158 +1,53 @@
-import React from 'react';
-import { View, Image, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { Images } from '../contants';
-import { useNavigation } from '@react-navigation/native';
-
-
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import axios from "axios";
+import JewelryDetails from "./JewleryDetails";
 
 const JewelryBox = () => {
-    const navigation = useNavigation();
-    const handleItemPress = (item) => {
-        navigation.navigate('details', { item });
-      };
-      const jewelryItems = [
-        {
-          id: 1,
-          image: Images.RINGS,
-          name: 'Necklace 1',
-          description: 'Description of Necklace 1',
-          price: '$100',
-        },
-      ];
+
+  const [jewelry, setJewelry] = useState([]);
+
+  const fetchData = async () => {
+    try {
+      const data  = await axios.get(`http://192.168.1.121:3000/api/Jewelry`);
+      setJewelry(data);
+      console.log(data);
+      
+    } catch (error) {
+      console.error(error);
+  
+
+    }
+
+    useEffect(() => {
+      fetchData();
+    }, []);
+  };
+
+  const handleButtonPress = (jewelry) => {
+    navigation.navigate("details", { jewelry });
+  };
   return (
-   
-    <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        {/* Box 1 */}
-        <TouchableOpacity style={styles.box} key={"1"} onPress={() => handleItemPress(jewelryItems[0])}>
-        
-       
-          <Image
-            source={Images.RING}
-            style={styles.image}
-            resizeMode="cover"
+    <ScrollView
+      contentContainerStyle={styles.content}
+      showsVerticalScrollIndicator={false}
+    >
+      {jewelry.map((jew) => (
+        <View style={styles.container}>
+          <JewelryDetails
+            jewelry={jew}
+            onPress={(jewelry) => handleButtonPress(jewelry)}
           />
-          <Text style={styles.price}>$100</Text>
-          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
-</TouchableOpacity>
-        {/* Box 2 */}
-        <View style={styles.box}>
-          <Image
-            source={Images.RING}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$150</Text>
-          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
         </View>
-        <View style={styles.box}>
-          <Image
-            source={Images.RIING}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$100</Text>
-          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
-        </View>
-
-        {/* Box 2 */}
-        <View style={styles.box}>
-          <Image
-            source={Images.EARINGS}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$150</Text>
-          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
-        </View>
-        <View style={styles.box}>
-          <Image
-            source={Images.HAIRCLIPS}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$100</Text>
-          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
-        </View>
-
-        {/* Box 2 */}
-        <View style={styles.box}>
-          <Image
-            source={Images.EARING}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$150</Text>
-          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
-        </View>
-        <View style={styles.box}>
-          <Image
-            source={Images.RINGS}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$100</Text>
-          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
-        </View>
-
-        {/* Box 2 */}
-        <View style={styles.box}>
-          <Image
-            source={Images.RING}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$150</Text>
-          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
-        </View>
-          <View style={styles.box}>
-          <Image
-            source={Images.RINGS}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$100</Text>
-          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
-        </View>
-
-        {/* Box 2 */}
-        <View style={styles.box}>
-          <Image
-            source={Images.RING}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$150</Text>
-          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
-        </View>
-        <View style={styles.box}>
-          <Image
-            source={Images.RIING}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$100</Text>
-          <Text style={styles.description}>Description of the jewelry piece goes here</Text>
-        </View>
-
-        {/* Box 2 */}
-        <View style={styles.box}>
-          <Image
-            source={Images.EARINGS}
-            style={styles.image}
-            resizeMode="cover"
-          />
-          <Text style={styles.price}>$150</Text>
-          <Text style={styles.description}>Description of another jewelry piece goes here</Text>
-        </View>
-
-
-        {/* Repeat additional boxes as needed */}
-      </View>
-
+      ))}
     </ScrollView>
-   
-   
   );
 };
 
@@ -161,35 +56,35 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    flexWrap: 'wrap', // Allow items to wrap to the next line
+    flexDirection: "row",
+    justifyContent: "space-around",
+    flexWrap: "wrap", // Allow items to wrap to the next line
     padding: 10,
   },
   box: {
-    width: '45%', // Adjust as needed to leave some space between the boxes
+    width: "45%", // Adjust as needed to leave some space between the boxes
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: "black",
     borderRadius: 8,
     padding: 10,
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 10, // Add some space between boxes
   },
   image: {
-    width: '100%',
+    width: "100%",
     height: 150, // Adjust the height as needed
     borderRadius: 8,
     marginBottom: 10,
   },
   price: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 16,
     marginBottom: 5,
   },
   description: {
-    textAlign: 'center',
+    textAlign: "center",
   },
- 
+
   scrollView: {
     flexGrow: 1,
     paddingBottom: 100, // Height of your Footer

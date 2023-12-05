@@ -40,36 +40,39 @@ const HomePage = () => {
 };
 
 const styles = StyleSheet.create({
+  logo: {
+    position: 'absolute',
+    top: 0, // Adjust this value as needed to create space from the top
+    left: 0,
+    right: 0,
+    height: 200,
+    width: '100%',
+    zIndex: 111111, // Set a value greater than the search bar's zIndex
+  },
+  
   searchBar: {
     height: 40,
-    margin: 20,
+    margin: 10,
+    marginTop: 210, // Adjust this value to create space below the logo and above the search bar
     borderWidth: 1,
-    borderColor: "gray",
+    borderColor: 'gray',
     borderRadius: 30,
     paddingHorizontal: 20,
   },
-
+  
   category: {
     paddingHorizontal: 10,
-    margin: 10,
-    justifyContent:"center",
-    alignItems:"center",
-    height:20,
+    margin: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    height: 20,
     marginRight: 10,
     borderWidth: 1,
     borderColor: "lightgray",
     borderRadius: 14,
+    marginTop: 10, // Adjust this value to add space between the search bar and categories
   },
- logo: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    height: 200, 
-    width: '100%', 
-    zIndex: -1, 
-  },
-
+  
 });
 
 export default HomePage;

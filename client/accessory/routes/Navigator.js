@@ -7,6 +7,7 @@ import TabNav from '../screens/TabNav';
 import Notification from '../screens/Notifcation';
 import Messages from '../screens/Messages';
 import Cart from '../screens/Cart';
+import JewelryDetails from '../screens/JewleryDetails';
 
 
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ function AppNavigation() {
         <Stack.Screen name="notification" component={Notification} />
         <Stack.Screen name="messages" component={Messages} />
         <Stack.Screen name="cart" component={Cart} />
+        <Stack.Screen name="details" component={JewelryDetails} />
       
   
   

@@ -5,47 +5,34 @@ import { AntDesign } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
 
 const JewelryDetails = ({ route }) => {
-  const { item } = route.params;
-  const [mainImage, setMainImage] = useState(item.image);
+  const { name, main_image, description,category,status } = jewlery;
 
   const handleAddToCart = () => {
     // Implement logic to add item to cart
   };
-
-  const additionalImages = [
-    { id: 1, source: Images.RIING },
-    { id: 2, source: Images.RINGS },
-    { id: 3, source: Images.RING },
-    // Add more images as needed
-  ];
-
-
-  const renderAdditionalImages = () => {
-    return additionalImages.map((image) => (
-      <TouchableOpacity key={image.id} onPress={() => handleImageSelect(image.source)}>
-        <Image source={image.source} style={styles.additionalImage} resizeMode="cover" />
-      </TouchableOpacity>
-    ));
+  const handleButtonPress = () => {
+    onPress(jewlery);
   };
 
-  const handleImageSelect = (selectedImage) => {
-    setMainImage(selectedImage);
-  };
+  
 
+
+  
+ 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imageBar}>
       <View style={styles.additionalImagesContainer}>
           {renderAdditionalImages()}
         </View>
-        <TouchableOpacity onPress={() => handleImageSelect(item.image)}>
-          <Image source={mainImage} style={styles.mainImage} resizeMode="cover" />
+        <TouchableOpacity onPress={() =>handleButtonPress(main_image)}>
+          <Image source={main_image} style={styles.mainImage} resizeMode="cover" />
         </TouchableOpacity>
       </View>
       <View style={styles.details}>
-        <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.description}>{item.description}</Text>
-        <Text style={styles.price}>Price: {item.price}</Text>
+        <Text style={styles.name}>{name}</Text>
+        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.price}>Price: {price}</Text>
         <View style={styles.cartFrame}>
          
         <AntDesign name="shoppingcart" size={24}  color="black"/>

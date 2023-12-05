@@ -6,5 +6,6 @@ export default {
     RING:require("../assets/ring.jpg"),
     RIING:require("../assets/riing.jpg"),
     HAIRCLIPS:require("../assets/HairClips.jpg"),
+    
  
 }
