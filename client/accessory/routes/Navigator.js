@@ -8,6 +8,8 @@ import Notification from '../screens/Notifcation';
 import Messages from '../screens/Messages';
 import Cart from '../screens/Cart';
 import JewelryDetails from '../screens/JewleryDetails';
+import Login from '../screens/Login';
+import SignUp from '../screens/SignUp';
 
 
 const Stack = createStackNavigator();
@@ -22,6 +24,8 @@ function AppNavigation() {
         <Stack.Screen name="messages" component={Messages} />
         <Stack.Screen name="cart" component={Cart} />
         <Stack.Screen name="details" component={JewelryDetails} />
+        <Stack.Screen name="LogIn" component={Login} />
+        <Stack.Screen name="SignUp" component={SignUp} />
       
   
   

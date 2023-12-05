@@ -3,6 +3,7 @@ const cors = require('cors')
 const prisma = require("./models/index");
 var bodyParser = require('body-parser');
 const jewelryRouter=require('./routes/Jewelry')
+const customersRouter=require('./routes/customer')
 
 
 
@@ -30,6 +31,7 @@ const connect = async () => {
 
 connect()
 app.use('/api/Jewelry',jewelryRouter)
+app.use('/api/customers', customersRouter)
 
 app.listen(port, () => {
     console.log(`app listening on port ${port}`)

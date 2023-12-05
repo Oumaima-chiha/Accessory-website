@@ -9,6 +9,7 @@ import Cart from "./Cart";
 import Messages from "./Messages";
 import { createStackNavigator } from "@react-navigation/stack";
 import JewelryDetails from "./JewleryDetails";
+import Login from "./Login";
 
 const Tab = createBottomTabNavigator();
 const HomeNav=createStackNavigator()
@@ -62,8 +63,8 @@ const TabNav = () => {
         }}
       ></Tab.Screen>
       <Tab.Screen
-        name="cart"
-        component={Cart}
+        name="LogIn"
+        component={Login}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="shoppingcart" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>
