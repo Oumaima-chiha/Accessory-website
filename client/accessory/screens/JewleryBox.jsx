@@ -1,93 +1,94 @@
-import React, { useState, useEffect } from "react";
-import {
-  View,
-  Image,
-  Text,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import axios from "axios";
-import JewelryDetails from "./JewleryDetails";
+import React, { useState, useEffect } from 'react';
+import { FlatList, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import axios from 'axios';
 
-const JewelryBox = () => {
 
-  const [jewelry, setJewelry] = useState([]);
+const JewelryItem = ({ item, onPress }) => {
+  return (
+    <TouchableOpacity style={styles.box} onPress={() => onPress(item)}>
+      <Image source={{ uri: item.main_image }} style={styles.image} resizeMode="cover" />
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.price}>${item.price}</Text>
+      <Text numberOfLines={2} ellipsizeMode="tail" style={styles.description}>
+        {item.description}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
+const JewelryBox = ({ navigation }) => {
+  const [jewelryItems, setJewelryItems] = useState([]);
 
   const fetchData = async () => {
     try {
-      const data  = await axios.get(`http://192.168.1.121:3000/api/Jewelry`);
-      setJewelry(data);
-      console.log(data);
-      
+      const response = await axios.get('http://192.168.1.121:3000/api/Jewelry');
+      if (response.status === 200) {
+        setJewelryItems(response.data);
+        console.log(response.data);
+      }
     } catch (error) {
-      console.error(error);
-  
-
+      console.error('Error fetching jewelry items:', error);
     }
-
-    useEffect(() => {
-      fetchData();
-    }, []);
   };
 
-  const handleButtonPress = (jewelry) => {
-    navigation.navigate("details", { jewelry });
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const handleItemPress = (item) => {
+    navigation.navigate('details', { jewelry: item });
   };
+
+  const renderItem = ({ item }) => (
+    <JewelryItem item={item} onPress={handleItemPress} />
+  );
+
   return (
-    <ScrollView
-      contentContainerStyle={styles.content}
-      showsVerticalScrollIndicator={false}
-    >
-      {jewelry.map((jew) => (
-        <View style={styles.container}>
-          <JewelryDetails
-            jewelry={jew}
-            onPress={(jewelry) => handleButtonPress(jewelry)}
-          />
-        </View>
-      ))}
-    </ScrollView>
+    <FlatList
+      data={jewelryItems}
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={2}
+      columnWrapperStyle={styles.columnWrapper}
+      contentContainerStyle={styles.flatListContent}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    flexGrow: 1,
-  },
-  container: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    flexWrap: "wrap", // Allow items to wrap to the next line
-    padding: 10,
-  },
   box: {
-    width: "45%", // Adjust as needed to leave some space between the boxes
+    width: '45%',
     borderWidth: 1,
-    borderColor: "black",
+    borderColor: 'black',
     borderRadius: 8,
     padding: 10,
-    alignItems: "center",
-    marginBottom: 10, // Add some space between boxes
+    alignItems: 'center',
+    marginBottom: 10,
   },
   image: {
-    width: "100%",
-    height: 150, // Adjust the height as needed
+    width: '100%',
+    height: 150,
     borderRadius: 8,
     marginBottom: 10,
   },
-  price: {
-    fontWeight: "bold",
+  name: {
     fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  price: {
+    fontSize: 14,
     marginBottom: 5,
   },
   description: {
-    textAlign: "center",
+    textAlign: 'center',
   },
-
-  scrollView: {
-    flexGrow: 1,
-    paddingBottom: 100, // Height of your Footer
+  columnWrapper: {
+    justifyContent: 'space-between',
+    marginVertical: 8,
+  },
+  flatListContent: {
+    paddingHorizontal: 16,
   },
 });
 

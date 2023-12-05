@@ -5,34 +5,24 @@ import { AntDesign } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
 
 const JewelryDetails = ({ route }) => {
-  const { name, main_image, description,category,status } = jewlery;
+  const {name, main_image, description,category,status } = route.params.jewelry;
 
   const handleAddToCart = () => {
     // Implement logic to add item to cart
   };
-  const handleButtonPress = () => {
-    onPress(jewlery);
-  };
-
-  
-
-
-  
  
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imageBar}>
-      <View style={styles.additionalImagesContainer}>
-          {renderAdditionalImages()}
-        </View>
-        <TouchableOpacity onPress={() =>handleButtonPress(main_image)}>
-          <Image source={main_image} style={styles.mainImage} resizeMode="cover" />
+        <TouchableOpacity onPress={() =>handleItemPress(main_image)}>
+          <Image source={item.main_image} style={styles.mainImage} resizeMode="cover" />
         </TouchableOpacity>
       </View>
       <View style={styles.details}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.description}>{description}</Text>
-        <Text style={styles.price}>Price: {price}</Text>
+        <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.description}>{item.description}</Text>
+        <Text style={styles.price}>Price: {item.price}</Text>
         <View style={styles.cartFrame}>
          
         <AntDesign name="shoppingcart" size={24}  color="black"/>
