@@ -10,6 +10,8 @@ import Messages from "./Messages";
 import { createStackNavigator } from "@react-navigation/stack";
 import JewelryDetails from "./JewleryDetails";
 import Login from "./Login";
+import { useNavigation } from "@react-navigation/native";
+import MainPage from "./MainPage";
 
 const Tab = createBottomTabNavigator();
 const HomeNav=createStackNavigator()
@@ -21,6 +23,7 @@ const HomeNavigator=()=>(
 )
 
 const TabNav = () => {
+ 
   return (
     <Tab.Navigator
       screenOptions={{
@@ -29,6 +32,7 @@ const TabNav = () => {
         tabBarShowLabel: false,
         tabBarStyle: styles.tabBarStyle,
       }}
+ 
     >
       <Tab.Screen
         name="homeNav"
@@ -54,8 +58,8 @@ const TabNav = () => {
         }}
       ></Tab.Screen>
       <Tab.Screen
-        name="messages"
-        component={Messages}
+        name="Main"
+        component={MainPage}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="message1" size={24}  color={focused ? Colors.DEFAULT_RED : "black"} />
@@ -63,8 +67,8 @@ const TabNav = () => {
         }}
       ></Tab.Screen>
       <Tab.Screen
-        name="LogIn"
-        component={Login}
+        name="cart"
+        component={Cart}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="shoppingcart" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>

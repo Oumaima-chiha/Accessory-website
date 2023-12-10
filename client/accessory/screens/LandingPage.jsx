@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the opacity or color overlay
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
   },
   title: {
     fontSize: 28,

@@ -7,17 +7,17 @@ const SignUp = ({navigation}) => {
     const [password, setPassword] = useState("");
   
     const handleLogin = () => {
-      // Add your login logic here using 'email' and 'password'
+     
       console.log("Email:", email);
       console.log("Password:", password);
-      // Example: You might want to call an API to authenticate
+     
     };
   
     const handleForgotPassword = () => {
-      // Add logic for forgot password functionality
+      
       console.log("Forgot password clicked");
     };  const handleLogIn = () => {
-        navigation.navigate('LogIn'); // Navigates to the SignUp component
+        navigation.navigate('LogIn');
       };
 
   return (

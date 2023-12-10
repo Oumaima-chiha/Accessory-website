@@ -1,34 +1,66 @@
-import React, { useState,useCallback } from 'react';
-import { View, Image, Text, Button, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import React, { useState, useCallback } from 'react';
+import { View, Image, Text, Button, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import { AntDesign } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
   const [mainImage, setMainImage] = useState(item.main_image);
+  const [showAddToCart, setShowAddToCart] = useState(false);
 
   const handleAddToCart = () => {
-    // Implement logic to add item to cartrr
+    // Implement logic to add item to cart
   };
 
-  const renderAdditionalImages = useCallback(() => {
+  const handleImageSelect = (image) => {
+    setMainImage(image);
+  };
+
+  const renderImageWithCart = useCallback(() => {
     const images = [item.main_image, ...item.extra_images];
-    return images.filter(image => image !== mainImage).map((image, index) => (
-      <TouchableOpacity key={index} onPress={() => handleImageSelect(image)}>
-        <Image source={{ uri: image }} style={styles.additionalImage} resizeMode="cover" />
-      </TouchableOpacity>
+    return images.map((image, index) => (
+      <View key={index} style={styles.imageContainer}>
+        <TouchableOpacity
+          onPress={() => handleImageSelect(image)}
+          onPressIn={() => setShowAddToCart(true)}
+          onPressOut={() => setShowAddToCart(false)}
+        >
+          <Image source={{ uri: image }} style={styles.additionalImage} resizeMode="cover" />
+        </TouchableOpacity>
+        {showAddToCart && mainImage === image && (
+          <TouchableOpacity onPress={handleAddToCart} style={styles.addToCartButton}>
+            <Text style={styles.addToCartText}>Add to Cart</Text>
+          </TouchableOpacity>
+        )}
+      </View>
     ));
-  }, [mainImage]);
+  }, [showAddToCart, mainImage, item]);
 
-  const handleImageSelect = (mainImage) => {
-    setMainImage(mainImage);
-  };
+  const renderOtherImagesBar = useCallback(() => {
+    return (
+      <View style={styles.otherImagesBar}>
+        <Text style={styles.otherImagesTitle}>See Other Images</Text>
+        <FlatList
+          data={item.extra_images}
+          renderItem={({ item: image }) => (
+            <TouchableOpacity onPress={() => handleImageSelect(image)}>
+              <Image source={{ uri: image }} style={styles.otherImage} resizeMode="cover" />
+            </TouchableOpacity>
+          )}
+          keyExtractor={(image, index) => `${image}_${index}`}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.additionalImagesContainer}
+        />
+      </View>
+    );
+  }, [item]);
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imageBar}>
         <View style={styles.additionalImagesContainer}>
-          {renderAdditionalImages()}
+          {renderImageWithCart()}
         </View>
         <TouchableOpacity onPress={() => handleImageSelect(item.main_image)}>
           <Image source={{ uri: mainImage }} style={styles.mainImage} resizeMode="cover" />
@@ -43,6 +75,7 @@ const JewelryDetails = ({ route }) => {
           <Button title="Add to Cart" onPress={handleAddToCart} />
         </View>
       </View>
+      {renderOtherImagesBar()}
     </ScrollView>
   );
 };
@@ -100,6 +133,31 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 8,
     padding: 10,
+  },
+  otherImagesBar: {
+    marginTop: 20,
+    paddingHorizontal: 10,
+  },
+  otherImagesTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  imageContainer: {
+    position: 'relative',
+  },
+  addToCartButton: {
+    position: 'absolute',
+    bottom: 10,
+    left: '50%',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 5,
+    transform: [{ translateX: -50 }],
+  },
+  addToCartText: {
+    color: 'black',
   },
 });
 

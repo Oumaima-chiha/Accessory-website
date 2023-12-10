@@ -42,18 +42,18 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   logo: {
     position: 'absolute',
-    top: 0, // Adjust this value as needed to create space from the top
+    top: 0, 
     left: 0,
     right: 0,
     height: 200,
     width: '100%',
-    zIndex: 111111, // Set a value greater than the search bar's zIndex
+    zIndex: 111111, 
   },
   
   searchBar: {
     height: 40,
     margin: 10,
-    marginTop: 210, // Adjust this value to create space below the logo and above the search bar
+    marginTop: 210, 
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 30,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "lightgray",
     borderRadius: 14,
-    marginTop: 10, // Adjust this value to add space between the search bar and categories
+    marginTop: 10, 
   },
   
 });

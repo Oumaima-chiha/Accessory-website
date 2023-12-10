@@ -10,6 +10,7 @@ import Cart from '../screens/Cart';
 import JewelryDetails from '../screens/JewleryDetails';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
+import MainPage from '../screens/MainPage';
 
 
 const Stack = createStackNavigator();
@@ -24,8 +25,11 @@ function AppNavigation() {
         <Stack.Screen name="messages" component={Messages} />
         <Stack.Screen name="cart" component={Cart} />
         <Stack.Screen name="details" component={JewelryDetails} />
+        <Stack.Group  screenOptions={{headerShown:false,presentation:'modal'}}>
         <Stack.Screen name="LogIn" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Main" component={MainPage} />
+        </Stack.Group>
       
   
   
