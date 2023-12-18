@@ -23,7 +23,7 @@ const JewelryBox = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://192.168.1.121:3000/api/Jewelry');
+      const response = await axios.get('http://192.168.1.4:3000/api/Jewelry');
       if (response.status === 200) {
         setJewelryItems(response.data);
         console.log(response.data);

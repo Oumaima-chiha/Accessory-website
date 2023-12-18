@@ -23,7 +23,7 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <ImageBackground source={Images.RINGS} style={styles.backgroundImage}>
+   
     <View style={styles.container}>
       <Text style={styles.title}>Login</Text>
       <TextInput
@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
         <Text style={styles.linkText}>Sign Up</Text>
       </TouchableOpacity>
     </View>
-    </ImageBackground>
+
   );
 };
 

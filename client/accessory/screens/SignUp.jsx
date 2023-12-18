@@ -21,7 +21,8 @@ const SignUp = ({navigation}) => {
       };
 
   return (
-    <ImageBackground source={Images.RINGS} style={styles.backgroundImage}>
+    
+
     <View style={styles.container}>
       <Text style={styles.title}>Sign Up</Text>
       <TextInput
@@ -33,7 +34,7 @@ const SignUp = ({navigation}) => {
       />
        <TextInput
         style={styles.input}
-        placeholder="phone nUmber"
+        placeholder="phone number"
         onChangeText={(text) => setPassword(text)}
         value={password}
         secureTextEntry={true}
@@ -61,7 +62,7 @@ const SignUp = ({navigation}) => {
         <Text style={styles.linkText}>Log In</Text>
       </TouchableOpacity>
     </View>
-    </ImageBackground>
+    
   );
 };
 
