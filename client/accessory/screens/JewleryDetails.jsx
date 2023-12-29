@@ -2,14 +2,27 @@ import React, { useState, useCallback } from 'react';
 import { View, Image, Text, Button, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native';
 import { AntDesign } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
+import cart from "./Cart";
+import { navigation,useNavigation } from '@react-navigation/native';
+import axios from 'axios';
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
   const [mainImage, setMainImage] = useState(item.main_image);
   const [showAddToCart, setShowAddToCart] = useState(false);
+  const navigation = useNavigation();
 
-  const handleAddToCart = () => {
-    // Implement logic to add item to cart
+  const handleAddToCart = async(id) => {
+    try{
+    const res = await axios.post('http://192.168.1.3:3000/api/cart/product/2/' +id )
+    if (res.status===201)
+    navigation.navigate('cart');
+    }
+    catch (err)
+    {
+      console.error(err)
+    }
+
   };
 
   const handleImageSelect = (image) => {
@@ -72,7 +85,7 @@ const JewelryDetails = ({ route }) => {
         <Text style={styles.price}>Price: ${item.price}</Text>
         <View style={styles.cartFrame}>
           <AntDesign name="shoppingcart" size={24} color="black" />
-          <Button title="Add to Cart" onPress={handleAddToCart} />
+          <Button title="Add to Cart" onPress={()=>handleAddToCart(item.id)} />
         </View>
       </View>
       {renderOtherImagesBar()}

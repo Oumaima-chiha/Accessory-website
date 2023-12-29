@@ -26,31 +26,33 @@ model User {
   resetCode       Int?
   role            Role
   customer        Message[]
+  Cart            Cart[]
 }
 
 model Jewelry {
-  id            Int       @id @default(autoincrement())
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  name          String    @unique
-  description   String?
-  category      Category[]
-  main_image    String    @db.Text
-  extra_images  String[]  @default([]) @db.Text
-  status        Status    @default(Available)
-  messages      Message[]
-  payment       Payment[]
-  price         Float   
-  quantity       Int        @default(0)    
+  id           Int        @id @default(autoincrement())
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  name         String     @unique
+  description  String?
+  category     Category[]
+  main_image   String     @db.Text
+  extra_images String[]   @default([]) @db.Text
+  status       Status     @default(Available)
+  messages     Message[]
+  payment      Payment[]
+  price        Float
+  quantity     Int        @default(0)
+  cartItems    CartItem[]
 }
 
 model Payment {
-  id           Int      @id @default(autoincrement())
-  createdAt    DateTime @default(now())
-  quantity     Int      @default(1)
-  Jewelry      Jewelry? @relation(fields: [jewelryId], references: [id])
-  jewelryId    Int?
- customerId   Int
+  id         Int      @id @default(autoincrement())
+  createdAt  DateTime @default(now())
+  quantity   Int      @default(1)
+  Jewelry    Jewelry? @relation(fields: [jewelryId], references: [id])
+  jewelryId  Int?
+  customerId Int
 }
 
 model Message {
@@ -63,6 +65,29 @@ model Message {
   ownerId    Int
   Jewelry    Jewelry? @relation(fields: [jewelryId], references: [id])
   jewelryId  Int?
+}
+
+model Cart {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now())
+  cartStatus CartStatus @default(EMPTY)
+  items      CartItem[]
+  user       User       @relation(fields: [userId], references: [id])
+  userId     Int
+}
+
+model CartItem {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  image     String
+  price     Float
+  quantity  Int
+  total     Float
+  cart      Cart     @relation(fields: [cartId], references: [id])
+  cartId    Int
+  jewelry   Jewelry  @relation(fields: [jewelryId], references: [id])
+  jewelryId Int
 }
 
 enum Role {
@@ -88,4 +113,11 @@ enum SENDER {
 enum Status {
   Available
   SoldOut
+}
+
+enum CartStatus {
+  EMPTY
+  PENDING
+  CANCELLED
+  PAID
 }

@@ -70,6 +70,7 @@ const TabNav = () => {
         name="cart"
         component={Cart}
         options={{
+          unmountOnBlur:true,
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="shoppingcart" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>
           ),

@@ -49,6 +49,9 @@ const styles = StyleSheet.create({
     width: '100%',
     zIndex: 111111, 
   },
+  container:{
+    flex:1,
+  },
   
   searchBar: {
     height: 40,

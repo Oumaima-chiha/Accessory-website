@@ -24,7 +24,7 @@ const MainPage = ({ navigation }) => {
 
   return (
     <SafeAreaView style={{flex:1,backgroundColor:"white"}}>
-       <View style={styles.container}>
+      
   <View style={styles.topBar}>
     <View style={styles.leftIcon}>
       <MaterialIcons name="account-circle" size={30} color="black" />
@@ -33,7 +33,7 @@ const MainPage = ({ navigation }) => {
       <SimpleLineIcons name="handbag" size={24} color="black" />
     </View>
   </View>
-</View>
+
 
     
       <View style={styles.InputContainer}>
@@ -53,8 +53,7 @@ const MainPage = ({ navigation }) => {
         
       />
     </View>
-    <View style={styles.container}>
-        
+  
     <View style={styles.topBar}>
     <TouchableOpacity
           style={[styles.button, isWomenUnderline ? styles.underline : null]}
@@ -144,7 +143,7 @@ const MainPage = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       </ScrollView>
-      <ScrollView  style={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false}>
      
       <View style={styles.separator} />
       
@@ -184,7 +183,7 @@ const MainPage = ({ navigation }) => {
 
       
       {/* Other components and sections */}
-    </View>
+ 
    
     </SafeAreaView>
     
@@ -193,7 +192,7 @@ const MainPage = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
+  flex:1,
  
     backgroundColor: '#fff',
     padding: 10,
@@ -205,6 +204,7 @@ const styles = StyleSheet.create({
   
   categoryBar: {
     flexDirection: 'row',
+    paddingVertical:5,
     justifyContent: 'space-around',
     alignItems: 'center',
     width: '100%',
@@ -215,17 +215,24 @@ const styles = StyleSheet.create({
 
 
 categoryImage: {
-    width: 100, 
-    height: 100, 
+    width: 95, 
+    height: 95, 
+    alignItems:'center',
+    justifyContent:'center'
   
   
+  },
+  textOverlay:{
+    alignItems:'center',
+    justifyContent:'center'
+
   },
   
 
   imageBox: {
     position: 'relative',
     alignItems: 'center',
-    width: 100, 
+    width: 95, 
     borderRadius: 50, 
   overflow: 'hidden',
   margin:5,
