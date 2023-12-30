@@ -13,6 +13,7 @@ import SignUp from '../screens/SignUp';
 import MainPage from '../screens/MainPage';
 
 import Checkout from '../screens/Checkout';
+import PaymentForm from "../screens/PaymentForm";
 
 
 const Stack = createStackNavigator();
@@ -32,10 +33,12 @@ function AppNavigation() {
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Main" component={MainPage} />
         <Stack.Screen name="checkout" component={Checkout} />
+          <Stack.Screen name="PaymentForm" component={PaymentForm} />
+
         </Stack.Group>
-      
-  
-  
+
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
