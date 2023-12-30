@@ -12,6 +12,8 @@ import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import MainPage from '../screens/MainPage';
 
+import Checkout from '../screens/Checkout';
+
 
 const Stack = createStackNavigator();
 
@@ -29,6 +31,7 @@ function AppNavigation() {
         <Stack.Screen name="LogIn" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Main" component={MainPage} />
+        <Stack.Screen name="checkout" component={Checkout} />
         </Stack.Group>
       
   

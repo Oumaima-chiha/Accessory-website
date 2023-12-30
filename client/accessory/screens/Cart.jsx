@@ -9,10 +9,12 @@ import {
 } from "react-native";
 import axios from "axios";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { navigation,useNavigation } from '@react-navigation/native';
 
 const Cart = () => {
   const user = useContext(useContext);
-
+  const navigation = useNavigation();
+  const [quantity, setQuantity] = useState(1);
   const [cart, setCart] = useState([]);
   const fetchAllCartItems = async () => {
     console.log(user);
@@ -47,13 +49,22 @@ const Cart = () => {
       console.log(error.message);
     }
   };
+  
   const renderItem = ({ item }) => (
     <View style={styles.cartItemContainer}>
       <Image source={{ uri: item.image }} style={styles.cartItemImage} />
       <View style={styles.cartItemDetails}>
         <Text style={styles.cartItemName}>{item.name}</Text>
         <Text style={styles.cartItemPrice}>${item.price}</Text>
-        <Text style={styles.cartItemQuantity}>Quantity: {item.quantity}</Text>
+        <View style={styles.quantityContainer}>
+        <TouchableOpacity style={styles.quantityButton} onPress={decrementQuantity}>
+            <Text style={styles.quantityButtonText}>-</Text>
+          </TouchableOpacity>
+          <Text style={styles.cartItemQuantity}>Quantity: {item.quantity}</Text>
+          <TouchableOpacity style={styles.quantityButton} onPress={incrementQuantity}>
+            <Text style={styles.quantityButtonText}>+</Text>
+          </TouchableOpacity>
+          </View>
       </View>
       <TouchableOpacity
         style={styles.deleteButton}
@@ -93,8 +104,21 @@ const Cart = () => {
   };
 
   const proceedToPayment = () => {
-    // Logic to navigate to payment screen or execute payment process
-    // Example: navigation.navigate('PaymentScreen');
+   navigation.navigate("checkout")
+  };
+  const handleGoBack = () => {
+    // Implement logic to navigate back to shopping or any other appropriate action
+    console.log('Go back to shopping');
+    navigation.navigate("home")
+  };
+  const incrementQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const decrementQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
   };
   return (
     <SafeAreaView style={{ flex: 1, padding: 20 }}>
@@ -117,6 +141,9 @@ const Cart = () => {
             renderItem={renderItem}
             keyExtractor={(item) => `cart-${item.id}`}
           />
+           <TouchableOpacity style={styles.goBackButton} onPress={handleGoBack}>
+          <Text style={styles.goBackButtonText}>Go Back to Shopping</Text>
+        </TouchableOpacity>
 
           <View style={styles.cartFooter}>
             <View style={styles.totalSection}>
@@ -238,6 +265,45 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 50,
     color: "#999999",
+  },
+  goBackButton: {
+    backgroundColor: '#ccc',
+    paddingVertical: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  goBackButtonText: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  quantityContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderWidth:0.8,
+    borderColor: '#ccc',
+    borderRadius:50,
+    paddingVertical: 5,
+    paddingHorizontal: 5,
+    marginBottom: 5,
+  },
+  quantityButton: {
+    backgroundColor: '#e0e0e0',
+    borderRadius: 20,
+    width: 30,
+    height: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  quantityButtonText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'black',
+  },
+  quantityText: {
+    fontSize: 10,
   },
 });
 
