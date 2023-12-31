@@ -14,9 +14,20 @@ import MainPage from '../screens/MainPage';
 
 import Checkout from '../screens/Checkout';
 import PaymentForm from "../screens/PaymentForm";
+import ReceiptScreen from "../screens/ReceiptScreen";
 
 
 const Stack = createStackNavigator();
+
+function CheckoutNavigator() {
+  return (
+      <Stack.Navigator initialRouteName={"Checkout"} screenOptions={{headerShown:false}}>
+        <Stack.Screen name="Checkout" component={Checkout} />
+        <Stack.Screen name="PaymentForm" component={PaymentForm} />
+        <Stack.Screen name="ReceiptScreen" component={ReceiptScreen} />
+      </Stack.Navigator>
+  );
+}
 
 function AppNavigation() {
   return (
@@ -28,12 +39,12 @@ function AppNavigation() {
         <Stack.Screen name="messages" component={Messages} />
         <Stack.Screen name="cart" component={Cart} />
         <Stack.Screen name="details" component={JewelryDetails} />
+
         <Stack.Group  screenOptions={{headerShown:false,presentation:'modal'}}>
         <Stack.Screen name="LogIn" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Main" component={MainPage} />
-        <Stack.Screen name="checkout" component={Checkout} />
-          <Stack.Screen name="PaymentForm" component={PaymentForm} />
+        <Stack.Screen name="CheckoutNavigator" component={CheckoutNavigator} />
 
         </Stack.Group>
 

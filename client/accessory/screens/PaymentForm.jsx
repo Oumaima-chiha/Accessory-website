@@ -86,7 +86,7 @@ const CreditCardForm = () => {
                 <Text style={styles.checkboxText}>I agree to the Terms and Conditions</Text>
             </View>
 
-            <TouchableOpacity style={styles.submitButton} onPress={() => navigation.navigate('Confirmation')}>
+            <TouchableOpacity style={styles.submitButton} onPress={() => navigation.navigate('ReceiptScreen',{receiptId:1})}>
                 <Text style={styles.submitButtonText}>Proceed to Confirmation</Text>
             </TouchableOpacity>
         </View>
@@ -122,7 +122,7 @@ const CashOnDeliveryForm = () => {
                 />
             </View>
 
-            <TouchableOpacity style={styles.submitButton} onPress={() => navigation.navigate('Confirmation')}>
+            <TouchableOpacity style={styles.submitButton} onPress={() => navigation.navigate('ReceiptScreen',{receiptId:1})}>
                 <Text style={styles.submitButtonText}>Proceed to Confirmation</Text>
             </TouchableOpacity>
         </View>
