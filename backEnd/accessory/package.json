@@ -20,6 +20,6 @@
     "prisma:seed": "prisma db seed --preview-feature"
   },
   "prisma": {
-    "seed": "node model/prisma/seed.js"
+    "seed": "node model/seed.js"
   }
 }
