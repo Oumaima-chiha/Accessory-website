@@ -104,7 +104,7 @@ const Cart = () => {
   };
 
   const proceedToPayment = () => {
-   navigation.navigate("checkout")
+   navigation.navigate("CheckoutNavigator")
   };
   const handleGoBack = () => {
     // Implement logic to navigate back to shopping or any other appropriate action
