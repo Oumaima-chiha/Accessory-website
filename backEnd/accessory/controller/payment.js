@@ -1,4 +1,6 @@
 const { user, cart, payment } = require("../models/index");
+const fs = require("fs");
+const generateReceipt = require("../utils/pdfGenerator");
 
 // Helper function to generate order summary
 const generateOrderSummary = (payment) => {
@@ -101,8 +103,43 @@ const getMyPayments = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+const downloadReceipt = async (req, res) => {
+    try {
+        const { paymentId } = req.params;
+
+        // Fetch payment details
+        const currentPayment = await payment.findUnique({
+            where: { id: parseInt(paymentId) },
+            include: { customer: true, cart: { include: { items: { include: { jewelry: true } } } } },
+        });
+
+        if (!currentPayment) {
+            return res.status(404).json({ error: 'Payment not found' });
+        }
+
+        // Generate order summary
+        const orderSummary = generateOrderSummary(currentPayment);
+
+        // Generate receipt PDF
+        const fileName = await generateReceipt(orderSummary);
+
+        res.download(fileName, `receipt.pdf`, (err) => {
+            if (err) {
+                console.error('Error downloading file:', err.message);
+                res.status(500).json({ error: 'Internal server error' });
+            } else {
+                // Optionally, you can delete the file after sending
+                fs.unlinkSync(fileName);
+            }
+        });
+    } catch (error) {
+        console.error('Error:', error.message);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
 
 module.exports = {
     createPayment,
-    getMyPayments
+    getMyPayments,
+    downloadReceipt
 };
