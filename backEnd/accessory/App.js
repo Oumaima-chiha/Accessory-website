@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 const jewelryRouter=require('./routes/Jewelry')
 const customersRouter=require('./routes/customer')
 const cartRouter =require('./routes/cart')
+const paymentRouter =require('./routes/payment')
 
 
 
@@ -34,6 +35,7 @@ connect()
 app.use('/api/Jewelry',jewelryRouter)
 app.use('/api/customers', customersRouter)
 app.use('/api/cart', cartRouter)
+app.use('/api/pay', paymentRouter)
 
 app.listen(port, () => {
     console.log(`app listening on port ${port}`)

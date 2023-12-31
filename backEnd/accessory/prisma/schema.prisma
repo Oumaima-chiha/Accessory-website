@@ -11,22 +11,25 @@ datasource db {
 }
 
 model User {
-  id              Int       @id @default(autoincrement())
-  createdAt       DateTime  @default(now())
-  updatedAt       DateTime  @updatedAt
-  fullname        String    @db.VarChar(255)
-  email           String    @unique @db.VarChar(255)
-  password        String    @db.VarChar(255)
+  id              Int              @id @default(autoincrement())
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+  fullname        String           @db.VarChar(255)
+  email           String           @unique @db.VarChar(255)
+  password        String           @db.VarChar(255)
   profilePic      String?
-  hasNotification Boolean   @default(false)
-  hasNewMessage   Boolean   @default(false)
-  isVerified      Boolean   @default(false)
+  hasNotification Boolean          @default(false)
+  hasNewMessage   Boolean          @default(false)
+  isVerified      Boolean          @default(false)
   verifyToken     String?
   otp             Int?
   resetCode       Int?
   role            Role
   customer        Message[]
+  payment         Payment[]
   Cart            Cart[]
+  billingInfo     BillingInfo?
+  shippingAddress ShippingAddress?
 }
 
 model Jewelry {
@@ -40,19 +43,45 @@ model Jewelry {
   extra_images String[]   @default([]) @db.Text
   status       Status     @default(Available)
   messages     Message[]
-  payment      Payment[]
   price        Float
   quantity     Int        @default(0)
   cartItems    CartItem[]
 }
 
+model BillingInfo {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  address     String
+  city        String
+  state       String
+  postalCode  String
+  country     String
+  phoneNumber String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int      @unique
+}
+
+model ShippingAddress {
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  address     String
+  city        String
+  state       String
+  postalCode  String
+  country     String
+  phoneNumber String
+  user        User     @relation(fields: [userId], references: [id])
+  userId      Int      @unique
+}
+
 model Payment {
-  id         Int      @id @default(autoincrement())
-  createdAt  DateTime @default(now())
-  quantity   Int      @default(1)
-  Jewelry    Jewelry? @relation(fields: [jewelryId], references: [id])
-  jewelryId  Int?
-  customerId Int
+  id            Int           @id @default(autoincrement())
+  createdAt     DateTime      @default(now())
+  paymentMethod PaymentMethod
+  customer      User          @relation(fields: [customerId], references: [id])
+  customerId    Int
+  cart          Cart          @relation(fields: [cartId], references: [id])
+  cartId        Int           @unique
 }
 
 model Message {
@@ -74,6 +103,7 @@ model Cart {
   items      CartItem[]
   user       User       @relation(fields: [userId], references: [id])
   userId     Int
+  payment    Payment?
 }
 
 model CartItem {
@@ -120,4 +150,9 @@ enum CartStatus {
   PENDING
   CANCELLED
   PAID
+}
+
+enum PaymentMethod {
+  CASH_ON_DELIVERY
+  ONLINE_PAYMENT
 }
