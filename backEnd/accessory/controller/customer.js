@@ -2,6 +2,7 @@ const {user} = require ('../models/index');
 const bcrypt = require("bcrypt");
 const crypto = require("crypto");
 const { sendingMail } = require("../utils/mailing");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
     createCustomers: async (req, res) => {

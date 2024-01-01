@@ -3,10 +3,13 @@ import React from "react";
 import { View, TextInput, ScrollView, Text, StyleSheet,Image } from "react-native";
 import JewelryBox from "./JewleryBox";
 import { Images } from "../contants";
+import { userApi } from "../services/modules/users";
+import { api } from "../services/api";
 
 
 
 const HomePage = () => {
+
   return (
     <View style={styles.container}>
     <View style={styles.header}>

@@ -50,7 +50,7 @@ const TabNav = () => {
       ></Tab.Screen>
       <Tab.Screen
         name="notification"
-        component={Notification}
+        component={Login}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="notification" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>

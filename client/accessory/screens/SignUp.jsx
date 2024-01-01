@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet ,ImageBackground} from "react-native";
 import { Images } from "../contants";
+import { useCustomerSignupMutation } from "../services/modules/users";
 
 const SignUp = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [triggerSignUp,result]=useCustomerSignupMutation()
+    const [fullName, setFullName] = useState("");
   
-    const handleLogin = () => {
+    const handleSignUp = () => {
      
       console.log("Email:", email);
       console.log("Password:", password);
+      triggerSignUp({
+        fullname:fullName, email, password 
+        
+      })
      
     };
   
@@ -28,17 +35,16 @@ const SignUp = ({navigation}) => {
       <TextInput
         style={styles.input}
         placeholder="Full Name"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        secureTextEntry={true}
+        onChangeText={(text) => setFullName(text)}
+        value={fullName}
       />
-       <TextInput
+       {/* <TextInput
         style={styles.input}
         placeholder="phone number"
         onChangeText={(text) => setPassword(text)}
         value={password}
         secureTextEntry={true}
-      />
+      /> */}
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -52,7 +58,7 @@ const SignUp = ({navigation}) => {
         value={password}
         secureTextEntry={true}
       />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={handleForgotPassword}>

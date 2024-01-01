@@ -1,4 +1,6 @@
 const prisma = require("./index");
+const bcrypt = require("bcrypt");
+
 
 const createJewelries = async () => {
     await prisma.jewelry.createMany({
@@ -193,5 +195,75 @@ const createJewelries = async () => {
     ]
 })
 }
+const createCustomers = async () => {
+  const password1 = "1234";
+  const password2 = "1234789";
+  const password3 = "123489";
 
-createJewelries()
+  const encryptedPassword1 = await bcrypt.hash(password1, 10);
+  const encryptedPassword2 = await bcrypt.hash(password2, 10);
+  const encryptedPassword3 = await bcrypt.hash(password3, 10);
+
+  await prisma.user.createMany({
+    data: [
+      {
+        fullname: "Hichem Sboui",
+        email: "hichem@gmail.com",
+        password: encryptedPassword1,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+      {
+        fullname: "Abderrahmen Louhichi",
+        email: "abderrahmen@gmail.com",
+        password: encryptedPassword2,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+      {
+        fullname: "Haithem Chaouch",
+        email: "haithem@gmail.com",
+        password: encryptedPassword3,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+      {
+        fullname: "Hane Chaouch",
+        email: "hanem@gmail.com",
+        password: encryptedPassword3,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+      {
+        fullname: "Hiba hndaoui",
+        email: "hiba@gmail.com",
+        password: encryptedPassword3,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+      {
+        fullname: "Hlima meskni",
+        email: "hlima@gmail.com",
+        password: encryptedPassword3,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+      {
+        fullname: "Hassen werghi",
+        email: "hassenm@gmail.com",
+        password: encryptedPassword3,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+      {
+        fullname: "zied arfaoui",
+        email: "zied@gmail.com",
+        password: encryptedPassword3,
+        role: "CUSTOMER",
+        isVerified: true,
+      },
+    ]
+  })
+}
+createCustomers()
+//createJewelries()
