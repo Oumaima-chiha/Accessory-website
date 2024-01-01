@@ -1,17 +1,24 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet ,ImageBackground} from "react-native";
 import { Images } from "../contants";
+import { useCustomerSigninMutation } from "../services/modules/users";
 
 const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("hichem@gmail.com");
+  const [password, setPassword] = useState("1234");
 
-  const handleLogin = () => {
-    
-    console.log("Email:", email);
-    console.log("Password:", password);
-    
-  };
+  const [triggerSignIn, { isLoading, data }] = useCustomerSigninMutation();
+
+  const handleLogin = async() => {
+    if (email !== '' && password !== '') {
+       triggerSignIn({ 
+        signinData: {
+          email: email,
+          password: password
+        }
+      });
+    }
+  }
 
   const handleForgotPassword = () => {
    
