@@ -9,6 +9,8 @@ export default {
     MEN:require("../assets/men.jpg"),
     WOMEN:require("../assets/women.jpg"),
     CHRISTMAS:require("../assets/christmas.jpg"),
+    CREDIT:require("../assets/credit-card.jpg"),
+    CREDIT:require("../assets/delivery.jpg"),
     
  
 }

@@ -57,11 +57,13 @@ const Cart = () => {
         <Text style={styles.cartItemName}>{item.name}</Text>
         <Text style={styles.cartItemPrice}>${item.price}</Text>
         <View style={styles.quantityContainer}>
-        <TouchableOpacity style={styles.quantityButton} onPress={decrementQuantity}>
+       
+        <TouchableOpacity style={styles.quantityButton} onPress={()=>decrementQuantity(item.id)}>
             <Text style={styles.quantityButtonText}>-</Text>
           </TouchableOpacity>
+       
           <Text style={styles.cartItemQuantity}>Quantity: {item.quantity}</Text>
-          <TouchableOpacity style={styles.quantityButton} onPress={incrementQuantity}>
+          <TouchableOpacity style={styles.quantityButton} onPress={()=>incrementQuantity(item.id)}>
             <Text style={styles.quantityButtonText}>+</Text>
           </TouchableOpacity>
           </View>
@@ -111,13 +113,55 @@ const Cart = () => {
     console.log('Go back to shopping');
     navigation.navigate("home")
   };
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
-  };
+  const incrementQuantity = async (id) => {
+    try {
+      const res = await axios.patch(
+          "http://192.168.1.3:3000/api/cart/productInc/"+id
+      );
+      if (res.status===201)
+      {
 
-  const decrementQuantity = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
+        setCart((prev) => {
+          const index=prev.items.findIndex(x => x.id === id);
+          let newArr=prev.items;
+          newArr[index]=res.data
+          return { ...prev, items:newArr };
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 401) {
+      }
+      console.log(error.message);
+    }
+  }
+
+
+  const decrementQuantity = async (id) => {
+    try {
+      const res = await axios.patch(
+          "http://192.168.1.3:3000/api/cart/productdec/"+id
+      );
+      if (res.status === 204)
+        setCart((prev) => {
+          const filteredItems = prev.items.filter((item) => item.id !== id);
+          return { ...prev, items: filteredItems };
+        });
+      if (res.status===201)
+      {
+
+        setCart((prev) => {
+          const index=prev.items.findIndex(x => x.id === id);
+          let newArr=prev.items;
+          newArr[index]=res.data
+          return { ...prev, items:newArr };
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 401) {
+      }
+      console.log(error.message);
     }
   };
   return (
