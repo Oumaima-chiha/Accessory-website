@@ -9,11 +9,11 @@ import { api } from "../services/api";
 
 
 const HomePage = ({jewelryItems,filterData,setFilterData}) => {
- 
+
   const [searchTerm, setSearchTerm] = useState("");
-  
- 
- 
+
+
+
 
   return (
     <View style={styles.container}>
@@ -27,7 +27,7 @@ const HomePage = ({jewelryItems,filterData,setFilterData}) => {
         resizeMode="cover"
       />
     </View>
-     
+
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -41,7 +41,7 @@ const HomePage = ({jewelryItems,filterData,setFilterData}) => {
         <Text style={styles.category}>Hair clips</Text>
         <Text style={styles.category}>Brooches</Text>
       </ScrollView>
-      <JewelryBox/>
+      <JewelryBox searchTerm={searchTerm}/>
 
     </View>
   );
@@ -50,27 +50,27 @@ const HomePage = ({jewelryItems,filterData,setFilterData}) => {
 const styles = StyleSheet.create({
   logo: {
     position: 'absolute',
-    top: 0, 
+    top: 0,
     left: 0,
     right: 0,
     height: 200,
     width: '100%',
-    zIndex: 111111, 
+    zIndex: 111111,
   },
   container:{
     flex:1,
   },
-  
+
   searchBar: {
     height: 40,
     margin: 10,
-    marginTop: 210, 
+    marginTop: 210,
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 30,
     paddingHorizontal: 20,
   },
-  
+
   category: {
     paddingHorizontal: 10,
     margin: 20,
@@ -81,9 +81,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "lightgray",
     borderRadius: 14,
-    marginTop: 10, 
+    marginTop: 10,
   },
-  
+
 });
 
 export default HomePage;
