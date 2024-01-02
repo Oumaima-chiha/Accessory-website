@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet ,ImageBackground} from "react-native";
 import { Images } from "../contants";
 import { useCustomerSignupMutation } from "../services/modules/users";
+import Toast from 'react-native-toast-message';
 
 const SignUp = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [triggerSignUp,result]=useCustomerSignupMutation()
     const [fullName, setFullName] = useState("");
+    
   
     const handleSignUp = () => {
      
@@ -17,20 +19,26 @@ const SignUp = ({navigation}) => {
         fullname:fullName, email, password 
         
       })
+      showToast('Successfully logged in');
      
     };
+    const showToast = (message) => {
+      Toast.show({
+        type: 'success',
+        text1: message,
+        position: 'top',
+      });
+    };
   
-    const handleForgotPassword = () => {
-      
-      console.log("Forgot password clicked");
-    };  const handleLogIn = () => {
+    const handleLogIn = () => {
         navigation.navigate('LogIn');
       };
 
   return (
-    
+
 
     <View style={styles.container}>
+             <Toast ref={(ref) => Toast.setRef(ref)} />
       <Text style={styles.title}>Sign Up</Text>
       <TextInput
         style={styles.input}
@@ -59,15 +67,15 @@ const SignUp = ({navigation}) => {
         secureTextEntry={true}
       />
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Login</Text>
+    
+        <Text style={styles.buttonText}>Confirm</Text>
+
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleForgotPassword}>
-        <Text style={styles.linkText}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleLogIn}>
-        <Text style={styles.linkText}>Log In</Text>
-      </TouchableOpacity>
+    
     </View>
+
+
+
     
   );
 };

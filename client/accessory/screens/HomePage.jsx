@@ -1,5 +1,5 @@
 
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { View, TextInput, ScrollView, Text, StyleSheet,Image } from "react-native";
 import JewelryBox from "./JewleryBox";
 import { Images } from "../contants";
@@ -8,13 +8,18 @@ import { api } from "../services/api";
 
 
 
-const HomePage = () => {
+const HomePage = ({jewelryItems,filterData,setFilterData}) => {
+ 
+  const [searchTerm, setSearchTerm] = useState("");
+  
+ 
+ 
 
   return (
     <View style={styles.container}>
     <View style={styles.header}>
       <View style={styles.searchContainer}>
-        <TextInput style={styles.searchBar} placeholder="Search..." />
+        <TextInput style={styles.searchBar} placeholder="Search..." value={searchTerm}  onChangeText={(text) => setSearchTerm(text)} />
       </View>
        <Image
         source={Images.ACCESSORY}

@@ -20,22 +20,46 @@ const JewelryItem = ({ item, onPress }) => {
 const JewelryBox = () => {
   const [jewelryItems, setJewelryItems] = useState([]);
   const navigation = useNavigation();
+  const [filterData, setFilterData] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  
 
+  
   const fetchData = async () => {
     try {
       const response = await axios.get(`http://${process.env.EXPO_PUBLIC_API_URL}:3000/api/Jewelry`);
+      
       if (response.status === 200) {
         setJewelryItems(response.data);
         console.log(response.data);
       }
+      
+      setJewelryItems(response.data);
+      setFilterData(response.data);
     } catch (error) {
       console.error('Error fetching jewelry items:', error);
     }
+
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+  const handleSearch = (val) => setSearchTerm(val);
+  useEffect(() => {
+    if(searchTerm && searchTerm !== '') {
+      const newData = jewelryItems.filter((elem) =>
+        elem.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilterData(newData);
+      console.log(newData)
+      console.log(searchTerm)
+    } else {
+      setFilterData(jewelryItems);
+      console.log(jewelryItems)
+    }
+  }, [searchTerm]);
+
 
   const handleItemPress = (item) => {
     navigation.navigate('details', { item });
@@ -47,7 +71,8 @@ const JewelryBox = () => {
 
   return (
     <FlatList
-      data={jewelryItems}
+      data={filterData}
+          
       renderItem={renderItem}
       keyExtractor={(item) => item.id.toString()}
       numColumns={2}
