@@ -14,7 +14,7 @@ const JewelryDetails = ({ route }) => {
 
   const handleAddToCart = async(id) => {
     try{
-    const res = await axios.post('http://192.168.1.19:3000/api/cart/product/2/' +id )
+    const res = await axios.post('http://192.168.1.3:3000/api/cart/product/2/' +id )
     if (res.status===201)
     navigation.navigate('cart');
     }
