@@ -1,17 +1,26 @@
 
 import React,{useState,useEffect} from "react";
-import { View, TextInput, ScrollView, Text, StyleSheet,Image } from "react-native";
+import { View, TextInput, ScrollView, Text, StyleSheet,Image,TouchableOpacity } from "react-native";
 import JewelryBox from "./JewleryBox";
 import { Images } from "../contants";
 import { userApi } from "../services/modules/users";
 import { api } from "../services/api";
 
+const category = [
+  "All",
+  "Rings",
+  "Necklaces",
+  "Earings",
+  "Braclets",
+  "HairClips",
+  "Brooches",
+  
+];
 
-
-const HomePage = ({jewelryItems,filterData,setFilterData}) => {
+const HomePage = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
-
+const[selectedCategory,setSelectedCategory]=useState('')
 
 
 
@@ -32,16 +41,20 @@ const HomePage = ({jewelryItems,filterData,setFilterData}) => {
         horizontal
         showsHorizontalScrollIndicator={false}
         style={styles.categoriesContainer}
+      
+        
       >
-        <View style={styles.category}><Text>All</Text></View>
-        <Text style={styles.category}>Rings</Text>
-        <Text style={styles.category}>Necklaces</Text>
-        <Text style={styles.category}>Earings</Text>
-        <Text style={styles.category}>Braclets</Text>
-        <Text style={styles.category}>Hair clips</Text>
-        <Text style={styles.category}>Brooches</Text>
+         {category.map((categoryName,index) => (
+        <TouchableOpacity
+         key={categoryName+index}
+          onPress={() => setSelectedCategory(categoryName)}
+        >
+        <View style={styles.category}><Text>{categoryName}</Text></View>
+       
+        </TouchableOpacity>
+         ))}
       </ScrollView>
-      <JewelryBox searchTerm={searchTerm}/>
+      <JewelryBox searchTerm={searchTerm} selectedCategory={selectedCategory} />
 
     </View>
   );
