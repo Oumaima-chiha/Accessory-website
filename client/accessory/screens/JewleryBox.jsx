@@ -17,25 +17,67 @@ const JewelryItem = ({ item, onPress }) => {
   );
 };
 
-const JewelryBox = () => {
+const JewelryBox = ({searchTerm,selectedCategory}) => {
   const [jewelryItems, setJewelryItems] = useState([]);
   const navigation = useNavigation();
+  const [filterData, setFilterData] = useState([]);
+  
+
+ 
+
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://${process.env.EXPO_PUBLIC_API_URL}:3000/api/Jewelry`);
+      const response = await axios.get(`http://192.168.1.3:3000/api/Jewelry`);
       if (response.status === 200) {
         setJewelryItems(response.data);
+        setFilterData(response.data);
         console.log(response.data);
       }
+
     } catch (error) {
       console.error('Error fetching jewelry items:', error);
     }
+
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+  useEffect(() => {
+    if(searchTerm && searchTerm !== '') {
+      const newData = jewelryItems.filter((elem) =>
+        elem.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilterData(newData);
+      console.log(newData)
+      console.log(searchTerm)
+    } else {
+      setFilterData(jewelryItems);
+      console.log(jewelryItems)
+    }
+  }, [searchTerm]);
+  useEffect(() => {
+    if (selectedCategory === "All") {
+      setFilterData(jewelryItems);
+    } else {
+      const filteredList = jewelryItems.filter((elem) => {
+        if (Array.isArray(elem.category)) {
+          const foundCategory = elem.category.find(
+            (category) =>
+              category &&
+              typeof category === "string" &&
+              category.toLowerCase() === selectedCategory.toLowerCase()
+          );
+          return foundCategory !== undefined;
+        }
+        return false;
+      });
+      setFilterData(filteredList);
+    }
+  }, [selectedCategory]);
+
+ 
 
   const handleItemPress = (item) => {
     navigation.navigate('details', { item });
@@ -47,7 +89,8 @@ const JewelryBox = () => {
 
   return (
     <FlatList
-      data={jewelryItems}
+      data={filterData}
+
       renderItem={renderItem}
       keyExtractor={(item) => item.id.toString()}
       numColumns={2}
