@@ -11,7 +11,7 @@ module.exports.sendingMail = async ({ from, to, subject, text }) => {
     };
     const transporter = nodemailer.createTransport({
       direct: true,
-      host: "smtp.mail.ru",
+      host: "smtp.gmail.com",
       port: 465,
       secure: true,
       auth: {

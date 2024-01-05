@@ -15,6 +15,9 @@ import MainPage from '../screens/MainPage';
 import Checkout from '../screens/Checkout';
 import PaymentForm from "../screens/PaymentForm";
 import ReceiptScreen from "../screens/ReceiptScreen";
+import VerificationCodeScreen from '../screens/VerificationCodeScreen';
+import ConfirmEmail from '../screens/ConfirmEmail';
+import NewPassword from '../screens/NewPasswordScreen';
 
 
 const Stack = createStackNavigator();
@@ -42,9 +45,12 @@ function AppNavigation() {
 
         <Stack.Group  screenOptions={{headerShown:false,presentation:'modal'}}>
         <Stack.Screen name="LogIn" component={Login} />
+        <Stack.Screen name="email" component={ConfirmEmail} />
+        <Stack.Screen name="pass" component={NewPassword} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Main" component={MainPage} />
         <Stack.Screen name="CheckoutNavigator" component={CheckoutNavigator} />
+        <Stack.Screen name="verify" component={VerificationCodeScreen} />
 
         </Stack.Group>
 

@@ -10,7 +10,8 @@ import {
     return AsyncStorage.getItem('accessToken'); 
   }; 
   const baseQuery = fetchBaseQuery({
-    baseUrl: `http://${process.env.EXPO_PUBLIC_API_URL}:3000/api/`,
+    baseUrl: `http://192.168.1.3:3000/api/`,
+    
     prepareHeaders: (headers, { getState }) => {
       const token = getTokenFromLocalStorage();
       if (token) {
