@@ -4,8 +4,8 @@ import { Images } from "../contants";
 import { useCustomerSigninMutation } from "../services/modules/users";
 
 const Login = ({ navigation }) => {
-  const [email, setEmail] = useState("hichem@gmail.com");
-  const [password, setPassword] = useState("1234");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [triggerSignIn, { isLoading, data }] = useCustomerSigninMutation();
 
@@ -23,6 +23,7 @@ const Login = ({ navigation }) => {
   const handleForgotPassword = () => {
    
     console.log("Forgot password clicked");
+    navigation.navigate("email")
   };
 
   const handleSignUp = () => {

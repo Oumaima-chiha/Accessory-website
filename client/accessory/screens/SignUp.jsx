@@ -10,29 +10,34 @@ const SignUp = ({navigation}) => {
     const [triggerSignUp,result]=useCustomerSignupMutation()
     const [fullName, setFullName] = useState("");
     
-  
+   
     const handleSignUp = () => {
      
       console.log("Email:", email);
       console.log("Password:", password);
-      triggerSignUp({
-        fullname:fullName, email, password 
+      triggerSignUp({ fullname: fullName, email, password })
+      .then(() => {
+        showToast('Please check your email for verification ');
         
+                                                                          
+        navigation.navigate('verify'); 
       })
-      showToast('Successfully logged in');
-     
-    };
+      .catch((error) => {
+        // Handle signup error here
+        console.error('Signup failed:', error);
+        showToast('Signup failed. Please try again.');
+      });
+  };
     const showToast = (message) => {
       Toast.show({
         type: 'success',
         text1: message,
         position: 'top',
       });
+      
     };
   
-    const handleLogIn = () => {
-        navigation.navigate('LogIn');
-      };
+    
 
   return (
 
