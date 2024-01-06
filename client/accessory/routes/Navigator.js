@@ -18,6 +18,9 @@ import ReceiptScreen from "../screens/ReceiptScreen";
 import VerificationCodeScreen from '../screens/VerificationCodeScreen';
 import ConfirmEmail from '../screens/ConfirmEmail';
 import NewPassword from '../screens/NewPasswordScreen';
+import VerifyResetCode from '../screens/VerifyResetCode';
+
+
 
 
 const Stack = createStackNavigator();
@@ -46,6 +49,7 @@ function AppNavigation() {
         <Stack.Group  screenOptions={{headerShown:false,presentation:'modal'}}>
         <Stack.Screen name="LogIn" component={Login} />
         <Stack.Screen name="email" component={ConfirmEmail} />
+        <Stack.Screen name="code" component={VerifyResetCode} />
         <Stack.Screen name="pass" component={NewPassword} />
         <Stack.Screen name="SignUp" component={SignUp} />
         <Stack.Screen name="Main" component={MainPage} />
