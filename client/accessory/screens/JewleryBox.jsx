@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FlatList, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import {FlatList, StyleSheet, Image, Text, TouchableOpacity, Platform, Animated} from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,18 +17,18 @@ const JewelryItem = ({ item, onPress }) => {
   );
 };
 
-const JewelryBox = ({searchTerm,selectedCategory}) => {
+const JewelryBox = ({searchTerm,selectedCategory,scrollY}) => {
   const [jewelryItems, setJewelryItems] = useState([]);
   const navigation = useNavigation();
   const [filterData, setFilterData] = useState([]);
-  
 
- 
+
+
 
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`http://192.168.1.3:3000/api/Jewelry`);
+      const response = await axios.get( process.env.EXPO_PUBLIC_API_URL+"Jewelry");
       if (response.status === 200) {
         setJewelryItems(response.data);
         setFilterData(response.data);
@@ -77,7 +77,7 @@ const JewelryBox = ({searchTerm,selectedCategory}) => {
     }
   }, [selectedCategory]);
 
- 
+
 
   const handleItemPress = (item) => {
     navigation.navigate('details', { item });
@@ -93,16 +93,19 @@ const JewelryBox = ({searchTerm,selectedCategory}) => {
 
       renderItem={renderItem}
       keyExtractor={(item) => item.id.toString()}
-      numColumns={2}
+      numColumns={Platform.OS==='web'?4:2}
       columnWrapperStyle={styles.columnWrapper}
       contentContainerStyle={styles.flatListContent}
+      showsVerticalScrollIndicator={false}
+      onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: false })}
+
     />
   );
 };
 
 const styles = StyleSheet.create({
   box: {
-    width: '45%',
+    width: Platform.OS==='web'?'20%':'45%',
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 8,
@@ -129,7 +132,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   columnWrapper: {
-    justifyContent: 'space-between',
+    justifyContent: Platform.OS==='web'? "space-around":'space-between',
     marginVertical: 8,
   },
   flatListContent: {

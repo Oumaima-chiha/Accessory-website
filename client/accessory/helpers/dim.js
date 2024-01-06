@@ -1,8 +1,8 @@
-import { Dimensions } from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 const { width, height } = Dimensions.get('window');
 
-const guidelineBaseWidth = 375;
-const guidelineBaseHeight = 812;
+const guidelineBaseWidth = width>500 ? width : 375;
+const guidelineBaseHeight =  height>900? height :812;
 
 const scale = size => width / guidelineBaseWidth * size;
 const verticalScale = size => height / guidelineBaseHeight * size;
