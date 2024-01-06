@@ -13,6 +13,7 @@ import axios from 'axios';
 
 
 
+
 const ConfirmEmail = ({ navigation }) => {
 
 
@@ -46,8 +47,11 @@ const ConfirmEmail = ({ navigation }) => {
       };
 
  
-    return (
-        <ScrollView contentContainerStyle={styles.container}>
+      return (
+        <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
+          <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+        <View style={styles.forgotPasswordParent}>
+          <Text style={styles.forgotPasswordTitle}>Forgot Password</Text>
          
           
      
@@ -74,25 +78,41 @@ const ConfirmEmail = ({ navigation }) => {
               <Text style={styles.sendResetButtonText}>Send Reset Email</Text>
             </TouchableOpacity>
           </View>
-        </ScrollView>
-      );
-    };
-    
+          </View>
+        </View>
+        </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  container: {
+    container: {
+        flex: 1,
+        backgroundColor: 'white',
+        justifyContent: 'center',
+        alignItems: 'center',
+      },
+  containerWeb: {
     flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
-  forgotPasswordParent: {
-    marginTop: 5,
-    padding: 20,
-    width: '100%',
-    height: '70%',
-  },
-  forgotPasswordTitle: {
+      forgotPasswordParent: {
+        marginTop: 5,
+        padding: 20,
+        width: '100%',
+        height: '70%',
+      },
+      forgotPasswordTitle: {
+
+        fontWeight: 'bold',
+        fontSize: 30,
+        textAlign: 'center',
+        marginBottom: 50,
+      },
+      inputContainer: {
+        marginBottom: 30,
+      },
+      label: {
 
     fontWeight: 'bold',
     fontSize: 30,
