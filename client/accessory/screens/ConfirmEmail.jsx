@@ -19,7 +19,9 @@ const ConfirmEmail = ({navigation}) => {
   };
 
   return (
-    <View style={styles.container}>
+      <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
+        <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+          <>
       <View style={styles.forgotPasswordParent}>
         <Text style={styles.forgotPasswordTitle}>Forgot Password</Text>
 
@@ -42,6 +44,8 @@ const ConfirmEmail = ({navigation}) => {
           <Text style={styles.sendResetButtonText}>Send Reset Email</Text>
         </TouchableOpacity>
       </View>
+            </>
+        </View>
     </View>
   );
 };
@@ -53,6 +57,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
       },
+  containerWeb: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
       forgotPasswordParent: {
         marginTop: 5,
         padding: 20,
@@ -60,7 +69,7 @@ const styles = StyleSheet.create({
         height: '70%',
       },
       forgotPasswordTitle: {
-    
+
         fontWeight: 'bold',
         fontSize: 30,
         textAlign: 'center',

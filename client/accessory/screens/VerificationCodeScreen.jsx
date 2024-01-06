@@ -6,7 +6,7 @@ import {
   View,
   TextInput,
   ScrollView,
-  TouchableOpacity,
+  TouchableOpacity, Platform,
 } from "react-native";
 import axios from "axios";
 
@@ -25,7 +25,7 @@ const VerificationCodeScreen = ({ navigation }) => {
 
   const [OTP, setOTP] = useState({ 0: "", 1: "", 2: "", 3: "" });
   const [nextInputIndex, setNextInputIndex] = useState(0);
- 
+
 
   const handleChangeText = (text, index) => {
     const newOTP = { ...OTP };
@@ -47,26 +47,28 @@ const VerificationCodeScreen = ({ navigation }) => {
     const otp = Object.values(OTP).join("");
     try {
       const response = await axios.get(
-        `http://192.168.1.3:3000/api/customers/verify/${otp}`
+        `${ process.env.EXPO_PUBLIC_API_URL}customers/verify/${otp}`
       );
-  
+
       if (response.status === 200) {
-        
+
         navigation.navigate("LogIn");
       } else {
-       
+
         console.log("Verification failed");
       }
     } catch (error) {
-     
+
       console.error("Error verifying OTP:", error);
     }
   };
-  
+
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-    
+      <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
+        <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+          <>
+
       <View style={styles.loginParent}>
         <Text style={styles.login1}>Verification Code</Text>
 
@@ -97,7 +99,9 @@ const VerificationCodeScreen = ({ navigation }) => {
           <Text style={styles.verifyButtonText}>Verify Code</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+</>
+        </View>
+      </View>
   );
 };
 
@@ -105,6 +109,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  containerWeb: {
+    flex: 1,
     justifyContent: "center",
     alignItems: "center",
   },

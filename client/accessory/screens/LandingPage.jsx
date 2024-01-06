@@ -6,8 +6,8 @@ const LandingPage = ({ navigation }) => {
     const [buttonPressed, setButtonPressed] = useState(false);
   const handleGetStarted = () => {
     setButtonPressed(true)
-    
-    navigation.navigate('nav',{screen:'homeNav'}); 
+
+    navigation.navigate('nav',{screen:'homeNav'});
   };
 
   return (
@@ -16,7 +16,7 @@ const LandingPage = ({ navigation }) => {
       style={styles.background}
     >
       <View style={styles.container}>
-        
+
         <Text style={styles.title}>Noble Elegance </Text>
         <Text style={styles.motivationText}>
           Refine your look,{'\n'}
@@ -35,14 +35,16 @@ const LandingPage = ({ navigation }) => {
 const styles = StyleSheet.create({
   background: {
     flex: 1,
-    resizeMode: 'cover', 
+    resizeMode: 'cover',
     justifyContent: 'center',
+    height:'100%',
+    width:'100%'
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   title: {
     fontSize: 28,
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 80,
     position: "center",
     bottom: -200,
-    left: 10, 
+    left: 10,
   },
   motivationText: {
     fontSize: 18,
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'gold',
   },
-  
+
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
