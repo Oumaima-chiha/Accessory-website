@@ -19,7 +19,7 @@ const Cart = () => {
   const fetchAllCartItems = async () => {
     console.log(user);
     try {
-      const { data } = await axios.get("http://192.168.1.3:3000/api/cart/2");
+      const { data } = await axios.get( process.env.EXPO_PUBLIC_API_URL+"cart/2");
       if (data) setCart(data);
     } catch (error) {
       console.log(error);
@@ -35,7 +35,7 @@ const Cart = () => {
   const removeFromCart = async (id) => {
     try {
       const res = await axios.delete(
-        "http://192.168.1.3:3000/api/cart/delete/2/" + id
+         process.env.EXPO_PUBLIC_API_URL+"api/cart/delete/2/" + id
       );
       if (res.status === 204)
         setCart((prev) => {
@@ -89,7 +89,7 @@ const Cart = () => {
   const removeAllFromCart = async () => {
     try {
       const res = await axios.delete(
-        "http://192.168.1.3:3000/api/cart/deleteAll/2"
+         process.env.EXPO_PUBLIC_API_URL+"api/cart/deleteAll/2"
       );
       if (res.status === 204)
         setCart((prev) => {
@@ -114,7 +114,7 @@ const Cart = () => {
   const incrementQuantity = async (id) => {
     try {
       const res = await axios.patch(
-          "http://192.168.1.19:3000/api/cart/productInc/"+id
+          process.env.EXPO_PUBLIC_API_URL+"cart/productInc/"+id
       );
       if (res.status===201)
       {
@@ -137,7 +137,7 @@ const Cart = () => {
   const decrementQuantity = async (id) => {
     try {
       const res = await axios.patch(
-          "http://192.168.1.19:3000/api/cart/productdec/"+id
+          process.env.EXPO_PUBLIC_API_URL+"cart/productdec/"+id
       );
       if (res.status === 204)
         setCart((prev) => {

@@ -5,18 +5,20 @@ import { Text, StyleSheet, View, TextInput, ScrollView, TouchableOpacity } from 
 const NewPassword = () => {
   const handleButtonPress = () => {
     // Implement the logic to send a password reset email here.
-    
+
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+      <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
+          <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+              <>
     <View style={styles.updatePasswordParent}>
       <Text style={styles.updatePasswordTitle}>Update Password</Text>
 
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Enter the New Password</Text>
         <TextInput
-          
+
           placeholder="Enter your new password"
           returnKeyType="done"
           placeholderTextColor="#c8c8c8"
@@ -24,17 +26,19 @@ const NewPassword = () => {
           autoCapitalize="none"
           autoCorrect={false}
           style={styles.passwordInput}
-        
+
         />
       </View>
       <TouchableOpacity
         style={styles.updatePasswordButtonContainer}
-       
+
       >
         <Text style={styles.updatePasswordButtonText}>Update Password</Text>
       </TouchableOpacity>
     </View>
-  </ScrollView>
+</>
+          </View>
+      </View>
   );
 };
 
@@ -44,6 +48,11 @@ const styles = StyleSheet.create({
       backgroundColor: "white",
       justifyContent: "center",
       alignItems: "center",
+    },
+    containerWeb: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
     },
     updatePasswordParent: {
       marginTop: 5,
@@ -62,7 +71,7 @@ const styles = StyleSheet.create({
       marginBottom: 30,
     },
     label: {
- 
+
       fontSize: 18,
       marginBottom: 10,
       textAlign: "center",
@@ -72,7 +81,7 @@ const styles = StyleSheet.create({
       borderColor: "gold",
       borderRadius: 8,
       padding: 16,
-    
+
       fontSize: 18,
       textAlign: "center",
     },

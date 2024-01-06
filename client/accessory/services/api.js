@@ -4,14 +4,14 @@ import {
   } from '@reduxjs/toolkit/query/react';
   import AsyncStorage from '@react-native-async-storage/async-storage';
 
-  
+
   const getTokenFromLocalStorage = () => {
     // Retrieve the token from localStorage or AsyncStorage in Expo
-    return AsyncStorage.getItem('accessToken'); 
-  }; 
+    return AsyncStorage.getItem('accessToken');
+  };
   const baseQuery = fetchBaseQuery({
-    baseUrl: `http://192.168.1.3:3000/api/`,
-    
+    baseUrl: process.env.EXPO_PUBLIC_API_URL,
+
     prepareHeaders: (headers, { getState }) => {
       const token = getTokenFromLocalStorage();
       if (token) {
@@ -20,14 +20,14 @@ import {
       return headers;
     },
   });
-  
+
   const baseQueryWithInterceptor = async (args, api, extraOptions) => {
     let result = await baseQuery(args, api, extraOptions);
     if (result.error && result.error.status === 401) {
     }
     return result;
   };
-  
+
   export const api = createApi({
     baseQuery: baseQueryWithInterceptor,
     endpoints: () => ({}),

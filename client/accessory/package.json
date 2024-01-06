@@ -28,11 +28,21 @@
     "react-redux": "^9.0.4",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "redux-persist-expo-securestore": "^2.0.0"
+    "redux-persist-expo-securestore": "^2.0.0",
+    "react-dom": "18.2.0",
+    "react-native-web": "~0.19.6",
+    "@expo/webpack-config": "^19.0.0",
+    "expo-router": "^2.0.0",
+    "react-native-screens": "~3.22.0",
+    "expo-linking": "~5.0.2",
+    "expo-constants": "~14.4.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "remote-redux-devtools": "^0.5.16"
   },
-  "private": true
+  "private": true,
+  "resolutions": {
+    "react-refresh": "~0.14.0"
+  }
 }

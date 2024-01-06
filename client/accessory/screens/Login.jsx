@@ -1,6 +1,6 @@
+// Login.js
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet ,ImageBackground} from "react-native";
-import { Images } from "../contants";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from "react-native";
 import { useCustomerSigninMutation } from "../services/modules/users";
 
 const Login = ({ navigation }) => {
@@ -9,9 +9,9 @@ const Login = ({ navigation }) => {
 
   const [triggerSignIn, { isLoading, data }] = useCustomerSigninMutation();
 
-  const handleLogin = async() => {
+  const handleLogin = async () => {
     if (email !== '' && password !== '') {
-       triggerSignIn({ 
+      triggerSignIn({
         signinData: {
           email: email,
           password: password
@@ -21,48 +21,59 @@ const Login = ({ navigation }) => {
   }
 
   const handleForgotPassword = () => {
-   
     console.log("Forgot password clicked");
-    navigation.navigate("email")
+    navigation.navigate("email");
   };
 
   const handleSignUp = () => {
-    navigation.navigate('SignUp'); 
+    navigation.navigate('SignUp');
   };
 
   return (
-   
-    <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        secureTextEntry={true}
-      />
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleForgotPassword}>
-        <Text style={styles.linkText}>Forgot Password?</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={handleSignUp}>
-        <Text style={styles.linkText}>Sign Up</Text>
-      </TouchableOpacity>
-    </View>
-
+      <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
+        <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+          <>
+        <Text style={styles.title}>Login</Text>
+        <TextInput
+            style={styles.input}
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
+        />
+        <TextInput
+            style={styles.input}
+            placeholder="Password"
+            onChangeText={(text) => setPassword(text)}
+            value={password}
+            secureTextEntry={true}
+        />
+        <TouchableOpacity style={styles.button} onPress={handleLogin}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+            </>
+        <TouchableOpacity onPress={handleForgotPassword}>
+          <Text style={styles.linkText}>Forgot Password?</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={handleSignUp}>
+          <Text style={styles.linkText}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
+      </View>
   );
 };
 
 const styles = StyleSheet.create({
- 
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 20,
+  },
+  containerWeb: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   title: {
     fontSize: 35,
     marginBottom: 20,
@@ -93,17 +104,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: "black",
     textDecorationLine: "underline",
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
-  },
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    paddingHorizontal: 20,
   },
 });
 
