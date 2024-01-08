@@ -4,14 +4,14 @@ import { Images } from "../contants";
 import { useCustomerSignupMutation } from "../services/modules/users";
 import Toast from 'react-native-toast-message';
 
+
 const SignUp = ({navigation}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [triggerSignUp,result]=useCustomerSignupMutation()
     const [fullName, setFullName] = useState("");
 
-
-    const handleSignUp = () => {
+  const handleSignUp = () => {
 
       console.log("Email:", email);
       console.log("Password:", password);
@@ -23,7 +23,7 @@ const SignUp = ({navigation}) => {
         navigation.navigate('verify');
       })
       .catch((error) => {
-        // Handle signup error here
+       
         console.error('Signup failed:', error);
         showToast('Signup failed. Please try again.');
       });
@@ -36,6 +36,9 @@ const SignUp = ({navigation}) => {
       });
 
     };
+    
+ 
+ 
 
 
 
@@ -43,7 +46,7 @@ const SignUp = ({navigation}) => {
 
 
       <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
-        <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+             <View style={{width:Platform.OS==='web'?'40%':'80%',alignItems:'center'}}>
           <>
              <Toast ref={(ref) => Toast.setRef(ref)} />
       <Text style={styles.title}>Sign Up</Text>
@@ -53,13 +56,7 @@ const SignUp = ({navigation}) => {
         onChangeText={(text) => setFullName(text)}
         value={fullName}
       />
-       {/* <TextInput
-        style={styles.input}
-        placeholder="phone number"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-        secureTextEntry={true}
-      /> */}
+      
       <TextInput
         style={styles.input}
         placeholder="Email"
@@ -80,6 +77,7 @@ const SignUp = ({navigation}) => {
       </TouchableOpacity>
             </>
         </View>
+        <Toast/>
 
     </View>
 

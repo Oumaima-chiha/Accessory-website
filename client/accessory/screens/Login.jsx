@@ -10,14 +10,26 @@ const Login = ({ navigation }) => {
   const [triggerSignIn, { isLoading, data }] = useCustomerSigninMutation();
 
   const handleLogin = async () => {
+    try{
     if (email !== '' && password !== '') {
-      triggerSignIn({
+      const resp= await triggerSignIn({
         signinData: {
           email: email,
           password: password
         }
-      });
+      }).unwrap();
+
+      if(resp.token)
+      {
+            navigation.navigate("home");
+
+      }
     }
+
+  }
+  catch(err){
+    console.log(err)
+  }
   }
 
   const handleForgotPassword = () => {
@@ -28,10 +40,11 @@ const Login = ({ navigation }) => {
   const handleSignUp = () => {
     navigation.navigate('SignUp');
   };
+  console.log(Platform.OS)
 
   return (
       <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
-        <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+        <View style={{width:Platform.OS==='web'?'40%':'80%',alignItems:'center'}}>
           <>
         <Text style={styles.title}>Login</Text>
         <TextInput

@@ -55,6 +55,7 @@ function AppNavigation() {
         <Stack.Screen name="Main" component={MainPage} />
         <Stack.Screen name="CheckoutNavigator" component={CheckoutNavigator} />
         <Stack.Screen name="verify" component={VerificationCodeScreen} />
+        <Stack.Screen name="reset" component={VerifyResetCode} />
 
         </Stack.Group>
 

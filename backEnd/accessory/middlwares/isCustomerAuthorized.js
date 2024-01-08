@@ -1,4 +1,4 @@
-const { user } = require("../model/index");
+const { user } = require("../models/index");
 
 
 module.exports = isCustomerAuthorized = async (req, res, next) => {

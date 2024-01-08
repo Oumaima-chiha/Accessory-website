@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
+const isAuthenticated=require('../middlwares/isAuthenticated');
+const isCustomerAuthorized = require('../middlwares/isCustomerAuthorized');
 const{
     getMyCart,
    addToCart ,
@@ -12,11 +13,11 @@ const{
 } =require('../controller/cart')
 
 router.route("/").get(getCarts);
-router.route("/:id").get(getMyCart);
-router.route("/product/:userID/:jewelryID").post(addToCart);
-router.route("/productInc/:id").patch(incrementItem);
-router.route("/productDec/:id").patch(decrementItem);
-router.route("/delete/:userID/:cartItemID").delete(removeFromCart);
-router.route("/deleteAll/:userID").delete(removeAllFromCart);
+router.route("/my-cart").get(isAuthenticated,isCustomerAuthorized,getMyCart);
+router.route("/product/:jewelryID").post(isAuthenticated,isCustomerAuthorized,addToCart);
+router.route("/productInc/:id").patch(isAuthenticated,isCustomerAuthorized,incrementItem);
+router.route("/productDec/:id").patch(isAuthenticated,isCustomerAuthorized,decrementItem);
+router.route("/delete/:userID/:cartItemID").delete(isAuthenticated,isCustomerAuthorized,removeFromCart);
+router.route("/deleteAll/:userID").delete(isAuthenticated,isCustomerAuthorized,removeAllFromCart);
 
 module.exports = router;

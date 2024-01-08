@@ -24,7 +24,7 @@ const VerifyResetCode = ({ navigation,route }) => {
 
   const VerifyResetCode = async () => {
     try {
-      const response = await axios.post(`http://192.168.1.3:3000/api/customers/verifyresetcode`, { email, resetCode: code });
+      const response = await axios.put(`${process.env.EXPO_PUBLIC_API_URL}customers/verifyResetCode`, { email, resetCode: code });
       
       if (response.status === 200) {
         navigation.navigate("pass" , { email });
@@ -37,7 +37,9 @@ const VerifyResetCode = ({ navigation,route }) => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <View style={Platform.OS === 'web' ? styles.containerWeb : styles.container}>
+    <View style={Platform.OS==='web'&& {width:'40%',alignItems:'center'}}>
+      <>
       <View style={styles.forgotPasswordParent}>
         <Text style={styles.forgotPasswordTitle}>Verify Reset Code</Text>
 
@@ -62,16 +64,24 @@ const VerifyResetCode = ({ navigation,route }) => {
           <Text style={styles.sendResetButtonText}>Verify Code</Text>
         </TouchableOpacity>
       </View>
-    </ScrollView>
+      </>
+      </View>
+</View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'black',
+    backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  containerWeb: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: 'white',
   },
   forgotPasswordParent: {
     marginTop: 5,
