@@ -96,7 +96,7 @@ const JewelryBox = ({searchTerm,selectedCategory,scrollY}) => {
       numColumns={Platform.OS==='web'?4:2}
       columnWrapperStyle={styles.columnWrapper}
       contentContainerStyle={styles.flatListContent}
-      showsVerticalScrollIndicator={false}
+      showsVerticalScrollIndicator
       onScroll={Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: false })}
 
     />
