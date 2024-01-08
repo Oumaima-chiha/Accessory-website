@@ -29,9 +29,10 @@ const ConfirmEmail = ({ navigation }) => {
     };
     const sendResetEmail = async () => {
         try {
-          const response = await axios.post(`http://192.168.1.3:3000/api/customers/forgotpassword`,  {email} );
-          navigation.navigate("code" , { email })
+          const response = await axios.post(`${process.env.EXPO_PUBLIC_API_URL}customers/forgotpassword`,  {email} );
+          
           if (response.status === 200) {
+            navigation.navigate("reset" , { email })
             
           } else {
             console.log('Error sending reset email:', response.status);

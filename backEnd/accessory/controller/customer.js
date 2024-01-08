@@ -188,7 +188,7 @@ module.exports = {
       });
 
       if (!customer) {
-        return res.status(404).json({ error: "Invalid reset code or email" });
+        return res.status(401).json({ error: "Invalid reset code or email" });
       }
 
       res.status(200).json({ message: "Reset code verified successfully" });
@@ -207,7 +207,7 @@ module.exports = {
         return res.status(404).json({ error: "User with the provided email does not exist" });
       }
       const hashNewPassword = await bcrypt.hash(newPassword, 10);
-      await prisma.user.update({
+      await user.update({
         where: { id: customer.id },
         data: { password: hashNewPassword, resetCode: null },
       });

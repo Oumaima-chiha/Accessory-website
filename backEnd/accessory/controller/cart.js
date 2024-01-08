@@ -74,8 +74,8 @@ module.exports = {
         }
       },
   getMyCart: async (req, res) => {
-    const { id } = req.params;
-    try {
+    const id = req.userId
+        try {
       let result = await cart.findFirst({
         where: {
           userId: parseInt(id),
@@ -94,8 +94,10 @@ module.exports = {
       res.status(500).send(error);
     }
   },
-  addToCart: async (req, res) => {
-    const { userID, jewelryID } = req.params;
+  addToCart: async (req, res) => { 
+    const userID = req.userId
+
+    const { jewelryID } = req.params;
   
     try {
           // Fetch the User
@@ -163,18 +165,22 @@ module.exports = {
   },
   incrementItem:async(req,res)=>{
     const {id}=req.params
+    const userId = req.userId
     try {
-    const existingItem = await cartItem.findUnique(
-        
-        {
-            where:{
-                id: parseInt(id)
-            }
+      const existingItem = await cartItem.findUnique({
+        where: {
+          id: parseInt(id)
+        },
+        include: {
+          cart: true 
         }
-      );
+      });
       if(!existingItem)
       return res.status(404).json({ error: 'Item not found' });
        console.log(existingItem) 
+       if (existingItem.cart.userId !== userId) {
+        return res.status(403).json({ error: 'Unauthorized access' });
+      }
     const updatedItem=await updateQuantity(existingItem)
     res.status(201).json(updatedItem)
     }
@@ -185,6 +191,7 @@ module.exports = {
   },
   decrementItem:async(req,res)=>{
     const {id}=req.params
+    const userId= req.userId
     try {
     const existingItem = await cartItem.findUnique(
         
@@ -196,6 +203,9 @@ module.exports = {
       );
       if(!existingItem)
       return res.status(404).json({ error: 'Item not found' });
+      if (existingItem.cart.userId !== userId) {
+        return res.status(403).json({ error: 'Unauthorized access' });
+      }
     if (existingItem.quantity===1)
     {
         await cartItem.delete(
