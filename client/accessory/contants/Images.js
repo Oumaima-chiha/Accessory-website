@@ -9,6 +9,7 @@ export default {
     MEN:require("../assets/men.jpg"),
     WOMEN:require("../assets/women.jpg"),
     CHRISTMAS:require("../assets/christmas.jpg"),
+   LOGO:require("../assets/logo.jpg"),
     
  
 }

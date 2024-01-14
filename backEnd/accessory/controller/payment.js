@@ -1,4 +1,4 @@
-const { user, cart, payment } = require("../models/index");
+const { user, cart, payment,billingInfo,shippingAddress } = require("../models/index");
 const fs = require("fs");
 const generateReceipt = require("../utils/pdfGenerator");
 
@@ -29,10 +29,14 @@ const generateOrderSummary = (payment) => {
     }
 };
 
-
 const createPayment = async (req, res) => {
     try {
-        const { userId, cartId, paymentMethod } = req.body;
+        const { cartId, paymentMethod, billingInfo: billing, shippingAddress: shipping } = req.body;
+        const userId= req.userId
+
+        if (!billing && !shipping) {
+            return res.status(400).json({ error: 'Missing billingInfo or shippingAddress ' });
+        }
 
         // Fetch user and cart
         const currentUser = await user.findUnique({
@@ -45,6 +49,40 @@ const createPayment = async (req, res) => {
 
         if (!currentUser || !currentCart) {
             return res.status(404).json({ error: 'User or cart not found' });
+        }
+
+        // Add or update billing info if provided
+        if (billing) {
+            // Check if user already has billing info
+            if (currentUser.billingInfo) {
+                // Update existing billing info
+                await billingInfo.update({
+                    where: { id: currentUser.billingInfo.id },
+                    data: billing,
+                });
+            } else {
+                // Create new billing info
+                await billingInfo.create({
+                    data: { ...billing, user: { connect: { id: currentUser.id } } },
+                });
+            }
+        }
+
+        // Add or update shipping address if provided
+        if (shipping) {
+            // Check if user already has shipping address
+            if (currentUser.shippingAddress) {
+                // Update existing shipping address
+                await shippingAddress.update({
+                    where: { id: currentUser.shippingAddress.id },
+                    data: shipping,
+                });
+            } else {
+                // Create new shipping address
+                await shippingAddress.create({
+                    data: { ...shipping, user: { connect: { id: currentUser.id } } },
+                });
+            }
         }
 
         // Create payment record
@@ -74,16 +112,18 @@ const createPayment = async (req, res) => {
             where: { id: currentCart.id },
             data: { cartStatus: 'PAID' },
         });
-        const summary=generateOrderSummary(newPayment)
+        const summary = generateOrderSummary(newPayment);
         res.status(201).json(summary);
     } catch (error) {
         console.error('Error:', error.message);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
 const getMyPayments = async (req, res) => {
     try {
-        const { userId } = req.params;
+        const userId= req.userId
+
 
         // Fetch user payments
         const userPayments = await payment.findMany({
@@ -106,6 +146,7 @@ const getMyPayments = async (req, res) => {
 const downloadReceipt = async (req, res) => {
     try {
         const { paymentId } = req.params;
+        const userId = req.userId;
 
         // Fetch payment details
         const currentPayment = await payment.findUnique({
@@ -115,6 +156,11 @@ const downloadReceipt = async (req, res) => {
 
         if (!currentPayment) {
             return res.status(404).json({ error: 'Payment not found' });
+        }
+
+        // Check if the authenticated user is the same as the customer associated with the payment
+        if (currentPayment.customer.id !== parseInt(userId)) {
+            return res.status(403).json({ error: 'Unauthorized: You are not allowed to download this receipt.' });
         }
 
         // Generate order summary
@@ -137,6 +183,7 @@ const downloadReceipt = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
 
 module.exports = {
     createPayment,
