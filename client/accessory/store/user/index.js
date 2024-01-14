@@ -36,18 +36,22 @@ const userSlice = createSlice({
       )
       .addMatcher(
         userApi.endpoints.customerSignin.matchRejected,
-        (state, { payload }) => {
-          // Handle failed user sign-in
-          state.user = null; // Clear user data
-          state.isLoggedIn = false; // Update logged-in status
-          state.isLoading = false;
-          state.error = payload; // Set error message
-        }
+        async (state, { payload }) => {
+          try{
+           await AsyncStorage.setItem('accessToken',payload.token)
+           state.user = payload; // Set user data
+           state.isLoggedIn = true; // Update logged-in status
+           state.isLoading = false;
+           state.error = null;
+ }
+ catch(err) 
+ {
+ console.warn(err)
+ }
+         }
       )
-      // Add matchers for other user-related endpoints (profile update, logout, etc.)
-      // You can use matchFulfilled, matchRejected, and matchPending for different API endpoint states
-  },
-});
+        }
+      })
 
 export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

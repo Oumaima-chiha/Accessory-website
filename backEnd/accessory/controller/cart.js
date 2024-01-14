@@ -198,6 +198,9 @@ module.exports = {
         {
             where:{
                 id: parseInt(id)
+            },
+            include: {
+              cart: true 
             }
         }
       );
@@ -228,7 +231,8 @@ module.exports = {
       }
   },
   removeFromCart: async (req, res) => {
-    const { userID, cartItemID } = req.params
+    const {  cartItemID } = req.params
+    const userID= req.userId
     try {
 
         const result= await cart.findFirst({
@@ -260,7 +264,7 @@ module.exports = {
     }
 },
 removeAllFromCart: async (req, res) => {
-    const { userID } = req.params
+    const userID  = req.userId
     try {
 
         const result= await cart.findFirst({

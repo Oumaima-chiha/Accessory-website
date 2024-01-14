@@ -7,9 +7,10 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import axios from "axios";
+import axios from "../services/axiosInterceptor";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { navigation,useNavigation } from '@react-navigation/native';
+
 
 const Cart = () => {
   const user = useContext(useContext);
@@ -19,7 +20,7 @@ const Cart = () => {
   const fetchAllCartItems = async () => {
     console.log(user);
     try {
-      const { data } = await axios.get( process.env.EXPO_PUBLIC_API_URL+"cart/2");
+      const { data } = await axios.get( "/cart/my-cart");
       if (data) setCart(data);
     } catch (error) {
       console.log(error);
@@ -35,7 +36,7 @@ const Cart = () => {
   const removeFromCart = async (id) => {
     try {
       const res = await axios.delete(
-         process.env.EXPO_PUBLIC_API_URL+"api/cart/delete/2/" + id
+        "cart/delete/" + id
       );
       if (res.status === 204)
         setCart((prev) => {
@@ -60,7 +61,7 @@ const Cart = () => {
         <TouchableOpacity style={styles.quantityButton} onPress={()=>decrementQuantity(item.id)}>
             <Text style={styles.quantityButtonText}>-</Text>
           </TouchableOpacity>
-          <Text style={styles.cartItemQuantity}>Quantity: {item.quantity}</Text>
+          <Text style={styles.smallCartItemQuantity}>Quantity: {item.quantity}</Text>
           <TouchableOpacity style={styles.quantityButton} onPress={()=>incrementQuantity(item.id)}>
             <Text style={styles.quantityButtonText}>+</Text>
           </TouchableOpacity>
@@ -89,7 +90,7 @@ const Cart = () => {
   const removeAllFromCart = async () => {
     try {
       const res = await axios.delete(
-         process.env.EXPO_PUBLIC_API_URL+"api/cart/deleteAll/2"
+       "/cart/deleteAll"
       );
       if (res.status === 204)
         setCart((prev) => {
@@ -137,7 +138,7 @@ const Cart = () => {
   const decrementQuantity = async (id) => {
     try {
       const res = await axios.patch(
-          process.env.EXPO_PUBLIC_API_URL+"cart/productdec/"+id
+         "cart/productdec/"+id
       );
       if (res.status === 204)
         setCart((prev) => {
@@ -212,16 +213,17 @@ const Cart = () => {
 };
 const styles = StyleSheet.create({
   cartItemContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#CCCCCC",
+    borderBottomColor: '#ddd',
     paddingBottom: 10,
   },
   cartItemImage: {
     width: 80,
     height: 80,
+    borderRadius: 8,
     marginRight: 15,
   },
   cartItemDetails: {
@@ -229,54 +231,54 @@ const styles = StyleSheet.create({
   },
   cartItemName: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 5,
+    color: '#333',
   },
   cartItemPrice: {
     fontSize: 14,
-    color: "green",
+    color: '#777',
     marginBottom: 5,
-  },
-  cartItemQuantity: {
-    fontSize: 14,
-    color: "#777777",
   },
   deleteButton: {
     paddingVertical: 8,
     paddingHorizontal: 15,
-    backgroundColor: "red",
-    borderRadius: 5,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "brown",
   },
   deleteButtonText: {
-    color: "white",
-    fontWeight: "bold",
+    color: 'black',
+    fontWeight: 'bold',
   },
   cartHeader: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginBottom: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#CCCCCC",
+    borderBottomColor: '#ddd',
     paddingBottom: 10,
   },
   cartHeaderText: {
     fontSize: 24,
-    fontWeight: "bold",
+    fontWeight: 'bold',
+    color: '#333',
   },
   removeAllButton: {
     paddingVertical: 8,
     paddingHorizontal: 15,
-    backgroundColor: "red",
-    borderRadius: 5,
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "brown",
   },
   removeAllButtonText: {
-    color: "white",
-    fontWeight: "bold",
+    color: 'black',
+    fontWeight: 'bold',
   },
   cartFooter: {
     marginTop: 20,
     borderTopWidth: 1,
-    borderTopColor: "#CCCCCC",
+    borderTopColor: '#ddd',
     paddingTop: 10,
   },
   totalSection: {
@@ -284,31 +286,32 @@ const styles = StyleSheet.create({
   },
   totalText: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
+    color: '#333',
   },
   additionalInfo: {
     fontSize: 14,
-    color: "#777777",
+    color: '#777',
   },
   proceedButton: {
     paddingVertical: 12,
-    backgroundColor: "green",
+    backgroundColor: 'brown',
     borderRadius: 5,
-    alignItems: "center",
+    alignItems: 'center',
   },
   proceedButtonText: {
-    color: "white",
-    fontWeight: "bold",
+    color: 'white',
+    fontWeight: 'bold',
     fontSize: 16,
   },
   emptyCartText: {
     fontSize: 18,
-    textAlign: "center",
+    textAlign: 'center',
     marginTop: 50,
-    color: "#999999",
+    color: '#999',
   },
   goBackButton: {
-    backgroundColor: '#ccc',
+    backgroundColor: '#ddd',
     paddingVertical: 15,
     borderRadius: 5,
     alignItems: 'center',
@@ -322,30 +325,35 @@ const styles = StyleSheet.create({
   quantityContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    borderWidth:0.8,
-    borderColor: '#ccc',
-    borderRadius:50,
-    paddingVertical: 5,
-    paddingHorizontal: 5,
-    marginBottom: 5,
+    justifyContent: 'center', // Center the content horizontally
+    borderRadius: 50,
+  
+    borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "brown",
+    
+    padding: 3,
+    marginLeft: 'auto', // Push to the right (center horizontally)
+    marginRight: 'auto', // Push to the left (center horizontally)
   },
   quantityButton: {
-    backgroundColor: '#e0e0e0',
-    borderRadius: 20,
-    width: 30,
-    height: 30,
-    justifyContent: 'center',
-    alignItems: 'center',
+
+    padding: 5,
+   
   },
   quantityButtonText: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 14,
     color: 'black',
   },
-  quantityText: {
-    fontSize: 10,
+  smallCartItemQuantity: {
+    fontSize: 12,
+    marginLeft: 5,
+    marginRight: 5,
+    color: 'black',
   },
 });
+
+
+
 
 export default Cart;

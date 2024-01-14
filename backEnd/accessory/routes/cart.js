@@ -17,7 +17,7 @@ router.route("/my-cart").get(isAuthenticated,isCustomerAuthorized,getMyCart);
 router.route("/product/:jewelryID").post(isAuthenticated,isCustomerAuthorized,addToCart);
 router.route("/productInc/:id").patch(isAuthenticated,isCustomerAuthorized,incrementItem);
 router.route("/productDec/:id").patch(isAuthenticated,isCustomerAuthorized,decrementItem);
-router.route("/delete/:userID/:cartItemID").delete(isAuthenticated,isCustomerAuthorized,removeFromCart);
-router.route("/deleteAll/:userID").delete(isAuthenticated,isCustomerAuthorized,removeAllFromCart);
+router.route("/delete/:cartItemID").delete(isAuthenticated,isCustomerAuthorized,removeFromCart);
+router.route("/deleteAll").delete(isAuthenticated,isCustomerAuthorized,removeAllFromCart);
 
 module.exports = router;
