@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
 import cart from "./Cart";
 import { navigation,useNavigation } from '@react-navigation/native';
-import axios from 'axios';
+import axios from "../services/axiosInterceptor";
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
@@ -14,7 +14,7 @@ const JewelryDetails = ({ route }) => {
 
   const handleAddToCart = async(id) => {
     try{
-    const res = await axios.post( process.env.EXPO_PUBLIC_API_URL+"cart/product/2/" +id )
+    const res = await axios.post("cart/product/" +id )
     if (res.status===201)
     navigation.navigate('cart');
     }
