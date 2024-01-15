@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import axios from "../services/axiosInterceptor";
 
 const CreditCardForm = () => {
     const [cardNumber, setCardNumber] = useState('');
@@ -96,7 +97,55 @@ const CreditCardForm = () => {
 const CashOnDeliveryForm = () => {
     const [shippingAddress, setShippingAddress] = useState('');
     const [contactNumber, setContactNumber] = useState('');
+    const [state, setState] = useState('');
+    const [city, setCity] = useState('');
+    const [country, setCountry] = useState('');
+    const [postalCode, setPostalCode] = useState('');
     const navigation = useNavigation();
+
+
+
+    const handleSubmit = async () => {
+        try {
+          // Form validation
+          if (!shippingAddress || !contactNumber || !state || !city || !country || !postalCode) {
+            // Show an alert or some UI indication that all fields are required
+            return;
+          }
+      
+          const paymentMethod = 'CASH_ON_DELIVERY';
+      
+          // Construct the shipping address object
+          const shippingAddressPayload = {
+            address: shippingAddress,
+            city,
+            state,
+            postalCode,
+            country,
+            phoneNumber: contactNumber,
+          };
+      
+          const paymentPayload = {
+            paymentMethod,
+            shippingAddress: shippingAddressPayload,
+          };
+      
+          // Make the API request using Axios
+          const response = await axios.post('pay/process', paymentPayload);
+      
+          if (response.data) {
+            const receiptId = response.data.orderId;
+            // Use the actual receiptId obtained from the API response
+            navigation.navigate('ReceiptScreen', { receiptId,orderSummary:response.data });
+          }
+        } catch (error) {
+          console.error('Error submitting payment:', error.message);
+          // Handle error appropriately, e.g., show an error message to the user
+        }
+      
+      };
+      
+    
 
     return (
         <View style={styles.formContainer}>
@@ -121,8 +170,51 @@ const CashOnDeliveryForm = () => {
                     onChangeText={(text) => setContactNumber(text)}
                 />
             </View>
+            
+            <View style={styles.inputContainer}>
+            <MaterialIcons name="location-city" size={24} color="black" />
+                <TextInput
+                    style={styles.input}
+                    placeholder="country"
+                  
+                    value={country}
+                    onChangeText={(text) => setCountry(text)}
+                />
+            </View>
+            
+            <View style={styles.inputContainer}>
+            <MaterialIcons name="location-city" size={24} color="black" />
+                <TextInput
+                    style={styles.input}
+                    placeholder="city"
+                    
+                    value={city}
+                    onChangeText={(text) => setCity(text)}
+                />
+            </View>
+            
+            <View style={styles.inputContainer}>
+  
+                <TextInput
+                    style={styles.input}
+                    placeholder="state"
+                 
+                    value={state}
+                    onChangeText={(text) => setState(text)}
+                />
+            </View>
+            <View style={styles.inputContainer}>
+      
+                <TextInput
+                    style={styles.input}
+                    placeholder="postal Code"
+                  
+                    value={postalCode}
+                    onChangeText={(text) => setPostalCode(text)}
+                />
+            </View>
 
-            <TouchableOpacity style={styles.submitButton} onPress={() => navigation.navigate('ReceiptScreen',{receiptId:1})}>
+            <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
                 <Text style={styles.submitButtonText}>Proceed to Confirmation</Text>
             </TouchableOpacity>
         </View>
