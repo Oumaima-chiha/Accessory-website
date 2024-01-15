@@ -6,9 +6,6 @@ const findPendingCart = async (userId) => {
         let result = await cart.findFirst({
             where: {
                 userId: parseInt(userId),
-                cartStatus: {
-                    not:'PAID'
-                },
                 cartStatus:'PENDING',
             },
             include: {
@@ -82,7 +79,7 @@ const createPayment = async (req, res) => {
                 shippingAddress: true,
             },
         });
-  
+
 
         if (!currentUser) {
             return res.status(404).json({ error: 'User not found' });
@@ -101,7 +98,7 @@ const createPayment = async (req, res) => {
         if (billing) {
             // Update existing or create new billing info
             await billingInfo.upsert({
-                where: { id: currentUser.billingInfo?.id },
+                where: { userId: currentUser.id},
                 update: billing,
                 create: { ...billing, userId: currentUser.id },
             });
@@ -109,9 +106,10 @@ const createPayment = async (req, res) => {
 
         // Add or update shipping address if provided
         if (shipping) {
+
             // Update existing or create new shipping address
             await shippingAddress.upsert({
-                where: { id: currentUser.shippingAddress?.id },
+                where: { userId: currentUser.id},
                 update: shipping,
                 create: { ...shipping, userId: currentUser.id },
             });
@@ -140,10 +138,11 @@ const createPayment = async (req, res) => {
         });
 
         // Update cart status to PAID
-        await cart.update({
+        const paidCart=await cart.update({
             where: { id: currentCart.id },
             data: { cartStatus: 'PAID' },
         });
+        console.log(paidCart)
 
         const summary = generateOrderSummary(newPayment);
         res.status(201).json(summary);
