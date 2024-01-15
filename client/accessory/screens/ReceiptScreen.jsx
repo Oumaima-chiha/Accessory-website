@@ -3,17 +3,24 @@ import React, { useEffect, useState } from 'react';
 import {View, Text, StyleSheet, ScrollView, TouchableOpacity, FlatList} from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import {SafeAreaView} from "react-native-safe-area-context";
+import downloadReceipt from "../services/receiptService";
 
 // Mock function to simulate fetching receipt data from the backend
 
 
 const ReceiptScreen = ({ route, navigation }) => {
-    
+
+
     const orderSummary = route.params?.orderSummary;
 
-    const downloadReceipt = () => {
-        // Replace this with your actual download logic
-        console.log('Downloading receipt...');
+    const HandleDownloadReceipt =async () => {
+        try {
+            console.log('Downloading receipt...');
+            await downloadReceipt(orderSummary?.orderId)
+        }
+        catch (err){
+            console.log(err)
+        }
     };
 
     if (!orderSummary) {
@@ -50,7 +57,7 @@ const renderItem=({item})=>(   <View  style={styles.item}>
                 <Text style={styles.note}>Thank you for shopping with us!</Text>
 
                 {/* Add a button to download the receipt */}
-                <TouchableOpacity style={styles.downloadButton} onPress={downloadReceipt}>
+                <TouchableOpacity style={styles.downloadButton} onPress={HandleDownloadReceipt}>
                     <MaterialIcons name="cloud-download" size={24} color="white" />
                     <Text style={styles.downloadButtonText}>Download Receipt</Text>
                 </TouchableOpacity>
