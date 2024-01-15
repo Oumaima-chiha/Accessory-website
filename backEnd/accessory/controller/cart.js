@@ -73,27 +73,57 @@ module.exports = {
           res.status(500).send(error);
         }
       },
-  getMyCart: async (req, res) => {
-    const id = req.userId
+      getMyCart: async (req, res) => {
+        const id=req.userId
         try {
-      let result = await cart.findFirst({
-        where: {
-          userId: parseInt(id),
-        },
-        include: {
-            items:true
-          },
-      });
-      if (!result)
-      {
-        result= await createNewCart(id)
-      }
-      res.status(200).json(result);
-    } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
-    }
-  },
+            let result = await cart.findFirst({
+                where: {
+                    userId: parseInt(id),
+                    cartStatus: {
+                        not: 'PAID'
+                    },
+                    cartStatus: 'PENDING',
+                },
+                include: {
+                    items: true,
+                },
+            });
+
+            if (!result) {
+                // If no cart with 'Pending' status is found, check for any non-'Paid' cart
+                result = await cart.findFirst({
+                    where: {
+                        userId: parseInt(id),
+                        cartStatus: {
+                            not: 'PAID'
+                        },
+                    },
+                    include: {
+                        items: true,
+                    },
+                });
+            }
+
+            if (!result || (result.items && result.items.length === 0)) {
+                result = await createNewCart(id);
+            } else {
+                await cart.update({
+                    where: {
+                        id: result.id,
+                    },
+                    data: {
+                        cartStatus: 'PENDING',
+                    },
+                });
+            }
+
+            res.status(200).json(result);
+        } catch (error) {
+            console.error(error);
+            res.status(500).send(error);
+        }
+    },
+
   addToCart: async (req, res) => { 
     const userID = req.userId
 

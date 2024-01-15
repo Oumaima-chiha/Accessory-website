@@ -1,6 +1,42 @@
 const { user, cart, payment,billingInfo,shippingAddress } = require("../models/index");
 const fs = require("fs");
 const generateReceipt = require("../utils/pdfGenerator");
+const findPendingCart = async (userId) => {
+    try {
+        let result = await cart.findFirst({
+            where: {
+                userId: parseInt(userId),
+                cartStatus: {
+                    not:'PAID'
+                },
+                cartStatus:'PENDING',
+            },
+            include: {
+                items: true,
+            },
+        });
+
+        if (!result) {
+            // If no cart with 'Pending' status is found, check for any non-'Paid' cart
+            result = await cart.findFirst({
+                where: {
+                    userId: parseInt(userId),
+                    cartStatus: {
+                        not: 'PAID'
+                    },
+                },
+                include: {
+                    items: true,
+                },
+            });
+        }
+
+        return result;
+    } catch (error) {
+        console.error(error);
+        throw new Error('Error retrieving cart');
+    }
+};
 
 // Helper function to generate order summary
 const generateOrderSummary = (payment) => {
@@ -31,58 +67,54 @@ const generateOrderSummary = (payment) => {
 
 const createPayment = async (req, res) => {
     try {
-        const { cartId, paymentMethod, billingInfo: billing, shippingAddress: shipping } = req.body;
-        const userId= req.userId
+        const { paymentMethod, billingInfo: billing, shippingAddress: shipping } = req.body;
+        const userId = req.userId;
 
         if (!billing && !shipping) {
-            return res.status(400).json({ error: 'Missing billingInfo or shippingAddress ' });
+            return res.status(400).json({ error: 'Missing billingInfo or shippingAddress' });
         }
 
-        // Fetch user and cart
+        // Fetch user and related information
         const currentUser = await user.findUnique({
             where: { id: parseInt(userId) },
+            include: {
+                billingInfo: true,
+                shippingAddress: true,
+            },
         });
+  
 
-        const currentCart = await cart.findUnique({
-            where: { id: parseInt(cartId) },
-        });
+        if (!currentUser) {
+            return res.status(404).json({ error: 'User not found' });
+        }
 
-        if (!currentUser || !currentCart) {
-            return res.status(404).json({ error: 'User or cart not found' });
+        // Use the extracted code to find the user's cart
+        const currentCart = await findPendingCart(userId);
+        console.log(currentCart)
+
+        // Check if the cart is empty or not found
+        if (!currentCart || (currentCart.items && currentCart.items.length === 0)) {
+            return res.status(403).json({ error: 'Cart not found or is empty' });
         }
 
         // Add or update billing info if provided
         if (billing) {
-            // Check if user already has billing info
-            if (currentUser.billingInfo) {
-                // Update existing billing info
-                await billingInfo.update({
-                    where: { id: currentUser.billingInfo.id },
-                    data: billing,
-                });
-            } else {
-                // Create new billing info
-                await billingInfo.create({
-                    data: { ...billing, user: { connect: { id: currentUser.id } } },
-                });
-            }
+            // Update existing or create new billing info
+            await billingInfo.upsert({
+                where: { id: currentUser.billingInfo?.id },
+                update: billing,
+                create: { ...billing, userId: currentUser.id },
+            });
         }
 
         // Add or update shipping address if provided
         if (shipping) {
-            // Check if user already has shipping address
-            if (currentUser.shippingAddress) {
-                // Update existing shipping address
-                await shippingAddress.update({
-                    where: { id: currentUser.shippingAddress.id },
-                    data: shipping,
-                });
-            } else {
-                // Create new shipping address
-                await shippingAddress.create({
-                    data: { ...shipping, user: { connect: { id: currentUser.id } } },
-                });
-            }
+            // Update existing or create new shipping address
+            await shippingAddress.upsert({
+                where: { id: currentUser.shippingAddress?.id },
+                update: shipping,
+                create: { ...shipping, userId: currentUser.id },
+            });
         }
 
         // Create payment record
@@ -112,6 +144,7 @@ const createPayment = async (req, res) => {
             where: { id: currentCart.id },
             data: { cartStatus: 'PAID' },
         });
+
         const summary = generateOrderSummary(newPayment);
         res.status(201).json(summary);
     } catch (error) {
@@ -119,6 +152,7 @@ const createPayment = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
 
 const getMyPayments = async (req, res) => {
     try {
