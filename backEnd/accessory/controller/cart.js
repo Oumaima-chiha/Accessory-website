@@ -43,7 +43,7 @@ const createNewCart=async(userID)=>{
         include: {
           items:true
         },
-        
+
       });
       return newCart
   }
@@ -79,9 +79,6 @@ module.exports = {
             let result = await cart.findFirst({
                 where: {
                     userId: parseInt(id),
-                    cartStatus: {
-                        not: 'PAID'
-                    },
                     cartStatus: 'PENDING',
                 },
                 include: {
@@ -124,11 +121,11 @@ module.exports = {
         }
     },
 
-  addToCart: async (req, res) => { 
+  addToCart: async (req, res) => {
     const userID = req.userId
 
     const { jewelryID } = req.params;
-  
+
     try {
           // Fetch the User
           const foundUser = await user.findUnique({
@@ -136,43 +133,46 @@ module.exports = {
               id: parseInt(userID),
             },
           });
-      
+
           if (!foundUser) {
             console.error('User not found.');
             return res.status(404).json({ error: 'User not found' });
           }
-      
+
           // Fetch the Cart associated with the User
           let userCart = await cart.findFirst({
             where: {
               userId: parseInt(userID),
+                cartStatus: {
+                    not: 'PAID'
+                },
             },
             include: {
               items: true,
             },
           });
-  
+
       // If the User has no Cart, create a new one
       if (!userCart) {
         const newCart = await createNewCart(userID)
         userCart = newCart;
       }
-  
+
       // Check if the Cart status is 'pending'
       if (userCart.cartStatus === 'PENDING') {
         const existingItem = userCart.items.find(
           (item) => item.jewelryId === parseInt(jewelryID)
         );
-  
+
         if (existingItem) {
           // Modify quantity and total for existing Jewelry in Cart
           const updatedItem = await updateQuantity(existingItem)
-  
+
           console.log('Quantity and total updated for existing item:', updatedItem);
         } else {
             await addNewCartItem(jewelryID,userCart.id)
         }
-      
+
     }
     else {
         await addNewCartItem(jewelryID,userCart.id);
@@ -185,7 +185,7 @@ module.exports = {
             },
           });
     }
-  
+
       console.log('Item added to cart successfully');
       res.status(201).json();
     } catch (error) {
@@ -202,12 +202,12 @@ module.exports = {
           id: parseInt(id)
         },
         include: {
-          cart: true 
+          cart: true
         }
       });
       if(!existingItem)
       return res.status(404).json({ error: 'Item not found' });
-       console.log(existingItem) 
+       console.log(existingItem)
        if (existingItem.cart.userId !== userId) {
         return res.status(403).json({ error: 'Unauthorized access' });
       }
@@ -224,13 +224,13 @@ module.exports = {
     const userId= req.userId
     try {
     const existingItem = await cartItem.findUnique(
-        
+
         {
             where:{
                 id: parseInt(id)
             },
             include: {
-              cart: true 
+              cart: true
             }
         }
       );
@@ -250,7 +250,7 @@ module.exports = {
         );
 
         return res.status(204).send('product removed from cart');
-        
+
     }
     const updatedItem=await updateQuantity(existingItem,-1)
     res.status(201).json(updatedItem)
@@ -324,5 +324,5 @@ removeAllFromCart: async (req, res) => {
         res.status(500).send(error);
     }
 },
-  
+
 };
