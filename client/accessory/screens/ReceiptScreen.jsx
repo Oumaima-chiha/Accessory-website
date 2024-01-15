@@ -5,50 +5,18 @@ import { MaterialIcons } from '@expo/vector-icons';
 import {SafeAreaView} from "react-native-safe-area-context";
 
 // Mock function to simulate fetching receipt data from the backend
-const fetchReceiptData = async (receiptId) => {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve({
-                id: receiptId,
-                createdAt: new Date().toLocaleDateString(),
-                items: [
-                    { name: 'Product A', price: 29.99, quantity: 2 },
-                    { name: 'Product B', price: 15.99, quantity: 1 },
-                    // Add more items as needed
-                ],
-                totalAmount: 75.97,
-            });
-        }, 1000); // Simulate a delay of 1 second
-    });
-};
+
 
 const ReceiptScreen = ({ route, navigation }) => {
-    const [receiptData, setReceiptData] = useState(null);
-
-    useEffect(() => {
-        const fetchReceipt = async () => {
-            try {
-                const receiptId = route.params?.receiptId;
-                if (!receiptId) {
-                    throw new Error('Invalid receipt ID');
-                }
-
-                const data = await fetchReceiptData(receiptId);
-                setReceiptData(data);
-            } catch (error) {
-                console.error('Error fetching receipt data:', error.message);
-            }
-        };
-
-        fetchReceipt();
-    }, [route.params?.receiptId]);
+    
+    const orderSummary = route.params?.orderSummary;
 
     const downloadReceipt = () => {
         // Replace this with your actual download logic
         console.log('Downloading receipt...');
     };
 
-    if (!receiptData) {
+    if (!orderSummary) {
         return (
             <View style={styles.loadingContainer}>
                 <Text>Loading...</Text>
@@ -62,30 +30,33 @@ const renderItem=({item})=>(   <View  style={styles.item}>
 </View>)
     return (
         <SafeAreaView style={styles.container}>
-            <View style={styles.itemsContainer}>
-                <View style={styles.header}>
-                    <Text style={styles.title}>Your Shop Name</Text>
-                    <Text style={styles.subtitle}>Order Confirmation</Text>
-                </View>
-                <FlatList data={receiptData.items} renderItem={renderItem} keyExtractor={(index)=>`item-${index}`}/>
-
-
-                <View style={styles.totalContainer}>
-                    <Text style={styles.totalLabel}>Total:</Text>
-                    <Text style={styles.totalAmount}>${receiptData.totalAmount.toFixed(2)}</Text>
-                </View>
-
-                <View style={styles.footer}>
-                    <Text style={styles.note}>Thank you for shopping with us!</Text>
-
-                    {/* Add a button to download the receipt */}
-                    <TouchableOpacity style={styles.downloadButton} onPress={downloadReceipt}>
-                        <MaterialIcons name="cloud-download" size={24} color="white" />
-                        <Text style={styles.downloadButtonText}>Download Receipt</Text>
-                    </TouchableOpacity>
-                </View>
+        <View style={styles.itemsContainer}>
+            <View style={styles.header}>
+                <Text style={styles.title}>{orderSummary.customer.name}'s Shop</Text>
+                <Text style={styles.subtitle}>Order Confirmation</Text>
             </View>
-        </SafeAreaView>
+            <FlatList
+                data={orderSummary.cartItems}
+                renderItem={renderItem}
+                keyExtractor={(item, index) => `item-${index}`}
+            />
+
+            <View style={styles.totalContainer}>
+                <Text style={styles.totalLabel}>Total:</Text>
+                <Text style={styles.totalAmount}>${orderSummary.totalAmount.toFixed(2)}</Text>
+            </View>
+
+            <View style={styles.footer}>
+                <Text style={styles.note}>Thank you for shopping with us!</Text>
+
+                {/* Add a button to download the receipt */}
+                <TouchableOpacity style={styles.downloadButton} onPress={downloadReceipt}>
+                    <MaterialIcons name="cloud-download" size={24} color="white" />
+                    <Text style={styles.downloadButtonText}>Download Receipt</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    </SafeAreaView>
     );
 };
 
