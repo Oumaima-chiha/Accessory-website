@@ -36,14 +36,11 @@ const Collections = () => {
             >
                  <Text style={styles.categoryName}>{name}</Text>
               <Image source={image} style={styles.categoryImage} />
-           
+
             </View>
           </TouchableOpacity>
         ))}
-        
       </View>
-
-  
     </View>
     </ScrollView>
   );
@@ -76,7 +73,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         zIndex: 1, // Ensure the text is above the image
       },
-      
+
       categoryImage: {
         position: 'absolute',
         top: 0,

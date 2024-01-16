@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Platform } from "react-native";
 import { useCustomerSigninMutation } from "../services/modules/users";
+import Toast from "react-native-toast-message";
 
 const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -21,6 +22,11 @@ const Login = ({ navigation }) => {
 
       if(resp.token)
       {
+        Toast.show({
+          type: 'success',
+          position: 'top',
+          text1: 'User logged in successfully!'
+        })
             navigation.navigate("home");
 
       }
