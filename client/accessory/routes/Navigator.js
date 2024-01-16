@@ -10,7 +10,7 @@ import Cart from '../screens/Cart';
 import JewelryDetails from '../screens/JewleryDetails';
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import MainPage from '../screens/MainPage';
+import Favorites from '../screens/Favorites';
 
 import Checkout from '../screens/Checkout';
 import PaymentForm from "../screens/PaymentForm";
@@ -19,6 +19,7 @@ import VerificationCodeScreen from '../screens/VerificationCodeScreen';
 import ConfirmEmail from '../screens/ConfirmEmail';
 import NewPassword from '../screens/NewPasswordScreen';
 import VerifyResetCode from '../screens/VerifyResetCode';
+import Collections from '../screens/Collections';
 
 
 
@@ -41,10 +42,11 @@ function AppNavigation() {
       <Stack.Navigator >
         <Stack.Screen name="Home" component={LandingPage} options={{headerShown:false}} />
         <Stack.Screen name="nav" component={TabNav} options={{headerShown:false}} />
-        <Stack.Screen name="notification" component={Notification} />
+        <Stack.Screen name="favorites" component={Favorites} />
         <Stack.Screen name="messages" component={Messages} />
         <Stack.Screen name="cart" component={Cart} />
         <Stack.Screen name="details" component={JewelryDetails} />
+        <Stack.Screen name="Collections" component={Collections} />
 
         <Stack.Group  screenOptions={{headerShown:false,presentation:'modal'}}>
         <Stack.Screen name="LogIn" component={Login} />
@@ -52,11 +54,11 @@ function AppNavigation() {
         <Stack.Screen name="code" component={VerifyResetCode} />
         <Stack.Screen name="pass" component={NewPassword} />
         <Stack.Screen name="SignUp" component={SignUp} />
-        <Stack.Screen name="Main" component={MainPage} />
+       
         <Stack.Screen name="CheckoutNavigator" component={CheckoutNavigator} />
         <Stack.Screen name="verify" component={VerificationCodeScreen} />
         <Stack.Screen name="reset" component={VerifyResetCode} />
-
+      
         </Stack.Group>
 
 

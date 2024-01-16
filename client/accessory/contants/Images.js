@@ -10,6 +10,7 @@ export default {
     WOMEN:require("../assets/women.jpg"),
     CHRISTMAS:require("../assets/christmas.jpg"),
    LOGO:require("../assets/logo.jpg"),
+   BLING:require("../assets/bijoux.jpg"),
     
  
 }
