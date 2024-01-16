@@ -4,14 +4,16 @@ import { AntDesign } from "@expo/vector-icons";
 import { Colors } from "../contants";
 import { SafeAreaView, StyleSheet } from "react-native";
 import HomePage from "./HomePage";
-import Notification from "./Notifcation";
+
 import Cart from "./Cart";
-import Messages from "./Messages";
+
 import { createStackNavigator } from "@react-navigation/stack";
 import JewelryDetails from "./JewleryDetails";
 import Login from "./Login";
 import { useNavigation } from "@react-navigation/native";
-import MainPage from "./MainPage";
+
+import { MaterialIcons } from '@expo/vector-icons';
+import Favorites from "./Favorites";
 
 const Tab = createBottomTabNavigator();
 const HomeNav=createStackNavigator()
@@ -48,21 +50,13 @@ const TabNav = () => {
           ),
         }}
       ></Tab.Screen>
+     
       <Tab.Screen
-        name="notification"
-        component={Login}
+        name="favorites"
+        component={Favorites}
         options={{
           tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign name="notification" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>
-          ),
-        }}
-      ></Tab.Screen>
-      <Tab.Screen
-        name="Main"
-        component={MainPage}
-        options={{
-          tabBarIcon: ({ focused, color, size }) => (
-            <AntDesign name="message1" size={24}  color={focused ? Colors.DEFAULT_RED : "black"} />
+            <MaterialIcons name="favorite-border" size={24} color={focused ? Colors.DEFAULT_RED : "black"} />
           ),
         }}
       ></Tab.Screen>
@@ -73,6 +67,15 @@ const TabNav = () => {
           unmountOnBlur:true,
           tabBarIcon: ({ focused, color, size }) => (
             <AntDesign name="shoppingcart" size={24}  color={focused ? Colors.DEFAULT_RED : "black"}/>
+          ),
+        }}
+      ></Tab.Screen>
+       <Tab.Screen
+        name="notification"
+        component={Login}
+        options={{
+          tabBarIcon: ({ focused, color, size }) => (
+            <AntDesign name="login" size={24} color={focused ? Colors.DEFAULT_RED : "black"} />
           ),
         }}
       ></Tab.Screen>
