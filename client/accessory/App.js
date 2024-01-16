@@ -3,16 +3,19 @@ import  React from 'react';
 import AppNavigation from './routes/Navigator';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import {persistor, store} from './store';
 import Toast from 'react-native-toast-message';
+import {PersistGate} from "redux-persist/integration/react";
 
 function App() {
   return (
     <Provider store={store}>
-    <SafeAreaProvider>
-    <AppNavigation/>
-    <Toast/>
-    </SafeAreaProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider>
+          <AppNavigation/>
+          <Toast/>
+        </SafeAreaProvider>
+      </PersistGate>
     </Provider>
   );
 }

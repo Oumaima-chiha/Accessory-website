@@ -7,11 +7,11 @@ const initialState = {
   isLoggedIn: false,
   isLoading: false,
   error: null,
-  // ... other user-related state properties
 };
 
+const reducerName='user'
 const userSlice = createSlice({
-  name: 'user',
+  name: reducerName,
   initialState,
   reducers: {
     setUser: (state, action) => {
@@ -20,7 +20,9 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
-    // Add more reducers for user-related actions (login, logout, update profile, etc.)
+      logout:()=>{
+        return initialState
+      }
   },
   extraReducers: builder => {
     builder
@@ -44,7 +46,7 @@ const userSlice = createSlice({
            state.isLoading = false;
            state.error = null;
  }
- catch(err) 
+ catch(err)
  {
  console.warn(err)
  }
@@ -53,5 +55,5 @@ const userSlice = createSlice({
         }
       })
 
-export const { setUser } = userSlice.actions;
-export default userSlice.reducer;
+export const { setUser,logout } = userSlice.actions;
+export default { [reducerName]: userSlice.reducer };

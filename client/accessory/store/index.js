@@ -19,11 +19,11 @@ import useReducer  from './user';
 
 
 // Secure storage
-export const storage = AsyncStorage; 
+export const storage = AsyncStorage;
 
 const reducers = combineReducers({
   [api.reducerPath]: api.reducer,
-  useReducer
+  ...useReducer
 });
 
 
@@ -31,7 +31,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: [ 'auth'],
+  whitelist: [ 'user'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -47,10 +47,10 @@ const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }).concat(api.middleware);
-    
+
     if (__DEV__) {
         const { logger } = require(`redux-logger`);
-       
+
         middlewares.push(logger);
       }
     // if (__DEV__ && !process.env.JEST_WORKER_ID) {
