@@ -4,6 +4,8 @@ const { jewelry } =require('../models/index')
 module.exports = {
     getJeweleries: async (req, res) => {
         try {
+            const {collection}=req.query
+            console.log(collection)
             const Jewelries = await jewelry.findMany({
                 where: {
                   status: "Available",
@@ -17,4 +19,3 @@ module.exports = {
           }
         },
         }
-   
