@@ -5,6 +5,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
 import { useNavigation } from '@react-navigation/native';
 import axios from "../services/axiosInterceptor";
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const JewelryDetailsWeb = ({ route }) => {
   const { item } = route.params;
@@ -38,11 +39,7 @@ const JewelryDetailsWeb = ({ route }) => {
           >
             <Image source={{ uri: image }} style={styles.additionalImage} resizeMode="cover" />
           </TouchableOpacity>
-          {showAddToCart && mainImage === image && (
-              <TouchableOpacity onPress={() => handleAddToCart(item.id)} style={styles.addToCartButton}>
-                <Text style={styles.addToCartText}>Add to Cart</Text>
-              </TouchableOpacity>
-          )}
+         
         </View>
     ));
   }, [showAddToCart, mainImage, item]);
@@ -63,6 +60,7 @@ const JewelryDetailsWeb = ({ route }) => {
   }, [item]);
 
   return (
+    <SafeAreaView>
       <ScrollView contentContainerStyle={styles.container}>
         <View style={styles.imageBar}>
           <View style={styles.additionalImagesContainer}>
@@ -77,12 +75,17 @@ const JewelryDetailsWeb = ({ route }) => {
           <Text style={styles.description}>{item.description}</Text>
           <Text style={styles.price}>Price: ${item.price}</Text>
           <View style={styles.cartFrame}>
-            <AntDesign name="shoppingcart" size={24} color="black" />
-            <Button title="Add to Cart" onPress={() => handleAddToCart(item.id)} />
-          </View>
+    <AntDesign name="shoppingcart" size={24} color="black" />
+    <View style={{ 
+       justifyContent: 'flex-end' }}>
+        <Button title="Add to Cart" onPress={() => handleAddToCart(item.id)} />
+    </View>
+</View>
+
         </View>
         {renderOtherImagesBar()}
       </ScrollView>
+      </SafeAreaView>
   );
 };
 
@@ -133,8 +136,8 @@ const styles = StyleSheet.create({
   },
   cartFrame: {
     flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'flex-end',
+   
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 8,
@@ -160,7 +163,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   addToCartButton: {
-    position: 'absolute',
+    
     bottom: 10,
     left: '50%',
     paddingHorizontal: 10,

@@ -5,7 +5,8 @@ import JewelryBox from "./JewleryBox";
 import { Images } from "../contants";
 import { userApi } from "../services/modules/users";
 import { api } from "../services/api";
-
+import { navigation,useNavigation } from '@react-navigation/native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 const category = [
   "All",
   "Rings",
@@ -21,22 +22,31 @@ const HomePage = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 const[selectedCategory,setSelectedCategory]=useState('')
-
-
+const navigation = useNavigation();
+const handleShopByCategoryPress = () => {
+  navigation.navigate('Collections'); // Assuming 'Connections' is the name of your stack screen for the Connections component
+};
 
   return (
+
     <View style={styles.container}>
+   
     <View style={styles.header}>
       <View style={styles.searchContainer}>
         <TextInput style={styles.searchBar} placeholder="Search..." value={searchTerm}  onChangeText={(text) => setSearchTerm(text)} />
       </View>
        <Image
-        source={Images.ACCESSORY}
+        source={Images.BLING}
         style={styles.logo}
         resizeMode="cover"
       />
     </View>
-
+    <TouchableOpacity onPress={handleShopByCategoryPress} style={styles.container}>
+      <View style={styles.rowContainer}>
+        <Text style={styles.text}>Shop By Category</Text>
+        <MaterialCommunityIcons name="arrow-right" size={20} color="#333" />
+      </View>
+    </TouchableOpacity>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -54,8 +64,9 @@ const[selectedCategory,setSelectedCategory]=useState('')
         </TouchableOpacity>
          ))}
       </ScrollView>
+      <View style={styles.separator} />
       <JewelryBox searchTerm={searchTerm} selectedCategory={selectedCategory} />
-
+     
     </View>
   );
 };
@@ -70,8 +81,10 @@ const styles = StyleSheet.create({
     width: '100%',
     zIndex: 111111,
   },
-  container:{
-    flex:1,
+  container: {
+    padding: 8,
+
+    
   },
 
   searchBar: {
@@ -96,6 +109,41 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     marginTop: 10,
   },
+
+   
+  profileIcon: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: 'lightgray', 
+  },
+  topBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 20, // Adjust padding as needed
+    // Other styles for the top bar
+
+  },
+  separator: {
+    width: '100%',
+  height: 1,
+  backgroundColor: '#ccc',
+  marginVertical: 20,
+  backgroundColor:"rgb(106, 90, 205)",
+  
+  
+  },
+  rowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 16,
+    marginRight: 10,
+    color: '#333',
+  },
+ 
 
 });
 

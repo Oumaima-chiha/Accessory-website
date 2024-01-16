@@ -5,6 +5,7 @@ import { moderateScale, scale, verticalScale } from '../helpers/dim';
 import cart from "./Cart";
 import { navigation,useNavigation } from '@react-navigation/native';
 import axios from "../services/axiosInterceptor";
+import { MaterialIcons } from '@expo/vector-icons';
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
@@ -40,11 +41,7 @@ const JewelryDetails = ({ route }) => {
         >
           <Image source={{ uri: image }} style={styles.additionalImage} resizeMode="cover" />
         </TouchableOpacity>
-        {showAddToCart && mainImage === image && (
-          <TouchableOpacity onPress={handleAddToCart} style={styles.addToCartButton}>
-            <Text style={styles.addToCartText}>Add to Cart</Text>
-          </TouchableOpacity>
-        )}
+    
       </View>
     ));
   }, [showAddToCart, mainImage, item]);
@@ -83,10 +80,19 @@ const JewelryDetails = ({ route }) => {
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
         <Text style={styles.price}>Price: ${item.price}</Text>
-        <View style={styles.cartFrame}>
-          <AntDesign name="shoppingcart" size={24} color="black" />
-          <Button title="Add to Cart" onPress={()=>handleAddToCart(item.id)} />
-        </View>
+        <View style={styles.containerr}>
+      {/* Add to Cart */}
+      <View style={styles.iconFrame}>
+        <AntDesign name="shoppingcart" size={24} color="black" />
+        <Button title=" to " onPress={() => handleAddToCart(item.id)} />
+      </View>
+
+      {/* Add to Favorites */}
+      <View style={styles.iconFrame}>
+        <MaterialIcons name="favorite-border" size={24} color="black" />
+        <Button title="to"  />
+      </View>
+    </View>
       </View>
       {renderOtherImagesBar()}
     </ScrollView>
@@ -138,15 +144,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 15,
   },
-  cartFrame: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    padding: 10,
-  },
+ 
   otherImagesBar: {
     marginTop: 20,
     paddingHorizontal: 10,
@@ -159,19 +157,25 @@ const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
   },
-  addToCartButton: {
-    position: 'absolute',
-    bottom: 10,
-    left: '50%',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
-    borderRadius: 5,
-    transform: [{ translateX: -50 }],
+ 
+  containerr: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 20,
+    marginBottom: 20,
+   
   },
-  addToCartText: {
-    color: 'black',
-  },
+  iconFrame: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    
+    borderRadius: 50, // Make it a circle
+    padding: 10, // Adjust as needed
+    borderWidth: 2,
+    borderColor: 'brown',
+    marginHorizontal: 70, 
+    
+  }
 });
 
 export default JewelryDetails;
