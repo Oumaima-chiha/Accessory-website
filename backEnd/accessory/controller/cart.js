@@ -33,19 +33,18 @@ const addNewCartItem=async(jewelryID,cartID)=>{
     console.log('New item added to cart:', newCartItem);
   }
 const createNewCart=async(userID)=>{
-    const newCart = await cart.create({
-        data: {
-          cartStatus: 'EMPTY',
-          user: {
-            connect: { id: parseInt(userID) },
+    return await cart.create({
+          data: {
+              cartStatus: 'EMPTY',
+              user: {
+                  connect: {id: parseInt(userID)},
+              },
           },
-        },
-        include: {
-          items:true
-        },
+          include: {
+              items: true
+          },
 
-      });
-      return newCart
+      })
   }
 const updateQuantity=async(existingItem,step=1)=>{
     const updatedItem = await cartItem.update({
@@ -91,28 +90,29 @@ module.exports = {
                 result = await cart.findFirst({
                     where: {
                         userId: parseInt(id),
-                        cartStatus: {
-                            not: 'PAID'
-                        },
+                        cartStatus:'EMPTY'
                     },
                     include: {
                         items: true,
                     },
                 });
+                if (!result) {
+                    result = await createNewCart(id);
+                }
+                if(result && result.items.length>0) {
+
+                    await cart.update({
+                        where: {
+                            id: result.id,
+                        },
+                        data: {
+                            cartStatus: 'PENDING',
+                        },
+                    });
+                }
             }
 
-            if (!result || (result.items && result.items.length === 0)) {
-                result = await createNewCart(id);
-            } else {
-                await cart.update({
-                    where: {
-                        id: result.id,
-                    },
-                    data: {
-                        cartStatus: 'PENDING',
-                    },
-                });
-            }
+
 
             res.status(200).json(result);
         } catch (error) {
@@ -154,8 +154,7 @@ module.exports = {
 
       // If the User has no Cart, create a new one
       if (!userCart) {
-        const newCart = await createNewCart(userID)
-        userCart = newCart;
+          userCart = await createNewCart(userID);
       }
 
       // Check if the Cart status is 'pending'
@@ -268,6 +267,9 @@ module.exports = {
         const result= await cart.findFirst({
             where: {
               userId: parseInt(userID),
+              cartStatus: {
+                    not: 'PAID'
+                },
             },
             include: {
                 items:true
@@ -286,6 +288,20 @@ module.exports = {
                 }
             }
         );
+        // Check if the number of items in the cart becomes zero after deletion
+        if (result.items.length === 1) {
+            // Trigger additional logic here
+            // For example, you can send a notification or perform some other action
+            await cart.update({
+                where: {
+                    id: parseInt(result.id),
+                },
+                data: {
+                    cartStatus: 'EMPTY',
+                },
+            });
+            console.log('Cart is now empty after item removal. Trigger additional logic.');
+        }
 
         res.status(204).send('product removed from cart');
     } catch (error) {
@@ -300,6 +316,7 @@ removeAllFromCart: async (req, res) => {
         const result= await cart.findFirst({
             where: {
               userId: parseInt(userID),
+                cartStatus:'PENDING',
             },
             include: {
                 items:true
@@ -307,7 +324,7 @@ removeAllFromCart: async (req, res) => {
           });
 
         if (!result) {
-            return res.status(404).json({ error: 'Cart not found' });
+            return res.status(404).json({ error: 'Cart not found or Empty' });
         }
 
         await cartItem.deleteMany(
@@ -317,7 +334,14 @@ removeAllFromCart: async (req, res) => {
                 }
             }
         );
-
+        await cart.update({
+            where: {
+                id: parseInt(result.id),
+            },
+            data: {
+                cartStatus: 'EMPTY',
+            },
+        });
         res.status(204).send('Cart empty');
     } catch (error) {
         console.error(error);

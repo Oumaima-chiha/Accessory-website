@@ -20,8 +20,11 @@ const userSlice = createSlice({
       state.isLoading = false;
       state.error = null;
     },
-      logout:()=>{
-        return initialState
+      logout: ()=>{
+          // Clear accessToken from AsyncStorage on logout
+          AsyncStorage.removeItem('accessToken');
+          console.log('removed token')
+          return initialState;
       }
   },
   extraReducers: builder => {
@@ -35,22 +38,6 @@ const userSlice = createSlice({
           state.isLoading = false;
           state.error = null;
         }
-      )
-      .addMatcher(
-        userApi.endpoints.customerSignin.matchRejected,
-        async (state, { payload }) => {
-          try{
-           await AsyncStorage.setItem('accessToken',payload.token)
-           state.user = payload; // Set user data
-           state.isLoggedIn = true; // Update logged-in status
-           state.isLoading = false;
-           state.error = null;
- }
- catch(err)
- {
- console.warn(err)
- }
-         }
       )
         }
       })
