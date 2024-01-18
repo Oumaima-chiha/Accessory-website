@@ -35,7 +35,6 @@ const TabNav = ({navigation}) => {
     const listener = {
         tabPress: async (e) => {
            if(isLoggedIn) {
-               e.preventDefault();
                await dispatch(logout())
                Toast.show({
                    type: 'success',
@@ -43,6 +42,15 @@ const TabNav = ({navigation}) => {
                    text1: 'user logged out successfully!'
                })
            }
+        },
+
+    }
+    const cartListener = {
+        tabPress: async (e) => {
+            if(!isLoggedIn) {
+                e.preventDefault()
+                navigation.navigate('login')
+            }
         },
 
     }
@@ -84,6 +92,7 @@ const TabNav = ({navigation}) => {
       <Tab.Screen
         name="cart"
         component={Cart}
+        listeners={cartListener}
         options={{
           unmountOnBlur:true,
           tabBarIcon: ({ focused, color, size }) => (

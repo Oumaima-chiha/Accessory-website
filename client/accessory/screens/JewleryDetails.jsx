@@ -6,15 +6,24 @@ import cart from "./Cart";
 import { navigation,useNavigation } from '@react-navigation/native';
 import axios from "../services/axiosInterceptor";
 import { MaterialIcons } from '@expo/vector-icons';
+import {useSelector} from "react-redux";
+import {isLoggedInSelector} from "../store/user/selectors";
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
   const [mainImage, setMainImage] = useState(item.main_image);
   const [showAddToCart, setShowAddToCart] = useState(false);
   const navigation = useNavigation();
+  const isLoggedIn=useSelector(isLoggedInSelector)
+
 
   const handleAddToCart = async(id) => {
     try{
+      if(!isLoggedIn)
+      {
+        navigation.navigate('login');
+        return;
+      }
     const res = await axios.post("cart/product/" +id )
     if (res.status===201)
     navigation.navigate('cart');
@@ -41,7 +50,7 @@ const JewelryDetails = ({ route }) => {
         >
           <Image source={{ uri: image }} style={styles.additionalImage} resizeMode="cover" />
         </TouchableOpacity>
-    
+
       </View>
     ));
   }, [showAddToCart, mainImage, item]);
@@ -144,7 +153,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 15,
   },
- 
+
   otherImagesBar: {
     marginTop: 20,
     paddingHorizontal: 10,
@@ -157,24 +166,24 @@ const styles = StyleSheet.create({
   imageContainer: {
     position: 'relative',
   },
- 
+
   containerr: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
     marginBottom: 20,
-   
+
   },
   iconFrame: {
     flexDirection: 'row',
     alignItems: 'center',
-    
+
     borderRadius: 50, // Make it a circle
     padding: 10, // Adjust as needed
     borderWidth: 2,
     borderColor: 'brown',
-    marginHorizontal: 70, 
-    
+    marginHorizontal: 70,
+
   }
 });
 
