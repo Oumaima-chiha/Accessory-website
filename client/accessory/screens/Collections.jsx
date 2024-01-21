@@ -1,49 +1,101 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-
-const Collections = () => {
-  const [selectedCategory, setSelectedCategory] = useState('');
-
-  const categories = [
-    { id: '0', name: 'Best Sellers', image: require("../assets/pink.jpg") },
-    { id: '1', name: 'New Arrivals', image: require("../assets/nude.jpg") },
-    { id: '2', name: 'All', image: require("../assets/all.jpg") },
-    { id: '3', name: 'Rings', image: require("../assets/rings.jpg") },
-    { id: '4', name: 'Necklaces', image: require('../assets/necklaces.jpg') },
-    { id: '5', name: 'Earrings', image: require("../assets/earr.jpg") },
-    { id: '6', name: 'Bracelets', image: require("../assets/braclets.jpg") },
-    { id: '7', name: 'Hair Clips', image:require("../assets/bands.jpg") },
-    { id: '8', name: 'Brooches', image: require("../assets/Broches.jpg") },
-  ];
+import axios from '../services/axiosInterceptor';
 
 
-
+const JewelryItem = ({ item, onPress }) => {
   return (
+    <TouchableOpacity style={styles.box} onPress={() => onPress(item)}>
+      <Image source={{ uri: item.main_image }} style={styles.image} resizeMode="cover" />
+      <Text style={styles.name}>{item.name}</Text>
+      <Text style={styles.price}>${item.price}</Text>
+      <Text numberOfLines={2} ellipsizeMode="tail" style={styles.description}>
+        {item.description}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+const Collections = ({navigation}) => {
+  const [categories, setCategories] = useState([]);
+  const [jewelryItems,setJewelryItems]=useState([]);
+  const [showList,setShowList]=useState(false)
+
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get( process.env.EXPO_PUBLIC_API_URL+"Jewelry/tags");
+      if (response.status === 200) {
+        setCategories(response.data);
+        console.log(response.data);
+      }
+
+    } catch (error) {
+      console.error('Error fetching jewelry items:', error);
+    }
+
+  };
+  const fetchByTag = async (tagId) => {
+    try {
+      const response = await axios.get( process.env.EXPO_PUBLIC_API_URL+"Jewelry/tag/"+tagId);
+      if (response.status === 200) {
+        setJewelryItems(response.data);
+        setShowList(true)
+        console.log(response.data);
+      }
+
+    } catch (error) {
+      console.error('Error fetching jewelry items:', error);
+    }
+
+  };
+  useEffect(()=>{
+    fetchCategories()
+
+  },[])
+  const handleItemPress = (item) => {
+    navigation.navigate('details', { item });
+  };
+
+  const renderItem = ({ item }) => (
+    <JewelryItem item={item} onPress={handleItemPress} />
+  );
+
+
+  return showList ? (
+      <FlatList
+      data={jewelryItems}
+
+      renderItem={renderItem}
+      keyExtractor={(item) => item.id.toString()}
+      numColumns={2}
+      columnWrapperStyle={styles.columnWrapper}
+      contentContainerStyle={styles.flatListContent}
+
+    />
+    ):(
     <ScrollView showsVerticalScrollIndicator>
     <View>
       <View style={styles.categoriesContainer}>
-        {categories.map(({name,image,index }) => (
+        {categories.map(({name,image,id}) => (
           <TouchableOpacity
-            key={name+index}
-            onPress={() => setSelectedCategory(name)}
+            key={name+id}
+            onPress={() => fetchByTag(id)}
           >
             <View
               style={[
                 styles.category,
-                { backgroundColor: selectedCategory === name ? 'lightblue' : 'white' },
+                { backgroundColor: 'white' },
               ]}
             >
                  <Text style={styles.categoryName}>{name}</Text>
-              <Image source={image} style={styles.categoryImage} />
+              <Image source={{uri:`${process.env.EXPO_PUBLIC_API_URL}${image}`}} style={styles.categoryImage} />
 
             </View>
           </TouchableOpacity>
         ))}
       </View>
     </View>
-    </ScrollView>
-  );
+    </ScrollView>)
 };
 
 const styles = StyleSheet.create({
@@ -93,6 +145,40 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     margin: 5,
+  },
+  columnWrapper: {
+    justifyContent: Platform.OS==='web'? "space-around":'space-between',
+    marginVertical: 8,
+  },
+  flatListContent: {
+    paddingHorizontal: 16,
+  },
+  box: {
+    width: Platform.OS==='web'?'20%':'45%',
+    borderWidth: 1,
+    borderColor: 'black',
+    borderRadius: 8,
+    padding: 10,
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  image: {
+    width: '100%',
+    height: 150,
+    borderRadius: 8,
+    marginBottom: 10,
+  },
+  name: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  price: {
+    fontSize: 14,
+    marginBottom: 5,
+  },
+  description: {
+    textAlign: 'center',
   },
 });
 

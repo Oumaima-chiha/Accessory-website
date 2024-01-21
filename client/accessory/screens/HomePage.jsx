@@ -24,7 +24,7 @@ const HomePage = () => {
 const[selectedCategory,setSelectedCategory]=useState('')
 const navigation = useNavigation();
 const handleShopByCategoryPress = () => {
-  navigation.navigate('Collections'); // Assuming 'Connections' is the name of your stack screen for the Connections component
+  navigation.navigate('CollectionsNav'); 
 };
 
   return (

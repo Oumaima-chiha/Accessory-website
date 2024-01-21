@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {FlatList, StyleSheet, Image, Text, TouchableOpacity, Platform, Animated} from 'react-native';
+import {FlatList, StyleSheet, Image, Text, TouchableOpacity, Platform, Animated,View} from 'react-native';
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
@@ -96,6 +96,7 @@ const JewelryBox = ({searchTerm,selectedCategory,scrollY}) => {
       numColumns={Platform.OS==='web'?4:2}
       columnWrapperStyle={styles.columnWrapper}
       contentContainerStyle={styles.flatListContent}
+      ListFooterComponent={()=><View style={styles.footer}/>}
       showsVerticalScrollIndicator
         { ...(scrollY && {onScroll:Animated.event([{ nativeEvent: { contentOffset: { y: scrollY } } }], { useNativeDriver: false })})}
 
@@ -138,6 +139,9 @@ const styles = StyleSheet.create({
   flatListContent: {
     paddingHorizontal: 16,
   },
+  footer:{
+    height:400
+  }
 });
 
 export default JewelryBox;

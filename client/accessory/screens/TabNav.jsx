@@ -21,12 +21,14 @@ import Toast from "react-native-toast-message";
 
 const Tab = createBottomTabNavigator();
 const HomeNav=createStackNavigator()
+
 const HomeNavigator=()=>(
   <HomeNav.Navigator initialRouteName="home" >
        <HomeNav.Screen name="home" component={HomePage} />
       <HomeNav.Screen name="details" component={JewelryDetails} />
   </HomeNav.Navigator>
 )
+
 
 const TabNav = ({navigation}) => {
     const dispatch=useDispatch()
