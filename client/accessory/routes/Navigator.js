@@ -25,6 +25,7 @@ import Collections from '../screens/Collections';
 
 
 const Stack = createStackNavigator();
+const CollectionsNav=createStackNavigator()
 
 function CheckoutNavigator() {
   return (
@@ -35,6 +36,14 @@ function CheckoutNavigator() {
       </Stack.Navigator>
   );
 }
+const CollectionsNavigator=()=>( 
+  <CollectionsNav.Navigator initialRouteName="Collections" screenOptions={{headerShown:false}} >
+       <CollectionsNav.Screen name="Collections" component={Collections} />
+       <Stack.Group  screenOptions={{headerShown:false,presentation:'modal'}}>
+      <CollectionsNav.Screen name="details" component={JewelryDetails} />
+      </Stack.Group>
+  </CollectionsNav.Navigator>
+)
 
 function AppNavigation() {
   return (
@@ -46,7 +55,7 @@ function AppNavigation() {
         <Stack.Screen name="messages" component={Messages} />
         <Stack.Screen name="cart" component={Cart} />
         <Stack.Screen name="details" component={JewelryDetails} />
-        <Stack.Screen name="Collections" component={Collections} />
+        <Stack.Screen name="CollectionsNav" component={CollectionsNavigator} />
 
         <Stack.Group  screenOptions={{headerShown:false,presentation:'modal'}}>
         <Stack.Screen name="LogIn" component={Login} />

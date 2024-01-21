@@ -14,7 +14,6 @@ const createJewelries = async () => {
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpjTmsEU1vx_oadxoz7ZW9-gnNTLGvkliizq7tXkRy213BfAx1",
         
           extra_images: [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpjTmsEU1vx_oadxoz7ZW9-gnNTLGvkliizq7tXkRy213BfAx1",
             "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTIy9pgALl_jSCt3OPKkymJW3mBrV8i3OhSx1JD9NYFwqh02Ino",
           ],
 
@@ -32,7 +31,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSbeU621aXdj5LLoi6HKqFLSvxE859oDWYCTJBsGQple6Md6awt",
           
             extra_images: [
-              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSbeU621aXdj5LLoi6HKqFLSvxE859oDWYCTJBsGQple6Md6awt",
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQbhO4vDu2o6ilo5WyhYcLUTZ4E9F7Sb2QRg_uvsWPuaq1jGq7B",
             ],
 
@@ -50,7 +48,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxSBzXPTxkdkA2n5n7g2_zdy-q-2P5NCd8jQv2gbksLQQtmOLQ",
           
             extra_images: [
-              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxSBzXPTxkdkA2n5n7g2_zdy-q-2P5NCd8jQv2gbksLQQtmOLQ",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ2OLlbisw2I4yAKWd7drIUT5Mhp4POeXDeLwcl1P11khAuYKjG",
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_FOad9v_aieVP6W_T6nwjQKhDWs0oqtpZBY5Pr2hCJ62sHMdk",
             ],
@@ -69,7 +66,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRbpYgxEp24lZ7N-IiodUYOfn9gKcnDXeMjmMgQlPpWYv20B9pm",
           
             extra_images: [
-              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRbpYgxEp24lZ7N-IiodUYOfn9gKcnDXeMjmMgQlPpWYv20B9pm",
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRKeXSnRaKQ5lKA_d-JeUVuF-xMFptTxZqWdqHROJHc8h5KIZVP",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRl3A5fX3bN7Y3iThLo0avJIiRLs_9GJKJ4BSl4SoMezRVVv-sK"
             ],
@@ -85,11 +81,10 @@ const createJewelries = async () => {
             description:
               "Effortlessly elevate your style with our exquisite collection of rings, from minimalist bands to statement gemstone pieces, perfect for every occasion.",
             main_image:
-              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
+              "https://img.ltwebstatic.com/images3_spmp/2023/07/21/1689904169af7458c11bca1640f641f0fbb86c1adc.webp",
           
             extra_images: [
-              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
-              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
+              "https://img.ltwebstatic.com/images3_spmp/2023/07/21/168990418020aa6ea6c077201434e7caf2ee6d8035.webp",
             ],
 
             status: "Available",
@@ -106,7 +101,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQcrkrcOq3fXaLDbQEecp0cSODq0vQJgK2AwR5hvVzI72yt_FRx",
           
             extra_images: [
-              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQcrkrcOq3fXaLDbQEecp0cSODq0vQJgK2AwR5hvVzI72yt_FRx",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR3en7RoSa2ajQow1jzmMTZQzCjN8EF2u3PdNvY1TPYCiNZQP1s",
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSV_V8xgYiHv5T68Ljc2li8R07CuILSAomOWNCLhZi6-a7gIph9",
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIkOd_02UY44ufwbGq27duwntiVGYEHHZS8m-I8qcFhMVMubw0"           
@@ -124,7 +118,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSun21F7CSnmdX2UbAdT4kSYWQ4JfQXLcTshH22ZswJ052O8ZSB",
           
             extra_images: [
-              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSun21F7CSnmdX2UbAdT4kSYWQ4JfQXLcTshH22ZswJ052O8ZSB",
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRfTfCN6f6BCAxxMmj8_icJ6Q4UPWnHrlT51KO6iQbV-DQ5UuL0",
             ],
 
@@ -141,7 +134,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCAbYkdESuGuI90b0Tnw1LaOBavf_aPP1Du_26Hax1ssEml0wm",
           
             extra_images: [
-              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCAbYkdESuGuI90b0Tnw1LaOBavf_aPP1Du_26Hax1ssEml0wm",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSOlhTLX7OR7Z5AEnrcbKx_B36MhQCLTrAaFSsuhlhT9aIhGqVH",
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSLSDT__csXFKAiBj6VymaTe9ulcH3XWN3xAq4YY9arMU2s8Nnf"
             ],
@@ -152,15 +144,14 @@ const createJewelries = async () => {
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
-            name: "earings",
+            name: "glitter earing",
             category: ["EARINGS"],
             description:
               " From sleek and simple designs to vibrant patterns, our hair bands offer comfort and style, making them the perfect accessory for both casual and formal looks.",
             main_image:
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTtjQtzc_XCuK2I_dMikVPt-G9phImGo-kD6_AWnfHmcTIXdiRb",
+              "https://ae01.alicdn.com/kf/S4d2a671cf4f14bb4b627c4ea6ff562d4Z/-.jpg",
           
             extra_images: [
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTtjQtzc_XCuK2I_dMikVPt-G9phImGo-kD6_AWnfHmcTIXdiRb",
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2HdRrah_7_oY2va6kilb61FJOPKkz6hMZCM96qttFrFtfQzcL",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRE0NkHykNJ7BOwONOKsoFx2ncIQlygdwB-TctYsmoAKDNuixx5"
             ],
@@ -171,7 +162,7 @@ const createJewelries = async () => {
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
-            name: "earings",
+            name: " circle earing",
             category: ["EARINGS"],
             description:
               " Discover the artistry in our bracelet selection, where modern simplicity meets intricate detailing, offering a versatile range to complement your personal style.",
@@ -179,7 +170,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTa3orWwl-J4QMHHiUMQY7M67NiVQMtR4YfhIiP00nwj5PsQ61t",
           
             extra_images: [
-              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTa3orWwl-J4QMHHiUMQY7M67NiVQMtR4YfhIiP00nwj5PsQ61t",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ32fC_V3KPFDzh9ST4Xk-8JKs2q2N_3YS-diB456NK5RRHxcsq",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTXEfgRXR1XUewQ-w1I9nB-MEE2S4ucLHO0cptlqqh81vqNRuK-"
             ],
@@ -190,7 +180,7 @@ const createJewelries = async () => {
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
-            name: "earing",
+            name: " sunflower earing",
             category: ["EARINGS"],
             description:
               " Discover the artistry in our EARINGS selection, where modern simplicity meets intricate detailing, offering a versatile range to complement your personal style.",
@@ -198,7 +188,6 @@ const createJewelries = async () => {
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFkC-hbjUhqB8Yop0bpt8X7VHy_kHZf5nlKym9H3TP5elArGRY",
           
             extra_images: [
-              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFkC-hbjUhqB8Yop0bpt8X7VHy_kHZf5nlKym9H3TP5elArGRY",
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVBtrYezePQ3Soe7inoqDxrPiiDZEcZs-Arma-hFfRsZ2BNPT1",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSBL0LqdIX3P5NmUU9gdwFW3vl-se_66iPD5wiw7YgF3PfVKyeL"
             ],
@@ -305,5 +294,5 @@ const createTags =async ()=>{
   console.log('Tags created successfully.');
 }
 //createCustomers()
-//createJewelries()
-createTags()
+createJewelries()
+//createTags()
