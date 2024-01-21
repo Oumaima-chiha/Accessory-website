@@ -11,14 +11,15 @@ const createJewelries = async () => {
           description:
             "Express your individuality with our diverse earring collection, ranging from classic studs to bold hoops and elegant dangles, enhancing every outfit with finesse.",
           main_image:
-            "https://images.unsplash.com/photo-1630019925419-5fc53b4a52cf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8RUFSSU5HU3xlbnwwfHwwfHx8MA%3D%3D",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpjTmsEU1vx_oadxoz7ZW9-gnNTLGvkliizq7tXkRy213BfAx1",
         
           extra_images: [
-            "https://images.unsplash.com/photo-1630019852942-f89202989a59?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpjTmsEU1vx_oadxoz7ZW9-gnNTLGvkliizq7tXkRy213BfAx1",
+            "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTIy9pgALl_jSCt3OPKkymJW3mBrV8i3OhSx1JD9NYFwqh02Ino",
           ],
          
           status: "Available",
-          price:12,
+          price:6,
          
           createdAt: new Date("2023-06-05").toISOString(),
         },
@@ -28,28 +29,30 @@ const createJewelries = async () => {
             description:
               "Express your individuality with our diverse earring collection, ranging from classic studs to bold hoops and elegant dangles, enhancing every outfit with finesse.",
             main_image:
-              "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHx8",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSbeU621aXdj5LLoi6HKqFLSvxE859oDWYCTJBsGQple6Md6awt",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1600721391776-b5cd0e0048f9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE3fHx8ZW58MHx8fHx8",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSbeU621aXdj5LLoi6HKqFLSvxE859oDWYCTJBsGQple6Md6awt",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQbhO4vDu2o6ilo5WyhYcLUTZ4E9F7Sb2QRg_uvsWPuaq1jGq7B",
             ],
            
             status: "Available",
-            price:12,
+            price:8,
            
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
-            name: "Necklace",
-            category: ["NECKLACES"],
+            name: "Cup",
+            category: ["CUPS"],
             description:
-              " Embrace elegance with our diverse range of necklaces, featuring timeless pendants, delicate chains, and intricate designs that add a touch of sophistication to any ensemble.",
+              " colors :Pink,beige and black",
             main_image:
-              "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEzfHx8ZW58MHx8fHx8",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxSBzXPTxkdkA2n5n7g2_zdy-q-2P5NCd8jQv2gbksLQQtmOLQ",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1599643477877-530eb83abc8e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
-              "https://images.unsplash.com/photo-1631050165155-421c47e306f7?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSxSBzXPTxkdkA2n5n7g2_zdy-q-2P5NCd8jQv2gbksLQQtmOLQ",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ2OLlbisw2I4yAKWd7drIUT5Mhp4POeXDeLwcl1P11khAuYKjG",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_FOad9v_aieVP6W_T6nwjQKhDWs0oqtpZBY5Pr2hCJ62sHMdk",
             ],
            
             status: "Available",
@@ -63,14 +66,16 @@ const createJewelries = async () => {
             description:
               " Embrace elegance with our diverse range of necklaces, featuring timeless pendants, delicate chains, and intricate designs that add a touch of sophistication to any ensemble.",
             main_image:
-              "https://plus.unsplash.com/premium_photo-1681276169450-4504a2442173?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRbpYgxEp24lZ7N-IiodUYOfn9gKcnDXeMjmMgQlPpWYv20B9pm",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1685970731571-72ede0cb26ea?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRbpYgxEp24lZ7N-IiodUYOfn9gKcnDXeMjmMgQlPpWYv20B9pm",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRKeXSnRaKQ5lKA_d-JeUVuF-xMFptTxZqWdqHROJHc8h5KIZVP",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRl3A5fX3bN7Y3iThLo0avJIiRLs_9GJKJ4BSl4SoMezRVVv-sK"
             ],
            
             status: "Available",
-            price:12,
+            price:10,
            
             createdAt: new Date("2023-06-05").toISOString(),
           },
@@ -80,14 +85,15 @@ const createJewelries = async () => {
             description:
               "Effortlessly elevate your style with our exquisite collection of rings, from minimalist bands to statement gemstone pieces, perfect for every occasion.",
             main_image:
-              "https://images.unsplash.com/photo-1607703829739-c05b7beddf60?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1605100804567-1ffe942b5cd6?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
             ],
            
             status: "Available",
-            price:12,
+            price:8,
            
             createdAt: new Date("2023-06-05").toISOString(),
           },
@@ -97,26 +103,29 @@ const createJewelries = async () => {
             description:
               "Effortlessly elevate your style with our exquisite collection of rings, from minimalist bands to statement gemstone pieces, perfect for every occasion.",
             main_image:
-              "https://images.unsplash.com/photo-1603561589171-f8f02d8d6a5a?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQcrkrcOq3fXaLDbQEecp0cSODq0vQJgK2AwR5hvVzI72yt_FRx",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1603561596112-0a132b757442?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fHw%3D",
-              "https://images.unsplash.com/photo-1603561591411-07134e71a2a9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",           
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQcrkrcOq3fXaLDbQEecp0cSODq0vQJgK2AwR5hvVzI72yt_FRx",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR3en7RoSa2ajQow1jzmMTZQzCjN8EF2u3PdNvY1TPYCiNZQP1s",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSV_V8xgYiHv5T68Ljc2li8R07CuILSAomOWNCLhZi6-a7gIph9",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIkOd_02UY44ufwbGq27duwntiVGYEHHZS8m-I8qcFhMVMubw0"           
         ],           
             status: "Available",
-            price:12,
+            price:8,
            
             createdAt: new Date("2023-06-05").toISOString(),
           },     {
-            name: "Hair Clip",
-            category: ["HAIRCLIPS"],
+            name: "Sunglass",
+            category: ["SUNGLASSES"],
             description:
-              "Elevate your hair game with our chic and functional hair clips, crafted to add flair and sophistication to your everyday hairstyles effortlessly.",
+              "Elevate your hair game with our chic and functional SUNGLASSES, crafted to add flair and sophistication to your everyday hairstyles effortlessly.",
             main_image:
-              "https://plus.unsplash.com/premium_photo-1692340973540-259ea6ceb52c?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSun21F7CSnmdX2UbAdT4kSYWQ4JfQXLcTshH22ZswJ052O8ZSB",
           
             extra_images: [
-              "https://plus.unsplash.com/premium_photo-1692340973754-224eecd37905?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSun21F7CSnmdX2UbAdT4kSYWQ4JfQXLcTshH22ZswJ052O8ZSB",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRfTfCN6f6BCAxxMmj8_icJ6Q4UPWnHrlT51KO6iQbV-DQ5UuL0",
             ],
            
             status: "Available",
@@ -124,15 +133,17 @@ const createJewelries = async () => {
            
             createdAt: new Date("2023-06-05").toISOString(),
           },     {
-            name: "Hair Clips",
-            category: ["HAIRCLIPS"],
+            name: "braclets",
+            category: ["BRACLETS"],
             description:
               "Elevate your hair game with our chic and functional hair clips, crafted to add flair and sophistication to your everyday hairstyles effortlessly.",
             main_image:
-              "https://images.unsplash.com/photo-1609536834325-f9ecf43992f6?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCAbYkdESuGuI90b0Tnw1LaOBavf_aPP1Du_26Hax1ssEml0wm",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1609536834585-fc94c33ebee6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D",
+              "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQCAbYkdESuGuI90b0Tnw1LaOBavf_aPP1Du_26Hax1ssEml0wm",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSOlhTLX7OR7Z5AEnrcbKx_B36MhQCLTrAaFSsuhlhT9aIhGqVH",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSLSDT__csXFKAiBj6VymaTe9ulcH3XWN3xAq4YY9arMU2s8Nnf"
             ],
            
             status: "Available",
@@ -141,15 +152,17 @@ const createJewelries = async () => {
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
-            name: "Hair bands",
-            category: ["HAIRBANDS"],
+            name: "earings",
+            category: ["EARINGS"],
             description:
               " From sleek and simple designs to vibrant patterns, our hair bands offer comfort and style, making them the perfect accessory for both casual and formal looks.",
             main_image:
-              "https://images.unsplash.com/photo-1601544816113-5dd7c7a526b2?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTtjQtzc_XCuK2I_dMikVPt-G9phImGo-kD6_AWnfHmcTIXdiRb",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1664292306682-d5c492192a40?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHx8",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTtjQtzc_XCuK2I_dMikVPt-G9phImGo-kD6_AWnfHmcTIXdiRb",
+              "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2HdRrah_7_oY2va6kilb61FJOPKkz6hMZCM96qttFrFtfQzcL",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRE0NkHykNJ7BOwONOKsoFx2ncIQlygdwB-TctYsmoAKDNuixx5"
             ],
            
             status: "Available",
@@ -158,36 +171,40 @@ const createJewelries = async () => {
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
-            name: "Braclet",
-            category: ["BRACLETS"],
+            name: "earings",
+            category: ["EARINGS"],
             description:
               " Discover the artistry in our bracelet selection, where modern simplicity meets intricate detailing, offering a versatile range to complement your personal style.",
             main_image:
-              "https://images.unsplash.com/photo-1586878341523-7acb55eb8c12?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE5fHx8ZW58MHx8fHx8",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTa3orWwl-J4QMHHiUMQY7M67NiVQMtR4YfhIiP00nwj5PsQ61t",
           
             extra_images: [
-              "https://plus.unsplash.com/premium_photo-1671641737519-841d15b5211f?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTa3orWwl-J4QMHHiUMQY7M67NiVQMtR4YfhIiP00nwj5PsQ61t",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ32fC_V3KPFDzh9ST4Xk-8JKs2q2N_3YS-diB456NK5RRHxcsq",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTXEfgRXR1XUewQ-w1I9nB-MEE2S4ucLHO0cptlqqh81vqNRuK-"
             ],
            
             status: "Available",
-            price:12,
+            price:6,
            
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
-            name: "Braclets",
-            category: ["BRACLETS"],
+            name: "earing",
+            category: ["EARINGS"],
             description:
-              " Discover the artistry in our bracelet selection, where modern simplicity meets intricate detailing, offering a versatile range to complement your personal style.",
+              " Discover the artistry in our EARINGS selection, where modern simplicity meets intricate detailing, offering a versatile range to complement your personal style.",
             main_image:
-              "https://images.unsplash.com/photo-1586878340506-af074f2ee999?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFkC-hbjUhqB8Yop0bpt8X7VHy_kHZf5nlKym9H3TP5elArGRY",
           
             extra_images: [
-              "https://images.unsplash.com/photo-1597006354775-2955b15ec026?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRFkC-hbjUhqB8Yop0bpt8X7VHy_kHZf5nlKym9H3TP5elArGRY",
+              "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVBtrYezePQ3Soe7inoqDxrPiiDZEcZs-Arma-hFfRsZ2BNPT1",
+              "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSBL0LqdIX3P5NmUU9gdwFW3vl-se_66iPD5wiw7YgF3PfVKyeL"
             ],
            
             status: "Available",
-            price:12,
+            price:8,
            
             createdAt: new Date("2023-06-05").toISOString(),
           },

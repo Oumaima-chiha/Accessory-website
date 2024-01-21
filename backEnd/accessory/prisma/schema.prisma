@@ -133,6 +133,9 @@ enum Category {
   BRACLETS
   NECKLACES
   BROOCHES
+  SUNGLASSES
+  CUPS
+  PHONECASES
 }
 
 enum SENDER {
