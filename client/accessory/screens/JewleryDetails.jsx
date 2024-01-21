@@ -62,7 +62,7 @@ const JewelryDetails = ({ route }) => {
         <FlatList
           data={item.extra_images}
           renderItem={({ item: image }) => (
-            <TouchableOpacity onPress={() => handleImageSelect(image)}>
+            <TouchableOpacity onPress={() => handleImageSelect(image)} >
               <Image source={{ uri: image }} style={styles.otherImage} resizeMode="cover" />
             </TouchableOpacity>
           )}
@@ -81,26 +81,27 @@ const JewelryDetails = ({ route }) => {
         <View style={styles.additionalImagesContainer}>
           {renderImageWithCart()}
         </View>
-        <TouchableOpacity onPress={() => handleImageSelect(item.main_image)}>
+        <TouchableOpacity onPress={() => handleImageSelect(item.main_image)} >
+                {/* Add to Favorites */}
+      <View style={styles.iconFrame}>
+        <MaterialIcons name="favorite-border" size={24} color="black" />
+      </View>
+
           <Image source={{ uri: mainImage }} style={styles.mainImage} resizeMode="cover" />
         </TouchableOpacity>
       </View>
+          {/* Add to Cart */}
+          <TouchableOpacity style={styles.cartIcon} onPress={() => handleAddToCart(item.id)}>
+        <AntDesign name="shoppingcart" size={24} color="black" />
+      </TouchableOpacity>
       <View style={styles.details}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
         <Text style={styles.price}>Price: ${item.price}</Text>
         <View style={styles.containerr}>
-      {/* Add to Cart */}
-      <View style={styles.iconFrame}>
-        <AntDesign name="shoppingcart" size={24} color="black" />
-        <Button title=" to " onPress={() => handleAddToCart(item.id)} />
-      </View>
+  
 
-      {/* Add to Favorites */}
-      <View style={styles.iconFrame}>
-        <MaterialIcons name="favorite-border" size={24} color="black" />
-        <Button title="to"  />
-      </View>
+
     </View>
       </View>
       {renderOtherImagesBar()}
@@ -177,13 +178,26 @@ const styles = StyleSheet.create({
   iconFrame: {
     flexDirection: 'row',
     alignItems: 'center',
-
-    borderRadius: 50, // Make it a circle
-    padding: 10, // Adjust as needed
+    justifyContent:'center',
+    position:'absolute',
+    right:10,
+    top:10,
+    height:50,
+    width:50,
+    borderRadius: 25, // Make it a circle
     borderWidth: 2,
-    borderColor: 'brown',
-    marginHorizontal: 70,
+    //borderColor: 'brown',
+    zIndex:9
 
+  },
+  cartIcon: {
+    alignItems: 'center',
+    justifyContent:'center',
+    height:50,
+    width:50,
+    borderRadius: 25,
+    zIndex:9,
+    
   }
 });
 
