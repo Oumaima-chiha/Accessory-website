@@ -43,7 +43,7 @@ const createJewelries = async () => {
           },
           {
             name: "Cup",
-            category: ["CUPS"],
+            category: ["OTHERS"],
             description:
               " colors :Pink,beige and black",
             main_image:
@@ -117,7 +117,7 @@ const createJewelries = async () => {
             createdAt: new Date("2023-06-05").toISOString(),
           },     {
             name: "Sunglass",
-            category: ["SUNGLASSES"],
+            category: ["OTHERS"],
             description:
               "Elevate your hair game with our chic and functional SUNGLASSES, crafted to add flair and sophistication to your everyday hairstyles effortlessly.",
             main_image:
