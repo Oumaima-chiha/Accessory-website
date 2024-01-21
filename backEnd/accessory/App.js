@@ -1,11 +1,12 @@
 const express = require('express')
 const cors = require('cors')
 const prisma = require("./models/index");
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const jewelryRouter=require('./routes/Jewelry')
 const customersRouter=require('./routes/customer')
 const cartRouter =require('./routes/cart')
 const paymentRouter =require('./routes/payment')
+const {join} = require("path");
 
 
 
@@ -32,11 +33,12 @@ const connect = async () => {
 }
 
 connect()
+
 app.use('/api/Jewelry',jewelryRouter)
 app.use('/api/customers', customersRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/pay', paymentRouter)
-
+app.use('/api/static', express.static(join(__dirname, 'public')))
 app.listen(port, () => {
     console.log(`app listening on port ${port}`)
 })

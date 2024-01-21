@@ -17,7 +17,7 @@ const createJewelries = async () => {
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpjTmsEU1vx_oadxoz7ZW9-gnNTLGvkliizq7tXkRy213BfAx1",
             "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTIy9pgALl_jSCt3OPKkymJW3mBrV8i3OhSx1JD9NYFwqh02Ino",
           ],
-         
+
           status: "Available",
           price:6,
          
@@ -35,7 +35,7 @@ const createJewelries = async () => {
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSbeU621aXdj5LLoi6HKqFLSvxE859oDWYCTJBsGQple6Md6awt",
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQbhO4vDu2o6ilo5WyhYcLUTZ4E9F7Sb2QRg_uvsWPuaq1jGq7B",
             ],
-           
+
             status: "Available",
             price:8,
            
@@ -54,10 +54,10 @@ const createJewelries = async () => {
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ2OLlbisw2I4yAKWd7drIUT5Mhp4POeXDeLwcl1P11khAuYKjG",
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcS_FOad9v_aieVP6W_T6nwjQKhDWs0oqtpZBY5Pr2hCJ62sHMdk",
             ],
-           
+
             status: "Available",
             price:12,
-           
+
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
@@ -73,7 +73,7 @@ const createJewelries = async () => {
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRKeXSnRaKQ5lKA_d-JeUVuF-xMFptTxZqWdqHROJHc8h5KIZVP",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRl3A5fX3bN7Y3iThLo0avJIiRLs_9GJKJ4BSl4SoMezRVVv-sK"
             ],
-           
+
             status: "Available",
             price:10,
            
@@ -91,7 +91,7 @@ const createJewelries = async () => {
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRPqSAJaSTKVkLHtPjjfv5boETyp4730d_gkItsm83-rXq52gXI",
             ],
-           
+
             status: "Available",
             price:8,
            
@@ -127,10 +127,10 @@ const createJewelries = async () => {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSun21F7CSnmdX2UbAdT4kSYWQ4JfQXLcTshH22ZswJ052O8ZSB",
               "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRfTfCN6f6BCAxxMmj8_icJ6Q4UPWnHrlT51KO6iQbV-DQ5UuL0",
             ],
-           
+
             status: "Available",
             price:12,
-           
+
             createdAt: new Date("2023-06-05").toISOString(),
           },     {
             name: "braclets",
@@ -145,10 +145,10 @@ const createJewelries = async () => {
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSOlhTLX7OR7Z5AEnrcbKx_B36MhQCLTrAaFSsuhlhT9aIhGqVH",
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSLSDT__csXFKAiBj6VymaTe9ulcH3XWN3xAq4YY9arMU2s8Nnf"
             ],
-           
+
             status: "Available",
             price:12,
-           
+
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
@@ -164,10 +164,10 @@ const createJewelries = async () => {
               "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2HdRrah_7_oY2va6kilb61FJOPKkz6hMZCM96qttFrFtfQzcL",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRE0NkHykNJ7BOwONOKsoFx2ncIQlygdwB-TctYsmoAKDNuixx5"
             ],
-           
+
             status: "Available",
             price:12,
-           
+
             createdAt: new Date("2023-06-05").toISOString(),
           },
           {
@@ -183,7 +183,7 @@ const createJewelries = async () => {
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ32fC_V3KPFDzh9ST4Xk-8JKs2q2N_3YS-diB456NK5RRHxcsq",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcTXEfgRXR1XUewQ-w1I9nB-MEE2S4ucLHO0cptlqqh81vqNRuK-"
             ],
-           
+
             status: "Available",
             price:6,
            
@@ -202,13 +202,13 @@ const createJewelries = async () => {
               "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQVBtrYezePQ3Soe7inoqDxrPiiDZEcZs-Arma-hFfRsZ2BNPT1",
               "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSBL0LqdIX3P5NmUU9gdwFW3vl-se_66iPD5wiw7YgF3PfVKyeL"
             ],
-           
+
             status: "Available",
             price:8,
            
             createdAt: new Date("2023-06-05").toISOString(),
           },
-          
+
     ]
 })
 }
@@ -282,5 +282,28 @@ const createCustomers = async () => {
     ]
   })
 }
-createCustomers()
+
+const createTags =async ()=>{
+  const categories = [
+    { id: '1', name: 'New Arrivals', image: "nude.jpg" },
+    { id: '2', name: 'Best Sellers', image: "pink.jpg" },
+    { id: '3', name: 'Rings', image: "rings.jpg" },
+    { id: '4', name: 'Necklaces', image: 'necklaces.jpg' },
+    { id: '5', name: 'Earrings', image: "earr.jpg" },
+    { id: '6', name: 'Bracelets', image: "braclets.jpg" },
+    { id: '7', name: 'Hair Clips', image:"bands.jpg" },
+    { id: '8', name: 'Brooches', image: "Broches.jpg" },
+  ];
+  const tagData = categories.map(category => ({
+    id:parseInt(category.id),
+    name: category.name,
+    image: `static/${category.image}`
+  }));
+  await prisma.tag.createMany({
+    data: tagData,
+  });
+  console.log('Tags created successfully.');
+}
+//createCustomers()
 //createJewelries()
+createTags()
