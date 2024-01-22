@@ -90,15 +90,15 @@ const JewelryDetails = ({ route }) => {
           <Image source={{ uri: mainImage }} style={styles.mainImage} resizeMode="cover" />
         </TouchableOpacity>
       </View>
-          {/* Add to Cart */}
-          <TouchableOpacity style={styles.cartIcon} onPress={() => handleAddToCart(item.id)}>
-        <AntDesign name="shoppingcart" size={24} color="black" />
-      </TouchableOpacity>
+        
       <View style={styles.details}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
-        <Text style={styles.price}>Price: ${item.price}</Text>
+        <Text style={styles.price}>Price: TND{item.price}</Text>
         <View style={styles.containerr}>
+        <TouchableOpacity style={styles.cartIcon} onPress={() => handleAddToCart(item.id)}>
+        <AntDesign name="shoppingcart" size={24} color="black" />
+      </TouchableOpacity>
   
 
 
