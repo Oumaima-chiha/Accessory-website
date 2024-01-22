@@ -251,7 +251,7 @@ module.exports = {
                 data: { totalFavorites: userFavoriteList.totalFavorites - 1 },
             });
 
-            res.status(204).json({ message: 'Jewelry removed from favorites successfully' });
+            res.status(200).json({ message: 'Jewelry removed from favorites successfully' , removedId:existingItem.id});
         } catch (error) {
             console.error('Error removing from favorites:', error);
             res.status(500).json({ message: 'Internal server error' });
@@ -283,7 +283,7 @@ module.exports = {
                 data: { totalFavorites: 0 },
             });
 
-            res.status(204).json({ message: 'All items removed from favorites successfully' });
+            res.status(200).json({ message: 'All items removed from favorites successfully' });
         } catch (error) {
             console.error('Error removing all favorites:', error);
             res.status(500).json({ message: 'Internal server error' });
