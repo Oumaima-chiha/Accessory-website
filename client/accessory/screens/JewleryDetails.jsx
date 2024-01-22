@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import axios from "../services/axiosInterceptor";
 import {useSelector} from "react-redux";
 import {isLoggedInSelector} from "../store/user/selectors";
+import Toast from "react-native-toast-message";
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
@@ -15,14 +16,14 @@ const JewelryDetails = ({ route }) => {
   const isLoggedIn=useSelector(isLoggedInSelector)
 
 
-  const handleAddToCart = async(id) => {
+  const handleAddToCart = async() => {
     try{
       if(!isLoggedIn)
       {
         navigation.navigate('login');
         return;
       }
-    const res = await axios.post("cart/product/" +id )
+    const res = await axios.post("cart/product/" +item.id )
     if (res.status===201)
     navigation.navigate('cart');
     }
@@ -32,16 +33,20 @@ const JewelryDetails = ({ route }) => {
     }
 
   };
-  const handleFavorite = async(id) => {
+  const handleFavorite = async() => {
     try{
       if(!isLoggedIn)
       {
         navigation.navigate('login');
         return;
       }
-      const res = await axios.post("jewelry/favorite/" +id )
-      if (res.status===201)
-        navigation.navigate('favorites');
+      const res = await axios.post("jewelry/favorite/" +item.id )
+      if (res.status===200)
+        Toast.show({
+          type: 'success',
+          position: 'top',
+          text1: res.data.message
+        })
     }
     catch (err)
     {
@@ -111,7 +116,7 @@ const JewelryDetails = ({ route }) => {
         <Text style={styles.description}>{item.description}</Text>
         <Text style={styles.price}>Price: TND{item.price}</Text>
         <View style={styles.containerr}>
-        <TouchableOpacity style={styles.cartIcon} onPress={() => handleAddToCart(item.id)}>
+        <TouchableOpacity style={styles.cartIcon} onPress={ handleAddToCart}>
         <AntDesign name="shoppingcart" size={24} color="black" />
       </TouchableOpacity>
 

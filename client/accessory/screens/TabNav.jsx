@@ -86,6 +86,7 @@ const TabNav = ({navigation}) => {
         name="favorites"
         component={Favorites}
         options={{
+            unmountOnBlur:true,
           tabBarIcon: ({ focused, color, size }) => (
             <MaterialIcons name="favorite-border" size={24} color={focused ? Colors.DEFAULT_RED : "black"} />
           ),
