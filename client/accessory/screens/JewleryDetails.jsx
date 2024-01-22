@@ -1,11 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { View, Image, Text, Button, StyleSheet, ScrollView, TouchableOpacity, FlatList } from 'react-native';
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { moderateScale, scale, verticalScale } from '../helpers/dim';
-import cart from "./Cart";
-import { navigation,useNavigation } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import axios from "../services/axiosInterceptor";
-import { MaterialIcons } from '@expo/vector-icons';
 import {useSelector} from "react-redux";
 import {isLoggedInSelector} from "../store/user/selectors";
 
@@ -27,6 +25,23 @@ const JewelryDetails = ({ route }) => {
     const res = await axios.post("cart/product/" +id )
     if (res.status===201)
     navigation.navigate('cart');
+    }
+    catch (err)
+    {
+      console.error(err)
+    }
+
+  };
+  const handleFavorite = async(id) => {
+    try{
+      if(!isLoggedIn)
+      {
+        navigation.navigate('login');
+        return;
+      }
+      const res = await axios.post("jewelry/favorite/" +id )
+      if (res.status===201)
+        navigation.navigate('favorites');
     }
     catch (err)
     {
@@ -83,14 +98,14 @@ const JewelryDetails = ({ route }) => {
         </View>
         <TouchableOpacity onPress={() => handleImageSelect(item.main_image)} >
                 {/* Add to Favorites */}
-      <View style={styles.iconFrame}>
+      <TouchableOpacity onPress={handleFavorite} style={styles.iconFrame}>
         <MaterialIcons name="favorite-border" size={24} color="black" />
-      </View>
+      </TouchableOpacity>
 
           <Image source={{ uri: mainImage }} style={styles.mainImage} resizeMode="cover" />
         </TouchableOpacity>
       </View>
-        
+
       <View style={styles.details}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
@@ -99,7 +114,7 @@ const JewelryDetails = ({ route }) => {
         <TouchableOpacity style={styles.cartIcon} onPress={() => handleAddToCart(item.id)}>
         <AntDesign name="shoppingcart" size={24} color="black" />
       </TouchableOpacity>
-  
+
 
 
     </View>
@@ -197,7 +212,7 @@ const styles = StyleSheet.create({
     width:50,
     borderRadius: 25,
     zIndex:9,
-    
+
   }
 });
 
