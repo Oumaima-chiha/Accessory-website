@@ -44,7 +44,7 @@ const Checkout = () => {
 
             <View style={styles.cardContainer}>
               {renderPaymentCard('cashOnDelivery', require('../assets/cod_illustration.png'), 'Cash on Delivery')}
-              {renderPaymentCard('creditCard', require('../assets/credit_card_illustration.png'), 'Credit Card')}
+           
               {/* Add more payment cards as needed */}
             </View>
 
