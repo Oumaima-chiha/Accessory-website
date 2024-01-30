@@ -4,6 +4,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 import axios from '../services/axiosInterceptor';
 
 
+
 const JewelryItem = ({ item, onPress }) => {
   return (
     <TouchableOpacity style={styles.box} onPress={() => onPress(item)}>
@@ -72,6 +73,7 @@ const Collections = ({navigation}) => {
       contentContainerStyle={styles.flatListContent}
 
     />
+    
     ):(
     <ScrollView showsVerticalScrollIndicator>
     <View>

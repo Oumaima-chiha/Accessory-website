@@ -11,6 +11,7 @@ const Favorites = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+
   const fetchData = async () => {
     try {
       const resp = await axios.get('jewelry/favorites');
@@ -76,7 +77,7 @@ const Favorites = () => {
           <View style={styles.jewelryDetails}>
             <Text style={styles.jewelryName}>{item.jewelry.name}</Text>
             {item.description && <Text style={styles.jewelryDescription}>{item.jewelry.description}</Text>}
-            <Text style={styles.jewelryPrice}>Price: ${item.jewelry.price}</Text>
+            <Text style={styles.jewelryPrice}>Price: TND{item.jewelry.price}</Text>
           </View>
         </View>
         <TouchableOpacity onPress={() => removeFromFavorites(item.jewelry.id)}>
@@ -96,6 +97,7 @@ const Favorites = () => {
 
     if (!favoriteList || !favoriteList.items || favoriteList.items.length === 0) {
       return <Text style={styles.emptyListText}>Your favorites list is empty</Text>;
+      
     }
 
     return (
@@ -107,7 +109,9 @@ const Favorites = () => {
               style={{width:scale(375)}}
           />
           <TouchableOpacity onPress={removeAllFavorites}>
-            <Text style={styles.clearAllText}>Clear All</Text>
+          <View style={styles.clearAllButton}>
+        <Text style={styles.clearAllText}>Clear All 🗑️</Text>
+      </View>
           </TouchableOpacity>
         </>
     );
@@ -157,9 +161,17 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#DDD',
   },
+  clearAllButton: {
+    backgroundColor: 'red',
+    paddingVertical: 20,
+    paddingHorizontal: 60,
+    borderRadius: 50, // Set borderRadius to 0 for a rectangle
+    alignItems: 'center',
+  },
   clearAllText: {
-    color: '#FF6F61',
-    marginTop: 10,
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   emptyListText: {
     fontSize: 18,

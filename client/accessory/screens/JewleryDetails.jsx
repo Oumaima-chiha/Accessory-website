@@ -7,13 +7,16 @@ import axios from "../services/axiosInterceptor";
 import {useSelector} from "react-redux";
 import {isLoggedInSelector} from "../store/user/selectors";
 import Toast from "react-native-toast-message";
+import { useIsFocused } from '@react-navigation/native';
+import Colors from '../contants/Colors';
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
   const [mainImage, setMainImage] = useState(item.main_image);
   const [showAddToCart, setShowAddToCart] = useState(false);
   const navigation = useNavigation();
-  const isLoggedIn=useSelector(isLoggedInSelector)
+  const isLoggedIn=useSelector(isLoggedInSelector);
+  const isFocused = useIsFocused();
 
 
   const handleAddToCart = async() => {
@@ -104,7 +107,7 @@ const JewelryDetails = ({ route }) => {
         <TouchableOpacity onPress={() => handleImageSelect(item.main_image)} >
                 {/* Add to Favorites */}
       <TouchableOpacity onPress={handleFavorite} style={styles.iconFrame}>
-        <MaterialIcons name="favorite-border" size={24} color="black" />
+        <MaterialIcons name="favorite-border" size={24} color={isFocused  ? Colors.DEFAULT_RED : "black"} />
       </TouchableOpacity>
 
           <Image source={{ uri: mainImage }} style={styles.mainImage} resizeMode="cover" />
@@ -114,7 +117,7 @@ const JewelryDetails = ({ route }) => {
       <View style={styles.details}>
         <Text style={styles.name}>{item.name}</Text>
         <Text style={styles.description}>{item.description}</Text>
-        <Text style={styles.price}>Price: TND{item.price}</Text>
+        <Text style={styles.price}>Price: {item.price} TND 💵</Text>
         <View style={styles.containerr}>
         <TouchableOpacity style={styles.cartIcon} onPress={ handleAddToCart}>
         <AntDesign name="shoppingcart" size={24} color="black" />
