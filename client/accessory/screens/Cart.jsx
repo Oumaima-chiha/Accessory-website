@@ -56,7 +56,7 @@ const Cart = () => {
       <Image source={{ uri: item.image }} style={styles.cartItemImage} />
       <View style={styles.cartItemDetails}>
         <Text style={styles.cartItemName}>{item.name}</Text>
-        <Text style={styles.cartItemPrice}>${item.price}</Text>
+        <Text style={styles.cartItemPrice}>{item.price} TND</Text>
         <View style={styles.quantityContainer}>
         <TouchableOpacity style={styles.quantityButton} onPress={()=>decrementQuantity(item.id)}>
             <Text style={styles.quantityButtonText}>-</Text>
@@ -189,10 +189,10 @@ const Cart = () => {
 
           <View style={styles.cartFooter}>
             <View style={styles.totalSection}>
-              <Text style={styles.totalText}>Total: ${calculateTotal()}</Text>
+              <Text style={styles.totalText}>Total: {calculateTotal()}TND</Text>
               {/* Additional info */}
               <Text style={styles.additionalInfo}>
-                Free Shipping on orders over $50
+                Free Shipping on orders over 50 TND
               </Text>
             </View>
 
@@ -200,13 +200,13 @@ const Cart = () => {
               style={styles.proceedButton}
               onPress={proceedToPayment}
             >
-              <Text style={styles.proceedButtonText}>Proceed to Payment</Text>
+              <Text style={styles.proceedButtonText}>Proceed to Payment 🛍️</Text>
             </TouchableOpacity>
           </View>
         </>
       )}
       {(!cart || !cart.items || cart.items.length === 0) && (
-        <Text style={styles.emptyCartText}>Your cart is empty.</Text>
+        <Text style={styles.emptyCartText}>Your cart is empty.🛒</Text>
       )}
     </SafeAreaView>
   );

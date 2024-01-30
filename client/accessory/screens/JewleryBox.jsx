@@ -9,7 +9,7 @@ const JewelryItem = ({ item, onPress }) => {
     <TouchableOpacity style={styles.box} onPress={() => onPress(item)}>
       <Image source={{ uri: item.main_image }} style={styles.image} resizeMode="cover" />
       <Text style={styles.name}>{item.name}</Text>
-      <Text style={styles.price}>${item.price}</Text>
+      <Text style={styles.price}>{item.price}TND 💵</Text>
       <Text numberOfLines={2} ellipsizeMode="tail" style={styles.description}>
         {item.description}
       </Text>
