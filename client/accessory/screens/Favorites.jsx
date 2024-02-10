@@ -5,11 +5,13 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import axios from "../services/axiosInterceptor";
 import {scale} from "../helpers/dim";
 import Toast from "react-native-toast-message";
+import { useNavigation } from '@react-navigation/native';
 
 const Favorites = () => {
   const [favoriteList, setFavoriteList] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigation = useNavigation();
 
 
   const fetchData = async () => {
@@ -69,11 +71,17 @@ const Favorites = () => {
       // Handle errors as needed
     }
   };
+  const handleImagePress = (item ) => {
+    console.log(item)
+    navigation.navigate("details",{ item: item.jewelry});
+  };
 
   const renderFavoriteItem = ({ item }) => (
       <View style={styles.favoriteItemContainer}>
         <View style={styles.favoriteItemContent}>
-          <Image source={{ uri: item.jewelry.main_image }} style={styles.jewelryImage} />
+        <TouchableOpacity onPress={()=>handleImagePress(item)}>
+        <Image source={{ uri: item.jewelry.main_image }} style={styles.jewelryImage} />
+      </TouchableOpacity>
           <View style={styles.jewelryDetails}>
             <Text style={styles.jewelryName}>{item.jewelry.name}</Text>
             {item.description && <Text style={styles.jewelryDescription}>{item.jewelry.description}</Text>}
@@ -162,10 +170,12 @@ const styles = StyleSheet.create({
     borderBottomColor: '#DDD',
   },
   clearAllButton: {
-    backgroundColor: 'red',
-    paddingVertical: 20,
+    backgroundColor: 'brown',
+    paddingVertical: 18,
     paddingHorizontal: 60,
-    borderRadius: 50, // Set borderRadius to 0 for a rectangle
+    width:360,
+    height: 60,
+    borderRadius: 10, // Set borderRadius to 0 for a rectangle
     alignItems: 'center',
   },
   clearAllText: {

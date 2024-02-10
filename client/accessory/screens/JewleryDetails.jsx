@@ -9,6 +9,7 @@ import {isLoggedInSelector} from "../store/user/selectors";
 import Toast from "react-native-toast-message";
 import { useIsFocused } from '@react-navigation/native';
 import Colors from '../contants/Colors';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const JewelryDetails = ({ route }) => {
   const { item } = route.params;
@@ -17,6 +18,7 @@ const JewelryDetails = ({ route }) => {
   const navigation = useNavigation();
   const isLoggedIn=useSelector(isLoggedInSelector);
   const isFocused = useIsFocused();
+
 
 
   const handleAddToCart = async() => {
@@ -78,27 +80,10 @@ const JewelryDetails = ({ route }) => {
     ));
   }, [showAddToCart, mainImage, item]);
 
-  const renderOtherImagesBar = useCallback(() => {
-    return (
-      <View style={styles.otherImagesBar}>
-        <Text style={styles.otherImagesTitle}>See Other Images</Text>
-        <FlatList
-          data={item.extra_images}
-          renderItem={({ item: image }) => (
-            <TouchableOpacity onPress={() => handleImageSelect(image)} >
-              <Image source={{ uri: image }} style={styles.otherImage} resizeMode="cover" />
-            </TouchableOpacity>
-          )}
-          keyExtractor={(image, index) => `${image}_${index}`}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.additionalImagesContainer}
-        />
-      </View>
-    );
-  }, [item]);
+
 
   return (
+   
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.imageBar}>
         <View style={styles.additionalImagesContainer}>
@@ -119,16 +104,23 @@ const JewelryDetails = ({ route }) => {
         <Text style={styles.description}>{item.description}</Text>
         <Text style={styles.price}>Price: {item.price} TND 💵</Text>
         <View style={styles.containerr}>
-        <TouchableOpacity style={styles.cartIcon} onPress={ handleAddToCart}>
-        <AntDesign name="shoppingcart" size={24} color="black" />
-      </TouchableOpacity>
+
+
+      <TouchableOpacity
+              style={styles.proceedButton}
+              onPress={handleAddToCart}
+            >
+
+              <Text style={styles.proceedButtonText}>Add To Cart 🛒</Text>
+            </TouchableOpacity>
 
 
 
     </View>
       </View>
-      {renderOtherImagesBar()}
+      
     </ScrollView>
+
   );
 };
 
@@ -213,15 +205,21 @@ const styles = StyleSheet.create({
     zIndex:9
 
   },
-  cartIcon: {
-    alignItems: 'center',
-    justifyContent:'center',
-    height:50,
-    width:50,
-    borderRadius: 25,
-    zIndex:9,
 
-  }
+  proceedButton: {
+    paddingVertical: 12,
+    marginVertical:32,
+    width:360,
+    height: 40,
+    backgroundColor: 'brown',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+  proceedButtonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
 });
 
 export default JewelryDetails;
