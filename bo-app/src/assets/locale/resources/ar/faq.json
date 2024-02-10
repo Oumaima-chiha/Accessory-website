@@ -1,0 +1,21 @@
+{
+  "name": "سؤال متكرر",
+  "category": "فئة الأسئلة المتكررة",
+  "name_module": "إدارة الأسئلة المتكررة",
+  "tab_title": "$t(name_module)",
+  "tab_title_category": "إدارة الفئة",
+  "success_msgs": {
+    "faq_success": "تم إضافة التعليمات بنجاح",
+    "faq_success_add": "تم إضافة التعليمات بنجاح",
+    "faq_success_update": "تم تحديث التعليمات بنجاح",
+    "faq_success_delete": "تم حذف التعليمات بنجاح",
+    "faq_success_activate": "تم تفعيل التعليمات بنجاح",
+    "faq_success_deactivate": "تم إلغاء تنشيط التعليمات بنجاح",
+    "faq_category_success": "تمت إضافة فئة التعليمات بنجاح",
+    "faq_category_success_add": "تمت إضافة فئة التعليمات بنجاح",
+    "faq_category_success_update": "تم تحديث فئة التعليمات بنجاح",
+    "faq_category_success_delete": "تم حذف فئة التعليمات بنجاح",
+    "faq_category_success_activate": "تم تفعيل فئة التعليمات بنجاح",
+    "faq_category_success_deactivate": "تم إلغاء تنشيط فئة التعليمات بنجاح"
+  }
+}

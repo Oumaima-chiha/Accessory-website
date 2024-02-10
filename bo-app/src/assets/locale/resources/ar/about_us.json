@@ -1,0 +1,12 @@
+{
+  "name": "معلومات عنا",
+  "name_module": "إدارة معلومات مدقق الأعراض",
+  "success_msgs": {
+    "about_us_success": "تمت إضافة معلومات عنا بنجاح",
+    "about_us_success_add": "تمت إضافة معلومات عنا بنجاح",
+    "about_us_success_update": "تم تحديث معلومات عنا بنجاح",
+    "about_us_success_delete": "تم حذف معلومات عنا بنجاح",
+    "about_us_success_activate": "لقد تم تفعيل من نحن بنجاح",
+    "about_us_success_deactivate": "لقد تم إلغاء تنشيط \"معلومات عنا\" بنجاح"
+  }
+}

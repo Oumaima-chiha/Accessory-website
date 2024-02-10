@@ -1,0 +1,19 @@
+{
+  "wrong_credentials": "Wrong credentials! Please enter correct username and password",
+  "error_occurred": "Error occurred, please try again later",
+  "unable_to_proceed": "Unable to use this action",
+  "unable_self_action": "Unable to use this action on your account",
+  "unauthorized": {
+    "title": "Unauthorized Access",
+    "description": "You are not authorized to access, logging out..."
+  },
+  "invalid_image": "Not a valid image type",
+  "max_size_limit": "Max allowed size is 10MB",
+  "confirm_password": "Passwords must match",
+  "field_required": "This field cannot be empty",
+  "too_long": "This field cannot contain long values",
+  "too_short": "This field cannot contain short values",
+  "invalid_email": "Please enter a valid email address",
+  "invalid_phone": "Please enter a valid phone number.",
+  "at_least_one_permission": "At least one permission must be selected"
+}

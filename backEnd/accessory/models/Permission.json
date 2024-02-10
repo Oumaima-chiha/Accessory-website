@@ -1,0 +1,704 @@
+[
+  {
+    "id": 1,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "DASHBOARD_VIEW_STATISTICS",
+    "name": "View Statistics",
+    "categoryId": 1,
+    "delete": false
+  },
+  {
+    "id": 2,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "USER_MANAGEMENT_CREATE_END_USER",
+    "name": "Create End User",
+    "categoryId": 2,
+    "delete": false
+  },
+  {
+    "id": 3,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "USER_MANAGEMENT_UPDATE_END_USER",
+    "name": "Update End User",
+    "categoryId": 2,
+    "delete": false
+  },
+  {
+    "id": 4,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "USER_MANAGEMENT_ACTIVATE_DEACTIVATE_END_USER",
+    "name": "Activate Deactivate End User",
+    "categoryId": 2,
+    "delete": false
+  },
+  {
+    "id": 5,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "USER_MANAGEMENT_VIEW_END_USERS",
+    "name": "View End Users",
+    "categoryId": 2,
+    "delete": false
+  },
+  {
+    "id": 6,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "BO_USER_MANAGEMENT_CREATE_BO_USER",
+    "name": "Create Bo User",
+    "categoryId": 3,
+    "delete": false
+  },
+  {
+    "id": 7,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "BO_USER_MANAGEMENT_UPDATE_BO_USER",
+    "name": "Update Bo User",
+    "categoryId": 3,
+    "delete": false
+  },
+  {
+    "id": 8,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "BO_USER_MANAGEMENT_DELETE_BO_USER",
+    "name": "Delete Bo User",
+    "categoryId": 3,
+    "delete": false
+  },
+  {
+    "id": 9,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "BO_USER_MANAGEMENT_VIEW_BO_USER",
+    "name": "View Bo User",
+    "categoryId": 3,
+    "delete": false
+  },
+  {
+    "id": 10,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "BO_USER_MANAGEMENT_ACTIVATE_DEACTIVATE_BO_USER",
+    "name": "Activate Deactivate Bo User",
+    "categoryId": 3,
+    "delete": false
+  },
+  {
+    "id": 11,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "ROLE_MANAGEMENT_CREATE_ROLE",
+    "name": "Create Role",
+    "categoryId": 4,
+    "delete": false
+  },
+  {
+    "id": 12,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "ROLE_MANAGEMENT_UPDATE_ROLE",
+    "name": "Update Role",
+    "categoryId": 4,
+    "delete": false
+  },
+  {
+    "id": 13,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "ROLE_MANAGEMENT_DELETE_ROLE",
+    "name": "Delete Role",
+    "categoryId": 4,
+    "delete": false
+  },
+  {
+    "id": 14,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "ROLE_MANAGEMENT_VIEW_ROLES",
+    "name": "View Roles",
+    "categoryId": 4,
+    "delete": false
+  },
+  {
+    "id": 15,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FAQ_MANAGEMENT_CREATE_FAQ",
+    "name": "Create FAQ",
+    "categoryId": 5,
+    "delete": false
+  },
+  {
+    "id": 16,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FAQ_MANAGEMENT_UPDATE_FAQ",
+    "name": "Update FAQ",
+    "categoryId": 5,
+    "delete": false
+  },
+  {
+    "id": 17,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FAQ_MANAGEMENT_DELETE_FAQ",
+    "name": "Delete FAQ",
+    "categoryId": 5,
+    "delete": false
+  },
+  {
+    "id": 18,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FAQ_MANAGEMENT_VIEW_FAQS",
+    "name": "View FAQS",
+    "categoryId": 5,
+    "delete": false
+  },
+  {
+    "id": 19,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "NEWS_MANAGEMENT_CREATE_NEWS",
+    "name": "Create News",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 20,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "NEWS_MANAGEMENT_UPDATE_NEWS",
+    "name": "Update News",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 21,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "NEWS_MANAGEMENT_DELETE_NEWS",
+    "name": "Delete News",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 22,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "NEWS_MANAGEMENT_VIEW_NEWS",
+    "name": "View News",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 23,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FEEDBACK_MANAGEMENT_CREATE_FEEDBACK_CATEGORY",
+    "name": "Create Feedback Category",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 24,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FEEDBACK_MANAGEMENT_UPDATE_FEEDBACK_CATEGORY",
+    "name": "Update Feedback Category",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 25,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FEEDBACK_MANAGEMENT_DELETE_FEEDBACK_CATEGORY",
+    "name": "Delete Feedback Category",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 26,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FEEDBACK_MANAGEMENT_VIEW_FEEDBACK_CATEGORIES",
+    "name": "View Feedback Categories",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 27,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FEEDBACK_MANAGEMENT_ANSWER_USER_FEEDBACK",
+    "name": "Answer User Feedback",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 28,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FEEDBACK_MANAGEMENT_DELETE_USER_FEEDBACK",
+    "name": "Delete User Feedback",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 29,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FEEDBACK_MANAGEMENT_VIEW_USERS_FEEDBACKS",
+    "name": "View Users Feedbacks",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 30,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "TIPS_MANAGEMENT_CREATE_TIP",
+    "name": "Create Tip",
+    "categoryId": 8,
+    "delete": false
+  },
+  {
+    "id": 31,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "TIPS_MANAGEMENT_UPDATE_TIP",
+    "name": "Update Tip",
+    "categoryId": 8,
+    "delete": false
+  },
+  {
+    "id": 32,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "TIPS_MANAGEMENT_DELETE_TIP",
+    "name": "Delete Tip",
+    "categoryId": 8,
+    "delete": false
+  },
+  {
+    "id": 33,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "TIPS_MANAGEMENT_VIEW_TIPS",
+    "name": "View Tips",
+    "categoryId": 8,
+    "delete": false
+  },
+  {
+    "id": 34,
+    "createdAt": "2023-09-13 15:00:59.000",
+    "updatedAt": "2023-09-13 15:01:01.000",
+    "code": "TIPS_MANAGEMENT_ACTIVATE_DEACTIVATE_TIPS",
+    "name": "Activate Deactivate Tips",
+    "categoryId": 8,
+    "delete": false
+  },
+  {
+    "id": 35,
+    "createdAt": "2023-09-13 15:01:58.000",
+    "updatedAt": "2023-09-13 15:02:00.000",
+    "code": "NEWS_MANAGEMENT_ACTIVATE_DEACTIVATE_NEWS",
+    "name": "Activate Deactivate News",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 36,
+    "createdAt": "2023-09-13 15:03:08.000",
+    "updatedAt": "2023-09-13 15:03:10.000",
+    "code": "FEEDBACK_MANAGEMENT_ACTIVATE_DEACTIVATE_FEEDBACK_CATEGORY",
+    "name": "Activate Deactivate Feedback Category ",
+    "categoryId": 7,
+    "delete": false
+  },
+  {
+    "id": 37,
+    "createdAt": "2023-09-14 11:56:11.000",
+    "updatedAt": "2023-09-14 11:56:13.000",
+    "code": "NEWS_MANAGEMENT_CREATE_TOPIC",
+    "name": "Create Topic",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 38,
+    "createdAt": "2023-09-14 11:56:56.000",
+    "updatedAt": "2023-09-14 11:56:57.000",
+    "code": "NEWS_MANAGEMENT_VIEW_TOPICS",
+    "name": "View Topics",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 39,
+    "createdAt": "2023-09-14 11:57:28.000",
+    "updatedAt": "2023-09-14 11:57:30.000",
+    "code": "NEWS_MANAGEMENT_UPDATE_TOPIC",
+    "name": "Update topic",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 40,
+    "createdAt": "2023-09-14 11:58:03.000",
+    "updatedAt": "2023-09-14 11:58:04.000",
+    "code": "NEWS_MANAGEMENT_DELETE_TOPIC",
+    "name": "Delete topic",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 41,
+    "createdAt": "2023-09-14 11:58:30.000",
+    "updatedAt": "2023-09-14 11:58:31.000",
+    "code": "NEWS_MANAGEMENT_ACTIVATE_DEACTIVATE_TOPIC",
+    "name": "Activate Deactivate Topic",
+    "categoryId": 6,
+    "delete": false
+  },
+  {
+    "id": 42,
+    "createdAt": "2023-10-10 13:24:25.000",
+    "updatedAt": "2023-10-10 13:24:27.000",
+    "code": "LEGAL_MANAGEMENT_CREATE_TERMS_CONDITIONS",
+    "name": "Create Terms & Conditions",
+    "categoryId": 9,
+    "delete": false
+  },
+  {
+    "id": 43,
+    "createdAt": "2023-10-10 13:25:36.000",
+    "updatedAt": "2023-10-10 13:25:40.000",
+    "code": "LEGAL_MANAGEMENT_UPDATE_TERMS_CONDITIONS",
+    "name": "Update Terms & Conditions",
+    "categoryId": 9,
+    "delete": false
+  },
+  {
+    "id": 44,
+    "createdAt": "2023-10-10 13:30:10.000",
+    "updatedAt": "2023-10-10 13:30:07.000",
+    "code": "LEGAL_MANAGEMENT_DELETE_TERMS_CONDITIONS",
+    "name": "Delete Terms & Conditions",
+    "categoryId": 9,
+    "delete": false
+  },
+  {
+    "id": 45,
+    "createdAt": "2023-10-10 13:31:05.000",
+    "updatedAt": "2023-10-10 13:31:03.000",
+    "code": "LEGAL_MANAGEMENT_VIEW_TERMS_CONDITIONS",
+    "name": "View Terms & Conditions",
+    "categoryId": 9,
+    "delete": false
+  },
+  {
+    "id": 46,
+    "createdAt": "2023-10-10 13:33:26.000",
+    "updatedAt": "2023-10-10 13:33:24.000",
+    "code": "LEGAL_MANAGEMENT_ACTIVATE_DEACTIVATE_TERMS_CONDITIONS",
+    "name": "Activate Deactivate Terms & Conditions",
+    "categoryId": 9,
+    "delete": false
+  },
+  {
+    "id": 47,
+    "createdAt": "1970-01-01 00:00:00.042",
+    "updatedAt": "2023-10-10 13:24:25.000",
+    "code": "LEGAL_MANAGEMENT_CREATE_PRIVACY_POLICY",
+    "name": "Create Privacy & Policy",
+    "categoryId": 10,
+    "delete": false
+  },
+  {
+    "id": 48,
+    "createdAt": "1970-01-01 00:00:00.043",
+    "updatedAt": "2023-10-10 13:25:36.000",
+    "code": "LEGAL_MANAGEMENT_UPDATE_PRIVACY_POLICY",
+    "name": "Update Privacy & Policy",
+    "categoryId": 10,
+    "delete": false
+  },
+  {
+    "id": 49,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "LEGAL_MANAGEMENT_DELETE_PRIVACY_POLICY",
+    "name": "Delete Privacy & Policy",
+    "categoryId": 10,
+    "delete": false
+  },
+  {
+    "id": 50,
+    "createdAt": "1970-01-01 00:00:00.045",
+    "updatedAt": "2023-10-10 13:31:05.000",
+    "code": "LEGAL_MANAGEMENT_VIEW_PRIVACY_POLICY",
+    "name": "View Privacy & Policy",
+    "categoryId": 10,
+    "delete": false
+  },
+  {
+    "id": 51,
+    "createdAt": "1970-01-01 00:00:00.046",
+    "updatedAt": "2023-10-10 13:33:26.000",
+    "code": "LEGAL_MANAGEMENT_ACTIVATE_DEACTIVATE_PRIVACY_POLICY",
+    "name": "Activate Deactivate Privacy & Policy",
+    "categoryId": 10,
+    "delete": false
+  },
+  {
+    "id": 52,
+    "createdAt": "1970-01-01 00:00:00.042",
+    "updatedAt": "2023-10-10 13:24:25.000",
+    "code": "ABOUT_US_MANAGEMENT_CREATE_ABOUT_US",
+    "name": "Create About Us",
+    "categoryId": 11,
+    "delete": false
+  },
+  {
+    "id": 53,
+    "createdAt": "1970-01-01 00:00:00.043",
+    "updatedAt": "2023-10-10 13:25:36.000",
+    "code": "ABOUT_US_MANAGEMENT_UPDATE_ABOUT_US",
+    "name": "Update About Us",
+    "categoryId": 11,
+    "delete": false
+  },
+  {
+    "id": 54,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "ABOUT_US_MANAGEMENT_DELETE_ABOUT_US",
+    "name": "Delete About Us",
+    "categoryId": 11,
+    "delete": false
+  },
+  {
+    "id": 55,
+    "createdAt": "1970-01-01 00:00:00.045",
+    "updatedAt": "2023-10-10 13:31:05.000",
+    "code": "ABOUT_US_MANAGEMENT_VIEW_ABOUT_US",
+    "name": "View About Us",
+    "categoryId": 11,
+    "delete": false
+  },
+  {
+    "id": 56,
+    "createdAt": "1970-01-01 00:00:00.042",
+    "updatedAt": "2023-10-10 13:24:25.000",
+    "code": "NOTIFICATIONS_MANAGEMENT_CREATE_NOTIFICATION",
+    "name": "Create Notification",
+    "categoryId": 12,
+    "delete": false
+  },
+  {
+    "id": 57,
+    "createdAt": "1970-01-01 00:00:00.043",
+    "updatedAt": "2023-10-10 13:25:36.000",
+    "code": "NOTIFICATIONS_MANAGEMENT_UPDATE_NOTIFICATION",
+    "name": "Update Notification",
+    "categoryId": 12,
+    "delete": false
+  },
+  {
+    "id": 58,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "NOTIFICATIONS_MANAGEMENT_DELETE_NOTIFICATION",
+    "name": "Delete Notification",
+    "categoryId": 12,
+    "delete": false
+  },
+  {
+    "id": 59,
+    "createdAt": "1970-01-01 00:00:00.045",
+    "updatedAt": "2023-10-10 13:31:05.000",
+    "code": "NOTIFICATIONS_MANAGEMENT_VIEW_NOTIFICATIONS",
+    "name": "View Notifications",
+    "categoryId": 12,
+    "delete": false
+  },
+  {
+    "id": 60,
+    "createdAt": "2023-09-14 11:56:11.000",
+    "updatedAt": "2023-09-14 11:56:13.000",
+    "code": "SURVEY_QUESTIONS_MANAGEMENT_CREATE_SURVEY_QUESTION",
+    "name": "Create Survey Question",
+    "categoryId": 13,
+    "delete": false
+  },
+  {
+    "id": 61,
+    "createdAt": "2023-09-14 11:56:56.000",
+    "updatedAt": "2023-09-14 11:56:57.000",
+    "code": "SURVEY_QUESTIONS_MANAGEMENT_VIEW_SURVEY_QUESTIONS",
+    "name": "View Survey Questions",
+    "categoryId": 13,
+    "delete": false
+  },
+  {
+    "id": 62,
+    "createdAt": "2023-09-14 11:57:28.000",
+    "updatedAt": "2023-09-14 11:57:30.000",
+    "code": "SURVEY_QUESTIONS_MANAGEMENT_UPDATE_SURVEY_QUESTION",
+    "name": "Update Survey Question",
+    "categoryId": 13,
+    "delete": false
+  },
+  {
+    "id": 63,
+    "createdAt": "2023-09-14 11:58:03.000",
+    "updatedAt": "2023-09-14 11:58:04.000",
+    "code": "SURVEY_QUESTIONS_MANAGEMENT_DELETE_SURVEY_QUESTION",
+    "name": "Delete Survey Question",
+    "categoryId": 13,
+    "delete": false
+  },
+  {
+    "id": 64,
+    "createdAt": "2023-09-14 11:58:30.000",
+    "updatedAt": "2023-09-14 11:58:31.000",
+    "code": "SURVEY_QUESTION_MANAGEMENT_ACTIVATE_DEACTIVATE_SURVEY_QUESTION",
+    "name": "Activate Deactivate Survey Question",
+    "categoryId": 13,
+    "delete": false
+  },
+  {
+    "id": 65,
+    "createdAt": "2023-09-14 11:56:11.000",
+    "updatedAt": "2023-09-14 11:56:13.000",
+    "code": "SURVEY_QUESTION_OPTIONS_MANAGEMENT_CREATE_SURVEY_QUESTION_OPTION",
+    "name": "Create Survey Question Option",
+    "categoryId": 14,
+    "delete": false
+  },
+  {
+    "id": 66,
+    "createdAt": "2023-09-14 11:56:56.000",
+    "updatedAt": "2023-09-14 11:56:57.000",
+    "code": "SURVEY_QUESTION_OPTIONS_MANAGEMENT_VIEW_SURVEY_QUESTION_OPTIONS",
+    "name": "View Survey Question Options",
+    "categoryId": 14,
+    "delete": false
+  },
+  {
+    "id": 67,
+    "createdAt": "2023-09-14 11:57:28.000",
+    "updatedAt": "2023-09-14 11:57:30.000",
+    "code": "SURVEY_QUESTION_OPTIONS_MANAGEMENT_UPDATE_SURVEY_QUESTION_OPTION",
+    "name": "Update Survey Question Option",
+    "categoryId": 14,
+    "delete": false
+  },
+  {
+    "id": 68,
+    "createdAt": "2023-09-14 11:58:03.000",
+    "updatedAt": "2023-09-14 11:58:04.000",
+    "code": "SURVEY_QUESTION_OPTIONS_MANAGEMENT_DELETE_SURVEY_QUESTION_OPTION",
+    "name": "Delete Survey Question Option",
+    "categoryId": 14,
+    "delete": false
+  },
+  {
+    "id": 69,
+    "createdAt": "2023-09-14 11:58:30.000",
+    "updatedAt": "2023-09-14 11:58:31.000",
+    "code": "SURVEY_QUESTION_OPTIONS_MANAGEMENT_ACTIVATE_DEACTIVATE_SURVEY_QUESTION_OPTION",
+    "name": "Activate Deactivate Survey Question Option",
+    "categoryId": 14,
+    "delete": false
+  },
+  {
+    "id": 73,
+    "createdAt": "2023-11-14 15:14:12.000",
+    "updatedAt": "2023-11-14 15:14:10.000",
+    "code": "CONTENT_APPROVAL_APPROVE_DISAPPROVE_CONTENT",
+    "name": "Approve Disapprove Content",
+    "categoryId": 15,
+    "delete": false
+  },
+  {
+    "id": 74,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "FAQ_CATEGORY_MANAGEMENT_CREATE_CATEGORY",
+    "name": "Create FAQ Category",
+    "categoryId": 16,
+    "delete": false
+  },
+  {
+    "id": 75,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "FAQ_CATEGORY_MANAGEMENT_VIEW_CATEGORIES",
+    "name": "View FAQ Category",
+    "categoryId": 16,
+    "delete": false
+  },
+  {
+    "id": 76,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "FAQ_CATEGORY_MANAGEMENT_UPDATE_CATEGORY",
+    "name": "Update FAQ Category",
+    "categoryId": 16,
+    "delete": false
+  },
+  {
+    "id": 77,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "FAQ_CATEGORY_MANAGEMENT_DELETE_CATEGORY",
+    "name": "Delete FAQ Category",
+    "categoryId": 16,
+    "delete": false
+  },
+  {
+    "id": 78,
+    "createdAt": "1970-01-01 00:00:00.045",
+    "updatedAt": "2023-10-10 13:31:05.000",
+    "code": "ABOUT_US_MANAGEMENT_ACTIVATE_DEACTIVATE_ABOUT_US",
+    "name": "Activate Deactivate About Us",
+    "categoryId": 11,
+    "delete": false
+  },
+  {
+    "id": 79,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "FAQ_MANAGEMENT_ACTIVATE_DEACTIVATE_FAQ",
+    "name": "Activate Deactivate FAQ",
+    "categoryId": 5,
+    "delete": false
+  },
+  {
+    "id": 80,
+    "createdAt": "2023-08-25 13:20:43.679",
+    "updatedAt": "2023-08-25 14:20:16.000",
+    "code": "ROLE_MANAGEMENT_ACTIVATE_DEACTIVATE_ROLE",
+    "name": "Activate Deactivate Role",
+    "categoryId": 4,
+    "delete": false
+  },
+  {
+    "id": 81,
+    "createdAt": "1970-01-01 00:00:00.044",
+    "updatedAt": "2023-10-10 13:30:10.000",
+    "code": "FAQ_CATEGORY_MANAGEMENT_ACTIVATE_DEACTIVATE_CATEGORY",
+    "name": "Activate Deactivate FAQ Category",
+    "categoryId": 16,
+    "delete": false
+  }
+]

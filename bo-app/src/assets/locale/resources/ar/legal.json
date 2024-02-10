@@ -1,0 +1,20 @@
+{
+  "name": "قانوني",
+  "name_module": "الإدارة القانونية",
+  "terms_conditions": "الأحكام والشروط",
+  "privacy_policy": "خصوصية",
+  "success_msgs": {
+    "terms_conditions_success": "$t(terms_conditions) تمت إضافتها بنجاح",
+    "terms_conditions_success_add": "$t(terms_conditions) تمت إضافتها بنجاح",
+    "terms_conditions_success_update": "$t(terms_conditions) تم التحديث بنجاح",
+    "terms_conditions_success_delete": "$t(terms_conditions) تم حذفه بنجاح",
+    "terms_conditions_success_activate": "$t(terms_conditions) تم تفعيله بنجاح",
+    "terms_conditions_success_deactivate": "$t(terms_conditions) تم إلغاء التنشيط بنجاح",
+    "privacy_policy_success": "$t(privacy_policy) تمت إضافتها بنجاح",
+    "privacy_policy_success_add": "$t(privacy_policy) تمت إضافتها بنجاح",
+    "privacy_policy_success_update": "$t(privacy_policy) تم التحديث بنجاح",
+    "privacy_policy_success_delete": "$t(privacy_policy) تم حذفه بنجاح",
+    "privacy_policy_success_activate": "$t(privacy_policy) تم تفعيله بنجاح",
+    "privacy_policy_success_deactivate": "$t(privacy_policy) تم إلغاء التنشيط بنجاح"
+  }
+}

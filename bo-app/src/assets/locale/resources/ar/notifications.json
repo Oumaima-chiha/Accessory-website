@@ -1,0 +1,14 @@
+{
+  "name": "إشعارات",
+  "name_module": "إدارة الإخطارات",
+  "users": "المستخدمين",
+  "users_all": "جميع المستخدمين",
+  "users_guest": "المستخدمون الضيوف",
+  "users_registered": "المستخدمون المسجلون",
+  "success_msgs": {
+    "notification_success": "تمت إضافة الإخطار بنجاح",
+    "notification_success_sent": "تم إرسال الإشعار بنجاح",
+    "notification_success_update": "تم تحديث الإخطار بنجاح",
+    "notification_success_delete": "تم حذف الإشعار بنجاح"
+  }
+}

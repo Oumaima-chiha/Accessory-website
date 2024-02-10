@@ -1,0 +1,22 @@
+{
+  "name": "News",
+  "name_module": "News Management",
+  "tab_title": "News Management",
+  "tab_title_topics": "Topics Management",
+  "topic": "Topic",
+  "news": "News",
+  "success_msgs": {
+    "news_success": "$t(news) has been added successfully",
+    "news_success_add": "$t(news) has been added successfully",
+    "news_success_update": "$t(news) has been updated successfully",
+    "news_success_delete": "$t(news) has been deleted successfully",
+    "news_success_activate": "$t(news) has been activated successfully",
+    "news_success_deactivate": "$t(news) has been deactivated successfully",
+    "topic_success": "$t(topic) has been added successfully",
+    "topic_success_add": "$t(topic) has been added successfully",
+    "topic_success_update": "$t(topic) has been updated successfully",
+    "topic_success_delete": "$t(topic) has been deleted successfully",
+    "topic_success_activate": "$t(topic) has been activated successfully",
+    "topic_success_deactivate": "$t(topic) has been deactivated successfully"
+  }
+}

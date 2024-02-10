@@ -1,0 +1,12 @@
+{
+  "name": "Role",
+  "name_module": "Role Management",
+  "check_all": "Check All",
+  "uncheck_all": "Uncheck All",
+  "success_msgs": {
+    "role_success": "Role has been added successfully",
+    "role_success_add": "Role has been added successfully",
+    "role_success_update": "Role has been updated successfully",
+    "role_success_delete": "Role has been deleted successfully"
+  }
+}

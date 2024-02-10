@@ -24,13 +24,85 @@ model User {
   verifyToken     String?
   otp             Int?
   resetCode       Int?
-  role            Role
+  role            UserType
   customer        Message[]
   payment         Payment[]
   Cart            Cart[]
   billingInfo     BillingInfo?
   shippingAddress ShippingAddress?
   favoriteList    FavoriteList?
+}
+
+model BackOfficeUser {
+  id           Int      @id @default(autoincrement())
+  createdAt    DateTime @default(now())
+  username     String   @unique
+  firstname    String
+  lastname     String
+  password     String
+  email        String   @unique
+  active       Boolean? @default(true)
+  refreshToken String?
+  role         Role?    @relation(fields: [roleId], references: [id])
+  roleId       Int?
+  // faqCreated                 Faq[]                @relation("CreatedByUser")
+  // faqReviewed                Faq[]                @relation("ReviewedByUser")
+  // aboutUsCreated             AboutUs[]            @relation("CreatedByUser")
+  // aboutUsReviewed            AboutUs[]            @relation("ReviewedByUser")
+  // newsCreated                News[]               @relation("CreatedByUser")
+  // newsReviewed               News[]               @relation("ReviewedByUser")
+  // tipsReviewed               Tip[]                @relation(name: "ReviewedByUser")
+  // tipsCreated                Tip[]                @relation(name: "CreatedByUser")
+  // termsAndConditionsReviewed TermsAndConditions[] @relation(name: "ReviewedByUser")
+  // termsAndConditionsCreated  TermsAndConditions[] @relation(name: "CreatedByUser")
+  // privacyPolicyReviewed      PrivacyPolicy[]      @relation(name: "ReviewedByUser")
+  // privacyPolicyCreated       PrivacyPolicy[]      @relation(name: "CreatedByUser")
+
+  delete Boolean? @default(false)
+}
+
+model Role {
+  id          Int                 @id @default(autoincrement())
+  name        String              @unique
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  users       BackOfficeUser[]
+  permissions RolesOnPermission[]
+  delete      Boolean?            @default(false)
+}
+
+model Permission {
+  id         Int                 @id @default(autoincrement())
+  createdAt  DateTime            @default(now())
+  updatedAt  DateTime            @updatedAt
+  code       String              @unique
+  name       String
+  roles      RolesOnPermission[]
+  category   RoleCategory?       @relation(fields: [categoryId], references: [id])
+  categoryId Int?
+  delete     Boolean?            @default(false)
+}
+
+model RolesOnPermission {
+  role         Role?       @relation(fields: [roleId], references: [id])
+  roleId       Int
+  permission   Permission? @relation(fields: [permissionId], references: [id])
+  permissionId Int
+  createdAt    DateTime    @default(now())
+
+  @@id([roleId, permissionId])
+}
+
+model RoleCategory {
+  id               Int            @id @default(autoincrement())
+  name             String         @unique
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+  permissions      Permission[]
+  parentCategory   RoleCategory?  @relation("SubCategories", fields: [parentCategoryId], references: [id])
+  parentCategoryId Int?
+  subCategories    RoleCategory[] @relation("SubCategories")
+  delete           Boolean?       @default(false)
 }
 
 model FavoriteList {
@@ -156,7 +228,7 @@ model CartItem {
   jewelryId Int
 }
 
-enum Role {
+enum UserType {
   CUSTOMER
   OWNER
 }

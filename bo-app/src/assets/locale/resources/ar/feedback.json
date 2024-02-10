@@ -1,0 +1,25 @@
+{
+  "name": "ملاحظة",
+  "name_module": "إدارة الملاحظات",
+  "start_date": "تاريخ البدء",
+  "end_date": "تاريخ الانتهاء",
+  "users_feedback": {
+    "name_one": "تعليق المستخدم",
+    "name_other": "تعليقات المستخدمين"
+  },
+  "feedback_categories": {
+    "name": "إدارة الفئة"
+  },
+  "success_msgs": {
+    "feedback_answer_success": "تمت إضافة التعليقات بنجاح",
+    "feedback_answer_success_answer": "تم الرد على التعليقات بنجاح",
+    "feedback_answer_success_update": "تم تحديث إجابة الملاحظات بنجاح",
+    "feedback_answer_success_delete": "تم حذف إجابة الملاحظات بنجاح",
+    "feedback_category_success": "تمت إضافة فئة الملاحظات بنجاح",
+    "feedback_category_success_answer": "تمت إضافة فئة الملاحظات بنجاح",
+    "feedback_category_success_update": "تم تحديث فئة الملاحظات بنجاح",
+    "feedback_category_success_delete": "تم حذف فئة الملاحظات بنجاح",
+    "feedback_category_success_activate": "تم تفعيل فئة الملاحظات بنجاح",
+    "feedback_category_success_deactivate": "تم إلغاء تنشيط فئة الملاحظات بنجاح"
+  }
+}

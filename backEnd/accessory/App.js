@@ -6,6 +6,7 @@ const jewelryRouter=require('./routes/Jewelry')
 const customersRouter=require('./routes/customer')
 const cartRouter =require('./routes/cart')
 const paymentRouter =require('./routes/payment')
+const boAuthRouter =require('./routes/bo-auth')
 const {join} = require("path");
 
 
@@ -38,6 +39,7 @@ app.use('/api/Jewelry',jewelryRouter)
 app.use('/api/customers', customersRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/pay', paymentRouter)
+app.use('/api/bo-auth', boAuthRouter);
 app.use('/api/static', express.static(join(__dirname, 'public')))
 app.listen(port, () => {
     console.log(`app listening on port ${port}`)
