@@ -1,0 +1,25 @@
+{
+  "name": "Feedback",
+  "name_module": "Feedback Management",
+  "start_date": "Start Date",
+  "end_date": "End Date",
+  "users_feedback": {
+    "name_one": "User Feedback",
+    "name_other": "Users Feedback"
+  },
+  "feedback_categories": {
+    "name": "Category Management"
+  },
+  "success_msgs": {
+    "feedback_answer_success": "Feedback has been added successfully",
+    "feedback_answer_success_answer": "Feedback has been answered successfully",
+    "feedback_answer_success_update": "Feedback Answer has been updated successfully",
+    "feedback_answer_success_delete": "Feedback Answer has been deleted successfully",
+    "feedback_category_success": "Feedback Category has been added successfully",
+    "feedback_category_success_answer": "Feedback Category has been added successfully",
+    "feedback_category_success_update": "Feedback Category has been updated successfully",
+    "feedback_category_success_delete": "Feedback Category has been deleted successfully",
+    "feedback_category_success_activate": "Feedback Category has been activated successfully",
+    "feedback_category_success_deactivate": "Feedback Category has been deactivated successfully"
+  }
+}

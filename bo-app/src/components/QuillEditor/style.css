@@ -1,0 +1,13 @@
+.ql-toolbar {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  background-color: rgba(13, 66, 97, 0.1);
+}
+.ql-parent > .ql-container {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: rgba(13, 66, 97, 0.1);
+}
+.ql-parent > .ql-container > .ql-editor {
+  min-height: 250px;
+}

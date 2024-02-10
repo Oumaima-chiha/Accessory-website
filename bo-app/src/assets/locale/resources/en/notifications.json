@@ -1,0 +1,14 @@
+{
+  "name": "Notifications",
+  "name_module": "Notifications Management",
+  "users": "Users",
+  "users_all": "All Users",
+  "users_guest": "Guest Users",
+  "users_registered": "Registered Users",
+  "success_msgs": {
+    "notification_success": "Notification has been added successfully",
+    "notification_success_sent": "Notification has been sent successfully",
+    "notification_success_update": "Notification has been updated successfully",
+    "notification_success_delete": "Notification has been Deleted successfully"
+  }
+}

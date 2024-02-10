@@ -1,0 +1,13 @@
+{
+  "dashboard": "Dashboard",
+  "user_management": "General User Management",
+  "bo_user_management": "BO User Management",
+  "role_management": "Role Management",
+  "feedback_management": "Feedback Management",
+  "news_management": "News & Topics Management",
+  "tip_management": "Tips Management",
+  "faq_management": "FAQ Management",
+  "about_us_management": "About Us Management",
+  "notifications_management": "Notifications Management",
+  "legal_management": "Legal Management"
+}

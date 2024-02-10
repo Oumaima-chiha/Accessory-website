@@ -1,0 +1,43 @@
+{
+  "confirm": "تأكيد",
+  "confirm_msg": "هل أنت متأكد من رغبتك في المتابعة؟",
+  "user": "مستخدم",
+  "user_bo": "مستخدم المكتب الخلفي",
+  "add": "إضافة",
+  "edit": "تحديث",
+  "delete": "يمسح",
+  "activate": "تفعيل التنشيط",
+  "deactivate": "إلغاء التنشيط",
+  "deactivate_user": "إلغاء تنشيط المستخدم",
+  "approve": "الموافقة",
+  "reject": "رفض",
+  "approve_content": "الموافقة على المحتوى",
+  "disapprove_content": "رفض المحتوى",
+  "update_password": "تحرير كلمة المرور",
+  "view": "عرض",
+  "push": "دفع",
+  "answer": "إجابة",
+  "filter": "التصفية",
+  "file_upload": "رفع الملف",
+  "file_preview": "ملف المعاينة",
+  "file_not_selected": "لم يتم تحديد ملف",
+  "export": "يصدّر",
+  "export_excel": "تصدير كملف Excel",
+  "refetch": "تحديث البيانات",
+  "success_msgs": {
+    "users_success": "تمت إضافة المستخدم بنجاح",
+    "users_success_add": "تمت إضافة المستخدم بنجاح",
+    "users_success_update": "تم تحديث المستخدم بنجاح",
+    "users_success_update_password": "تم تحديث كلمة مرور المستخدم بنجاح",
+    "users_success_delete": "تم حذف المستخدم بنجاح",
+    "users_success_activate": "تم تفعيل المستخدم بنجاح",
+    "users_success_deactivate": "تم إلغاء تنشيط المستخدم بنجاح",
+    "content_approval_approved": "تمت الموافقة على المحتوى بنجاح",
+    "content_approval_rejected": "تم رفض المحتوى بنجاح"
+  },
+  "content_approval_modal": {
+    "schedule_date": "حدد تاريخ نشر هذا المحتوى",
+    "comment": "اترك تعليقا",
+    "comment_rejection": "اترك تعليقًا بالرفض لإعلام الوكيل به."
+  }
+}

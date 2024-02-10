@@ -1,0 +1,12 @@
+{
+  "name": "Tips",
+  "name_module": "Tips Management",
+  "success_msgs": {
+    "tip_success": "Tip has been added successfully",
+    "tip_success_add": "Tip has been added successfully",
+    "tip_success_update": "Tip has been updated successfully",
+    "tip_success_delete": "Tip has been deleted successfully",
+    "tip_success_activate": "Tip has been activated successfully",
+    "tip_success_deactivate": "Tip has been deactivated successfully"
+  }
+}

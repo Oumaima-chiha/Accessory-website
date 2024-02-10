@@ -1,0 +1,12 @@
+{
+  "name": "دور",
+  "name_module": "إدارة الأدوار",
+  "check_all": "اختر الكل",
+  "uncheck_all": "الغاءالكل",
+  "success_msgs": {
+    "role_success": "تمت إضافة الدور بنجاح",
+    "role_success_add": "تمت إضافة الدور بنجاح",
+    "role_success_update": "تم تحديث الدور بنجاح",
+    "role_success_delete": "تم حذف الدور بنجاح"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "dashboard": "لوحة القيادة",
+  "user_management": "إدارة المستخدم العامة",
+  "bo_user_management": "إدارة مستخدم BO",
+  "role_management": "إدارة الأدوار",
+  "feedback_management": "إدارة ردود الفعل",
+  "news_management": "أخبار",
+  "tip_management": "إدارة النصائح",
+  "faq_management": "إدارة الأسئلة الشائعة",
+  "about_us_management": "إدارة من نحن",
+  "notifications_management": "إدارة الإخطارات"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "FAQ",
+  "category": "FAQ Category",
+  "name_module": "FAQ Management",
+  "tab_title": "$t(name_module)",
+  "tab_title_category": "Category Management",
+  "success_msgs": {
+    "faq_success": "FAQ has been added successfully",
+    "faq_success_add": "FAQ has been added successfully",
+    "faq_success_update": "FAQ has been updated successfully",
+    "faq_success_delete": "FAQ has been deleted successfully",
+    "faq_success_activate": "FAQ has been activated successfully",
+    "faq_success_deactivate": "FAQ has been deactivated successfully",
+    "faq_category_success": "FAQ Category has been added successfully",
+    "faq_category_success_add": "FAQ Category has been added successfully",
+    "faq_category_success_update": "FAQ Category has been updated successfully",
+    "faq_category_success_delete": "FAQ Category has been deleted successfully",
+    "faq_category_success_activate": "FAQ Category has been activated successfully",
+    "faq_category_success_deactivate": "FAQ Category has been deactivated successfully"
+  }
+}

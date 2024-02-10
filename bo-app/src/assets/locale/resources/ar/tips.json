@@ -1,0 +1,12 @@
+{
+  "name": "إرشاد",
+  "name_module": "إدارة الإرشادات",
+  "success_msgs": {
+    "tip_success": "تمت إضافة نصيحة بنجاح",
+    "tip_success_add": "تمت إضافة نصيحة بنجاح",
+    "tip_success_update": "تم تحديث النصيحة بنجاح",
+    "tip_success_delete": "تم حذف النصيحة بنجاح",
+    "tip_success_activate": "تم تفعيل النصيحة بنجاح",
+    "tip_success_deactivate": "تم إلغاء تنشيط النصيحة بنجاح"
+  }
+}

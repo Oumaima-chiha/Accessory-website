@@ -1,0 +1,12 @@
+{
+  "name": "About Us",
+  "name_module": "About us Management",
+  "success_msgs": {
+    "about_us_success": "About us has been added successfully",
+    "about_us_success_add": "About us has been added successfully",
+    "about_us_success_update": "About us has been updated successfully",
+    "about_us_success_delete": "About us has been deleted successfully",
+    "about_us_success_activate": "About us has been activated successfully",
+    "about_us_success_deactivate": "About us has been deactivated successfully"
+  }
+}

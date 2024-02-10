@@ -1,0 +1,22 @@
+{
+  "name": "أخبار",
+  "name_module": "إدارة الأخبار",
+  "tab_title": "إدارة الأخبار",
+  "tab_title_topics": "إدارة المواضيع",
+  "topic": "عنوان",
+  "news": "أخبار",
+  "success_msgs": {
+    "news_success": "$t(news) تمت إضافتها بنجاح",
+    "news_success_add": "$t(news) تمت إضافتها بنجاح",
+    "news_success_update": "$t(news) تم التحديث بنجاح",
+    "news_success_delete": "$t(news) تم حذفه بنجاح",
+    "news_success_activate": "$t(news) تم تفعيله بنجاح",
+    "news_success_deactivate": "$t(news) تم إلغاء التنشيط بنجاح",
+    "topic_success": "$t(topic) تمت إضافتها بنجاح",
+    "topic_success_add": "$t(topic) تمت إضافتها بنجاح",
+    "topic_success_update": "$t(topic) تم التحديث بنجاح",
+    "topic_success_delete": "$t(topic) تم حذفه بنجاح",
+    "topic_success_activate": "$t(topic) تم تفعيله بنجاح",
+    "topic_success_deactivate": "$t(topic) تم إلغاء التنشيط بنجاح"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "hello": "Hello",
+  "search": "Search",
+  "welcome": "Hi {{user}}, Welcome back!",
+  "footer": "TASMU Qatar, INC. All rights reserved",
+  "login": "Log in",
+  "login_now": "Log in Now",
+  "logout": "Logout",
+  "next": "Next",
+  "back": "Back",
+  "yes": "Yes",
+  "no": "No",
+  "n/a": "N/A",
+  "reset": "Reset",
+  "apply": "Apply",
+  "submit": "Submit",
+  "not_yet_implemented": "No yet implemented",
+  "no_data_found": "No data found",
+  "no_permission": "You don't have enough permission to view this page, please login first",
+  "restricted_area": "Restricted Area",
+  "languages": {
+    "en": "English",
+    "ar": "Arabic"
+  },
+  "to_be_implemented": "We Are Currently Working On this screen",
+  "page_not_found": "Sorry, page not found !",
+  "page_not_found_description": "Sorry, we couldn't find the page you're looking for. Perhaps you've mistyped the URL? Be sure to check your spelling.",
+  "under_construction": "This page is currently under construction and not yet implemented. We apologize for any inconvenience this may have caused. Please check back later for updates. Thank you for your patience and understanding."
+}
