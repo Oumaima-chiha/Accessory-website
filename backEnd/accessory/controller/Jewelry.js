@@ -1,5 +1,6 @@
 
 const { jewelry,tag,tagOnJewelries,favoriteList,jewelryOnFavorite } =require('../models/index')
+const cloudinary =require("../utils/cloudinary")
 
 module.exports = {
     getTags: async (req, res) => {
@@ -288,6 +289,64 @@ module.exports = {
             console.error('Error removing all favorites:', error);
             res.status(500).json({ message: 'Internal server error' });
         }
-    }
+    },
+    // jewelryController.js
+
+
+    createJewelry : async (req, res) => {
+        try {
+          const {
+            name: $name,
+            description: $description,
+            category: $category,
+            status: $status,
+            price: $price,
+            quantity: $quantity,
+            main_image: $main_image,
+            extra_images: $extra_images
+          } = req.body;
+      
+          // Upload main image to Cloudinary
+          const mainImage = await cloudinary.uploader.upload(req.body.main_image, {
+            folder: 'your_cloudinary_folder',
+          });
+      
+          // Upload extra images to Cloudinary
+          const extraImages = await Promise.all(
+            req.body.extra_images.map(async (extraImage) => {
+              return await cloudinary.uploader.upload(extraImage, {
+                folder: 'your_cloudinary_folder',
+              });
+            })
+          );
+      
+          const newJewelry = await jewelry.create({
+            data:{
+            name: $name,
+            description: $description,
+            category:$category,
+            main_image: mainImage.secure_url,
+            extra_images: extraImages.map((image) => image.secure_url),
+            status: $status,
+            price: $price,
+            quantity: $quantity,
+            }
+          });
+      
+          res.status(201).json({
+            success: true,
+            jewelry: newJewelry,
+          });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({
+            success: false,
+            error: 'Internal Server Error',
+          });
+        }
+      }
+      
+
+
 
 }
