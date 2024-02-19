@@ -1,0 +1,20 @@
+{
+  "name": "Jewelry",
+  "name_module": "Jewelry Management",
+  "start_date": "Start Date",
+  "end_date": "End Date",
+  "Jewelry_categories": {
+    "name": "Category Management"
+  },
+  "success_msgs": {
+    "Jewelry_success": "Jewelry has been added successfully",
+    "Jewelry_success_update": "Jewelry  has been updated successfully",
+    "Jewelry_success_delete": "Jewelry  has been deleted successfully",
+    "feedback_category_success": "Feedback Category has been added successfully",
+    "feedback_category_success_answer": "Feedback Category has been added successfully",
+    "feedback_category_success_update": "Feedback Category has been updated successfully",
+    "feedback_category_success_delete": "Feedback Category has been deleted successfully",
+    "feedback_category_success_activate": "Feedback Category has been activated successfully",
+    "feedback_category_success_deactivate": "Feedback Category has been deactivated successfully"
+  }
+}

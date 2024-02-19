@@ -15,7 +15,7 @@ function hashPassword(password) {
 function generateAccessToken(user) {
   const formattedRole = {
     ...user.role,
-    permissions: user.role.permissions.map(p=>p.permission)
+    permissions: []
   };
   return jwt.sign({ id: user.id, email: user.email,role:formattedRole }, process.env.JWT_BO_USER_ACCESS_TOKEN_SECRET_KEY, { expiresIn: '1d' });
 }

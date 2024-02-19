@@ -12,6 +12,7 @@ import ROLE_MANAGEMENT_ROUTES from 'modules/Management/Roles/routes';
 import TIP_MANAGEMENT_ROUTES from 'modules/Management/Tips/routes';
 import USER_MANAGEMENT_ROUTES from 'modules/Management/Users/routes';
 import PROFILE_ROUTES from 'modules/Profile/routes';
+import PRODUCTS_MANAGEMENT_ROUTES from '../modules/Management/Products/routes';
 
 const GLOBAL_ROUTES: { PUBLIC: IRoute[]; PRIVATE: IRoute[] } = {
   PUBLIC: [...AUTH_ROUTES],
@@ -28,6 +29,7 @@ const GLOBAL_ROUTES: { PUBLIC: IRoute[]; PRIVATE: IRoute[] } = {
     ...PROFILE_ROUTES,
     ...LEGAL_MANAGEMENT_ROUTES,
     ...ABOUT_US_MANAGEMENT_ROUTES,
+    ...PRODUCTS_MANAGEMENT_ROUTES
   ],
 };
 
