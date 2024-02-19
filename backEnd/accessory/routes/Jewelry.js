@@ -6,13 +6,17 @@ const isAuthenticated=require('../middlwares/isAuthenticated');
 const {
     getJeweleries, getTags, getJewelryByTagId, addTagOnJewelries, getFavorites, addToFavorites, removeFromFavorites,
   removeAllFavorites,
-  createJewelry
+  createJewelry,updateJewelry,deleteJewelry
 } =require('../controller/Jewelry')
 
 router
   .route("/")
   .get(getJeweleries)
   .post(createJewelry)
+  router
+  .route("/:id")
+  .put(updateJewelry)
+  .delete(deleteJewelry)
   router
   .route("/tags")
   .get(getTags)

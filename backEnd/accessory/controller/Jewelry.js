@@ -344,7 +344,119 @@ module.exports = {
             error: 'Internal Server Error',
           });
         }
+      },
+      updateJewelry: async (req, res) => {
+        try {
+          const {
+            name: $name,
+            description: $description,
+            category: $category,
+            status: $status,
+            price: $price,
+            quantity: $quantity,
+            main_image: $main_image,
+            extra_images: $extra_images
+          } = req.body;
+      
+          // Check if the jewelry ID is provided in the request parameters
+          const jewelryId = req.params.id;
+          if (!jewelryId) {
+            return res.status(400).json({
+              success: false,
+              error: 'Jewelry ID not provided',
+            });
+          }
+      
+          // Upload main image to Cloudinary
+          const mainImage = await cloudinary.uploader.upload(req.body.main_image, {
+            folder: 'your_cloudinary_folder',
+          });
+      
+          // Upload extra images to Cloudinary
+          const extraImages = await Promise.all(
+            req.body.extra_images.map(async (extraImage) => {
+              return await cloudinary.uploader.upload(extraImage, {
+                folder: 'your_cloudinary_folder',
+              });
+            })
+          );
+            
+          // Update the jewelry item in the database
+          const updatedJewelry = await jewelry.update({
+            where: {
+              id: parseInt(jewelryId),
+            },
+            data: {
+              name: $name,
+              description: $description,
+              category: $category,
+              main_image: mainImage.secure_url,
+              extra_images: extraImages.map((image) => image.secure_url),
+              status: $status,
+              price: $price,
+              quantity: $quantity,
+            },
+          });
+      
+          res.status(200).json({
+            success: true,
+            jewelry: updatedJewelry,
+          });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({
+            success: false,
+            error: 'Internal Server Error',
+          });
+        }
+      },
+      deleteJewelry: async (req, res) => {
+        try {
+          // Check if the jewelry ID is provided in the request parameters
+          const jewelryId = req.params.id;
+          if (!jewelryId) {
+            return res.status(400).json({
+              success: false,
+              error: 'Jewelry ID not provided',
+            });
+          }
+      
+          // Find the jewelry item in the database
+          const foundJewelry = await jewelry.findUnique({
+            where: {
+              id: parseInt(jewelryId),
+            },
+          });
+      
+          // If the jewelry item is not found, return an error
+          if (!foundJewelry) {
+            return res.status(404).json({
+              success: false,
+              error: 'Jewelry not found',
+            });
+          }
+      
+          // Delete the jewelry item from the database
+          await jewelry.delete({
+            where: {
+              id: parseInt(jewelryId),
+            },
+          });
+      
+          res.status(200).json({
+            success: true,
+            message: 'Jewelry deleted successfully',
+          });
+        } catch (error) {
+          console.error(error);
+          res.status(500).json({
+            success: false,
+            error: 'Internal Server Error',
+          });
+        }
       }
+      
+      
       
 
 
