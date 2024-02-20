@@ -40,10 +40,10 @@ export const productApi = createApi({
       }),
       invalidatesTags: () => [{ type: 'Products' }],
     }),
-    updateJewelry: builder.mutation<IBOUser, IReduxJewelry.UpdateJewelryPayload>({
+    updateJewelry: builder.mutation<{success:boolean, jewelry:Jewelry}, IReduxJewelry.UpdateJewelryPayload>({
       query: body => ({
         url: `/jewelry/${body?.id}`,
-        method: 'PATCH',
+        method: 'PUT',
         body,
       }),
     }),

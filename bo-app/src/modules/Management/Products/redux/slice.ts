@@ -47,17 +47,25 @@ export const productsSlice = createSlice({
       productApi.endpoints?.updateJewelry.matchFulfilled,
       (
         state,
-        { payload }: { payload: Pick<IReduxJewelry.UpdateJewelryPayload, 'id'> },
+        {
+          payload,
+        }: {
+          payload: {
+            success: boolean;
+            jewelry: Pick<IReduxJewelry.UpdateJewelryPayload, 'id'>;
+          };
+        },
       ) => {
-        const userToBeUpdated = state?.list?.findIndex(
-          user => user?.id === payload?.id,
+        const jewelryToBeUpdated = state?.list?.findIndex(
+          jewelry => jewelry?.id === payload?.jewelry.id,
         );
-        state.list[userToBeUpdated] = {
-          ...state.list[userToBeUpdated],
-          ...payload,
+        state.list[jewelryToBeUpdated] = {
+          ...state.list[jewelryToBeUpdated],
+          ...payload.jewelry,
         };
       },
     );
+  
     // builder.addMatcher(
     //   productApi.endpoints.deleteJewelry.matchFulfilled,
     //   (state, { payload }: { payload: Pick<IUser, 'id'> }) => {
