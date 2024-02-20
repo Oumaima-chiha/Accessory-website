@@ -39,7 +39,7 @@ const PRODUCTS_MANAGEMENT_ROUTES: IRoute[] = [
     private: true,
   },
   {
-    path: 'bo-user-management/view',
+    path: 'product-management/view',
     element: ProductForm,
     name: 'Products Management View',
     permissions: [PERMISSIONS_CODES.BO_USER_MANAGEMENT_VIEW_BO_USER],

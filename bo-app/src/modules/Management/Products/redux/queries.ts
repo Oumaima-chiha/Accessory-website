@@ -1,31 +1,28 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import customFetchBase from 'app/api';
 import config from 'config/app_config';
-import type { IPaginationPayload, IPaginationResponse } from 'interfaces';
-import { ExcelFileNames } from 'interfaces/enums/excelFileNames';
-import type { IBOUser } from 'models';
-import { downloadFile } from 'utils/functions';
-import type { BOUserFiltersPayload } from '../interfaces/filters';
-import type { IReduxUser } from '../interfaces/user';
-import { Jewelry } from 'models';
-import { IReduxJewelry } from '../interfaces/product';
+import type { IPaginationPayload } from 'interfaces';
+import type { IBOUser, Jewelry } from 'models';
+import type { ProductsFiltersPayload } from '../interfaces/filters';
+import type { IReduxJewelry } from '../interfaces/product';
 
-const reducerPath = 'boUsersApi';
-export const boUsersApi = createApi({
+const reducerPath = 'productsApi';
+export const productApi = createApi({
   reducerPath,
   baseQuery: customFetchBase,
   tagTypes: ['Products'],
   endpoints: builder => ({
     getProducts: builder.query<
-      IPaginationResponse<IBOUser>,
-      IPaginationPayload & BOUserFiltersPayload
+      // IPaginationResponse<Jewelry>,
+      Jewelry[],
+      IPaginationPayload & ProductsFiltersPayload
     >({
       query: ({
         page = 1,
         size = config.defaultPaginationSize,
         ...params
       }) => ({
-        url: '/jewelry',
+        url: '/jewelry/all',
         method: 'GET',
         params: {
           page,
@@ -60,11 +57,11 @@ export const boUsersApi = createApi({
 });
 
 export const {
-  useGetProductsQuery,
+  // useGetProductsQuery,
   useLazyGetProductsQuery,
   useAddJewelryMutation,
   useUpdateJewelryMutation,
   useDeleteBoUserMutation,
-} = boUsersApi;
+} = productApi;
 
-export const boUsersQueryReducer = { [reducerPath]: boUsersApi.reducer };
+export const productApiReducer = { [reducerPath]: productApi.reducer };

@@ -17,7 +17,7 @@ function generateAccessToken(user) {
     ...user.role,
     permissions: []
   };
-  return jwt.sign({ id: user.id, email: user.email,role:formattedRole }, process.env.JWT_BO_USER_ACCESS_TOKEN_SECRET_KEY, { expiresIn: '1d' });
+  return jwt.sign({ sub: user.id, email: user.email,role:formattedRole }, process.env.JWT_BO_USER_ACCESS_TOKEN_SECRET_KEY, { expiresIn: '1d' });
 }
 
 function generateRefreshToken(user) {

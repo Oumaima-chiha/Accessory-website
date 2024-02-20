@@ -29,16 +29,15 @@ const ProductForm = (): JSX.Element => {
     useUpdateJewelryMutation();
   const formSchema = useMemo(
     () => Yup.object().shape({...JewelryFormSchema}), // Using provided validation schema
-    [state?.type],
+    [],
   );
   const formik = useFormik({
     initialValues: {
       name: state?.form?.name ?? '',
       description: state?.form?.description ?? '',
-      category: state?.form?.category ?? '',
+      category: state?.form?.category ?? [],
       main_image: state?.form?.main_image ?? '',
       extra_images: state?.form?.extra_images ?? [],
-      status: state?.form?.status ?? '',
       price: state?.form?.price ?? 0,
       quantity: state?.form?.quantity ?? 0,
     },
@@ -77,12 +76,14 @@ const ProductForm = (): JSX.Element => {
               formik={formik}
               name="name"
               label="name"
+              schema={formSchema}
               readOnly={state?.type === FORM_TYPE.VIEW}
             />
             <FormControlInput
               formik={formik}
               name="description"
               label="description"
+              schema={formSchema}
               readOnly={state?.type === FORM_TYPE.VIEW}
             />
             <FormControlSelect
@@ -90,12 +91,15 @@ const ProductForm = (): JSX.Element => {
               label="category"
               formik={formik}
               defaultValue={state?.form?.category}
+              schema={formSchema}
               options={Object.values(Category).map(category => ({
                 label: category,
                 value: category,
               }))}
               readOnly={state?.type === FORM_TYPE.VIEW}
-            />
+              onChange={(category): void => {
+                formik.setFieldValue('category', [category?.value]);
+              }}/>
             <FormControlInput
               formik={formik}
               name="main_image"
@@ -106,24 +110,23 @@ const ProductForm = (): JSX.Element => {
               formik={formik}
               name="extra_images"
               label="extra_images"
-              readOnly={state?.type === FORM_TYPE.VIEW}
-            />
-            <FormControlInput
-              formik={formik}
-              name="status"
-              label="status"
+              schema={formSchema}
               readOnly={state?.type === FORM_TYPE.VIEW}
             />
             <FormControlInput
               formik={formik}
               name="price"
               label="price"
+              schema={formSchema}
+              type={'number'}
               readOnly={state?.type === FORM_TYPE.VIEW}
             />
             <FormControlInput
               formik={formik}
               name="quantity"
               label="quantity"
+              schema={formSchema}
+              type={'number'}
               readOnly={state?.type === FORM_TYPE.VIEW}
             />
           </SimpleGrid>

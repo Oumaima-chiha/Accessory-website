@@ -1,4 +1,5 @@
-import type { Jewelry } from 'models'; // Assuming Jewelry is the interface for the jewelry model
+import type { Jewelry } from 'models';
+import type Category from '../../../../common/enums/ProductCategory'; // Assuming Jewelry is the interface for the jewelry model
 
 declare namespace IReduxJewelry {
   export interface InitialState {
@@ -9,10 +10,9 @@ declare namespace IReduxJewelry {
   export interface CreateJewelryPayload {
     name: string;
     description?: string;
-    category: string[];
+    category: Category[];
     main_image: string;
     extra_images?: string[];
-    status: string;
     price: number;
     quantity: number;
   }

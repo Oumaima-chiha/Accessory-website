@@ -1,6 +1,6 @@
 import type { STATUS } from 'interfaces';
 
-export interface BOUserFiltersPayload {
+export interface ProductsFiltersPayload {
   username?: string;
   firstname?: string;
   lastname?: string;

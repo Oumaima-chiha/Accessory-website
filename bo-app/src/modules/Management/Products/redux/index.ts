@@ -1,9 +1,9 @@
-import { boUsersQueryReducer } from './queries';
-import { boUsersSliceReducer } from './slice';
+import { productApiReducer } from './queries';
+import { productReducer } from './slice';
 
 const combinedReducer = {
-  ...boUsersQueryReducer,
-  ...boUsersSliceReducer,
+  ...productApiReducer,
+  ...productReducer,
 };
 
 export * from './queries';
