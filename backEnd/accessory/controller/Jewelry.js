@@ -24,7 +24,22 @@ module.exports = {
             res.status(500).send(error);
           }
         },
-    getJewelryByTagId: async (req, res) => {
+  getAllJeweleries: async (req, res) => {
+    try {
+      const Jewelries = await jewelry.findMany({
+        include:{
+          tags:true,
+        }
+      });
+
+      res.status(200).json(Jewelries);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+  },
+
+  getJewelryByTagId: async (req, res) => {
           try {
             const { tagId } = req.params;
 
@@ -291,35 +306,32 @@ module.exports = {
         }
     },
     // jewelryController.js
-
-
     createJewelry : async (req, res) => {
         try {
           const {
             name: $name,
             description: $description,
             category: $category,
-            status: $status,
             price: $price,
             quantity: $quantity,
             main_image: $main_image,
             extra_images: $extra_images
           } = req.body;
-      
+
           // Upload main image to Cloudinary
-          const mainImage = await cloudinary.uploader.upload(req.body.main_image, {
-            folder: 'your_cloudinary_folder',
+          const mainImage = await cloudinary.uploader.upload($main_image, {
+            folder: 'products',
           });
-      
+
           // Upload extra images to Cloudinary
           const extraImages = await Promise.all(
-            req.body.extra_images.map(async (extraImage) => {
+            $extra_images.map(async (extraImage) => {
               return await cloudinary.uploader.upload(extraImage, {
-                folder: 'your_cloudinary_folder',
+                folder: 'products',
               });
             })
           );
-      
+
           const newJewelry = await jewelry.create({
             data:{
             name: $name,
@@ -327,12 +339,11 @@ module.exports = {
             category:$category,
             main_image: mainImage.secure_url,
             extra_images: extraImages.map((image) => image.secure_url),
-            status: $status,
-            price: $price,
-            quantity: $quantity,
+            price: +$price,
+            quantity: +$quantity,
             }
           });
-      
+
           res.status(201).json({
             success: true,
             jewelry: newJewelry,

@@ -6,13 +6,17 @@ const isAuthenticated=require('../middlwares/isAuthenticated');
 const {
     getJeweleries, getTags, getJewelryByTagId, addTagOnJewelries, getFavorites, addToFavorites, removeFromFavorites,
   removeAllFavorites,
-  createJewelry,updateJewelry,deleteJewelry
+  createJewelry,updateJewelry,deleteJewelry,getAllJeweleries
 } =require('../controller/Jewelry')
+const { authenticateBackoffice } = require('../middlwares/authenticateBackoffice');
 
 router
   .route("/")
   .get(getJeweleries)
-  .post(createJewelry)
+  .post(authenticateBackoffice,createJewelry)
+router
+  .route("/all")
+  .get(authenticateBackoffice,getAllJeweleries,)
   router
   .route("/:id")
   .put(updateJewelry)
