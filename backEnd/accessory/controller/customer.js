@@ -257,4 +257,29 @@ module.exports = {
     }
 
   },
+  getCustomers: async (req, res) => {
+    try {
+      const customers = await user.findMany();
+      res.status(200).json(customers);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+  },
+  getOneCustomers: async (req, res) => {
+    const id = req.userId;
+    try {
+      const customer = await user.findUnique({
+        where: {
+          id: id,
+        },
+      });
+  
+      res.status(201).json(customer);
+    } catch (error) {
+      console.error(error);
+      res.status(500).send(error);
+    }
+  },
+
 }

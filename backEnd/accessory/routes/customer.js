@@ -11,6 +11,9 @@ const {
   updatePassword,
   getExpoToken,
   checkNotification,
+  getCustomers,
+  getOneCustomers,
+
 } = require("../controller/customer");
 
 router.route("/").post(createCustomers);
@@ -24,6 +27,8 @@ router.route("/verifyResetCode").put(verifyResetCode);
 router.route("/updatePassword").put(updatePassword);
 router.route("/expo").put(getExpoToken);
 router.route("/notification").get(checkNotification);
+router.route("/").get( getCustomers);
+router.route("/:id").get(getOneCustomers);
 
-router.route("/:id").get(getLoggedInUser);
+router.route("/").get(getLoggedInUser);
 module.exports = router;
