@@ -11,8 +11,10 @@ const {
   updatePassword,
   getExpoToken,
   checkNotification,
-  getCustomers,
+ getAllCustomers,
   getOneCustomers,
+  banCustomerById,
+  unbanCustomerById,
 
 } = require("../controller/customer");
 
@@ -27,8 +29,10 @@ router.route("/verifyResetCode").put(verifyResetCode);
 router.route("/updatePassword").put(updatePassword);
 router.route("/expo").put(getExpoToken);
 router.route("/notification").get(checkNotification);
-router.route("/").get( getCustomers);
+router.route("/all").get( getAllCustomers);
 router.route("/:id").get(getOneCustomers);
+router.route("/ban/:id").patch(banCustomerById);
+router.route("/unban/:id").patch(unbanCustomerById);
 
 router.route("/").get(getLoggedInUser);
 module.exports = router;
