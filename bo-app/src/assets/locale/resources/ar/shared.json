@@ -24,6 +24,7 @@
   "export": "يصدّر",
   "export_excel": "تصدير كملف Excel",
   "refetch": "تحديث البيانات",
+  "priceTND": "دينار {{price}}",
   "success_msgs": {
     "users_success": "تمت إضافة المستخدم بنجاح",
     "users_success_add": "تمت إضافة المستخدم بنجاح",

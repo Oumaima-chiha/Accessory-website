@@ -33,7 +33,7 @@ export const usersAPI = createApi({
       }),
     }),
     getUsers: builder.query<
-      IPaginationResponse<IUser>,
+      IUser[],
       IPaginationPayload & EndUserFiltersPayload
     >({
       query: ({
@@ -41,7 +41,7 @@ export const usersAPI = createApi({
         size = config.defaultPaginationSize,
         ...params
       }) => ({
-        url: usersEndpoint,
+        url: '/customers/all',
         method: 'GET',
         params: {
           page,
@@ -50,11 +50,10 @@ export const usersAPI = createApi({
         },
       }),
     }),
-    updateUser: builder.mutation<IUser, IReduxUser.UpdateUserPayload>({
+    banUser: builder.mutation<IUser, IReduxUser.UpdateUserPayload>({
       query: body => ({
-        url: `${usersEndpoint}/${body?.id}`,
+        url: `customers/${body?.isBanned?"unban":"ban"}/${body?.id}`,
         method: 'PATCH',
-        body,
       }),
     }),
   }),
@@ -63,8 +62,8 @@ export const usersAPI = createApi({
 export const {
   useGetUsersQuery,
   useLazyGetUsersQuery,
-  useUpdateUserMutation,
   useExportDataMutation,
+  useBanUserMutation,
 } = usersAPI;
 
 export const usersQueryReducer = { [reducerPath]: usersAPI.reducer };

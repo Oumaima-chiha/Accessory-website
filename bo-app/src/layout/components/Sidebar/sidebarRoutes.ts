@@ -8,7 +8,7 @@ import {
   feedbackManagementRoute,
   legalManagementRoute,
   newsManagementRoute,
-  NotificationsManagementRoute,
+  NotificationsManagementRoute, productsManagementRoute,
   roleManagementRoute,
   tipsManagementRoute,
   userManagementRoute,
@@ -34,20 +34,26 @@ const routes = [
     permissions: [PERMISSIONS_CODES.BO_USER_MANAGEMENT_VIEW_BO_USER],
   },
   {
+    icon: 'feedback',
+    label: 'product_management',
+    path: productsManagementRoute,
+    permissions: [PERMISSIONS_CODES.BO_USER_MANAGEMENT_VIEW_BO_USER],
+  },
+  {
     icon: 'role',
     label: 'role_management',
     path: roleManagementRoute,
     permissions: [PERMISSIONS_CODES.ROLE_MANAGEMENT_VIEW_ROLES],
   },
-  {
-    icon: 'feedback',
-    label: 'feedback_management',
-    path: feedbackManagementRoute,
-    permissions: [
-      PERMISSIONS_CODES.FEEDBACK_MANAGEMENT_VIEW_USERS_FEEDBACKS,
-      PERMISSIONS_CODES.FEEDBACK_MANAGEMENT_VIEW_FEEDBACK_CATEGORIES,
-    ],
-  },
+  // {
+  //   icon: 'feedback',
+  //   label: 'feedback_management',
+  //   path: feedbackManagementRoute,
+  //   permissions: [
+  //     PERMISSIONS_CODES.FEEDBACK_MANAGEMENT_VIEW_USERS_FEEDBACKS,
+  //     PERMISSIONS_CODES.FEEDBACK_MANAGEMENT_VIEW_FEEDBACK_CATEGORIES,
+  //   ],
+  // },
   {
     icon: 'news',
     label: 'news_management',

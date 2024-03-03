@@ -9,6 +9,7 @@ import {
   LegalManagement,
   NewsManagement,
   NotificationsManagement,
+  ProductsManagement,
   RolesManagement,
   TipsManagement,
   UsersManagement,
@@ -26,6 +27,7 @@ export const combinedReducer = combineReducers({
   ...LegalManagement.default,
   ...AboutUsManagement.default,
   ...NotificationsManagement.default,
+  ...ProductsManagement.default,
 });
 
 export type IRootState = ReturnType<typeof combinedReducer>;
@@ -41,6 +43,7 @@ export const combinedMiddleware = [
   LegalManagement.legalApi.middleware,
   AboutUsManagement.aboutUsAPI.middleware,
   NotificationsManagement.notificationsAPI.middleware,
+  ProductsManagement.productApi.middleware,
   // unauthenticatedMiddleware,
   errorMiddleware,
 ];

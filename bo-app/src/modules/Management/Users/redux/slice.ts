@@ -4,6 +4,7 @@ import type { IUser } from 'models';
 import type { EndUserFiltersPayload } from '../interfaces';
 import type { IReduxUser } from '../interfaces/user';
 import { usersAPI } from './queries';
+import _ from 'lodash';
 
 const reducerName = 'users';
 export const initialState: IReduxUser.InitialState = {
@@ -17,12 +18,12 @@ export const usersSlice = createSlice({
   reducers: {
     updateUser: (
       state,
-      { payload }: { payload: Pick<IUser, 'id' | 'active'> },
+      { payload }: { payload: Pick<IUser, 'id' | 'isBanned'> },
     ) => {
       const userToBeUpdated = state?.list?.findIndex(
         user => user?.id === payload?.id,
       );
-      state.list[userToBeUpdated].active = payload?.active;
+      state.list[userToBeUpdated].isBanned = !payload?.isBanned;
     },
     deleteUser: (state, { payload }: { payload: Pick<IUser, 'id'> }) => {
       state.list = state.list?.filter(user => user?.id !== payload?.id);
@@ -44,12 +45,13 @@ export const usersSlice = createSlice({
     builder.addMatcher(
       usersAPI.endpoints.getUsers.matchFulfilled,
       (state, { payload }) => {
-        if (Array.isArray(payload.content)) {
-          state.list =
-            payload.currentPage > 1
-              ? mergeArrays(state.list, payload.content)
-              : payload.content;
-        }
+        state.list = _.uniqBy([...state.list, ...payload], 'id');
+        // if (Array.isArray(payload.content)) {
+        //   state.list =
+        //     payload.currentPage > 1
+        //       ? mergeArrays(state.list, payload.content)
+        //       : payload.content;
+        // }
       },
     );
   },

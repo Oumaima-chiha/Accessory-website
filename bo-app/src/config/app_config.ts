@@ -2,7 +2,7 @@ const config = {
   defaultPath: '/private/dashboard',
   publicDashboard: '/public/dashboard',
   loginPath: '/public/login',
-  defaultPaginationSize: 5,
+  defaultPaginationSize: 40,
 };
 
 export default config;

@@ -25,6 +25,7 @@
   "export": "Export",
   "export_excel": "Export as Excel",
   "refetch": "Refresh Data",
+  "priceTND": "{{price}} TND",
   "success_msgs": {
     "users_success": "User has been added successfully",
     "users_success_add": "User has been added successfully",

@@ -1,0 +1,12 @@
+enum Category {
+  RINGS = 'RINGS',
+  EARINGS = 'EARINGS',
+  HAIRCLIPS = 'HAIRCLIPS',
+  HAIRBANDS = 'HAIRBANDS',
+  BRACLETS = 'BRACLETS',
+  NECKLACES = 'NECKLACES',
+  BROOCHES = 'BROOCHES',
+  OTHERS = 'OTHERS',
+}
+
+export default Category;

@@ -6,6 +6,7 @@ export * as FeedbackManagement from './Management/Feedback/redux';
 export * as LegalManagement from './Management/Legal/redux';
 export * as NewsManagement from './Management/News/redux';
 export * as NotificationsManagement from './Management/Notifications/redux';
+export * as ProductsManagement from './Management/Products/redux';
 export * as RolesManagement from './Management/Roles/redux';
 export * as TipsManagement from './Management/Tips/redux';
 export * as UsersManagement from './Management/Users/redux';

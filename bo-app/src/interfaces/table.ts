@@ -30,7 +30,7 @@ export interface Columns<T = any> {
 }
 
 export type LazyGetTriggerType = UseLazyQuery<
-  QueryDefinition<any, any, any, IPaginationResponse<any>, any>
+  QueryDefinition<any, any, any, IPaginationResponse<any> | any, any>
 >;
 
 export type MutationTriggerType = MutationTrigger<

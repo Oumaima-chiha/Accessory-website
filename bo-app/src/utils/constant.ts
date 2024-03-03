@@ -5,6 +5,7 @@ export const dashboardRoute = '/private/dashboard';
 export const profileRoute = '/private/profile';
 export const userManagementRoute = '/private/user-management';
 export const boUserManagementRoute = '/private/bo-user-management';
+export const productsManagementRoute = '/private/product-management';
 export const roleManagementRoute = '/private/role-management';
 export const newsManagementRoute = '/private/news-management';
 export const tipsManagementRoute = '/private/tip-management';

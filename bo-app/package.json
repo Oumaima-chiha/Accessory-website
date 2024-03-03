@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "start": "yarn start:dev",
+    "start": " npm run start:dev",
     "start:dev": "env-cmd -f .env.development vite",
     "start:prod": "env-cmd -f .env.prod vite",
     "build:dev": "env-cmd -f .env.development vite build",

@@ -11,6 +11,7 @@
   "nationality": "جنسية",
   "country": "دولة",
   "password": "كلمة المرور",
+  "price": "سعر",
   "confirm_password": "تأكيد كلمة المرور",
   "email": "بريد إلكتروني",
   "status": "حالة",

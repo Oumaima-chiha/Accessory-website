@@ -14,6 +14,7 @@ import role from './role.json';
 import shared from './shared.json';
 import tips from './tips.json';
 import users from './users.json';
+import jewelry from './jewelry.json';
 
 export default {
   errors,
@@ -32,4 +33,5 @@ export default {
   legal,
   about_us,
   notifications,
+  jewelry
 };

@@ -1,17 +1,25 @@
-export declare type IUser = {
+export declare type IUser {
   id: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
+  fullname: string;
   email: string;
-  firstName: string;
-  lastName: string;
-  birthDate: string;
-  nationality: string;
-  mobileNumber: string;
-  gender: string;
-  address: string;
-  country: string;
   password: string;
-  picture: string;
-  active: boolean;
-};
+  profilePic?: string | null;
+  isVerified: boolean;
+  shippingAddress?: IShippingAddress | null;
+  isBanned: boolean;
+
+}
+interface IShippingAddress {
+  id: number;
+  createdAt: string;
+  address: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
+  phoneNumber: string;
+
+}
+
