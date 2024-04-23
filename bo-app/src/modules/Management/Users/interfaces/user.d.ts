@@ -9,7 +9,7 @@ declare namespace IReduxUser {
 
   export interface UpdateUserPayload {
     id: number;
-    active: boolean;
+    isBanned: boolean;
   }
 }
 

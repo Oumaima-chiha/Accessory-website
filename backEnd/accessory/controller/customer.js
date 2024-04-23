@@ -257,15 +257,43 @@ module.exports = {
     }
 
   },
-  getCustomers: async (req, res) => {
+ getAllCustomers :async (req, res) => {
     try {
-      const customers = await user.findMany();
-      res.status(200).json(customers);
+      const users = await user.findMany({
+        where: {
+          role: 'CUSTOMER'
+        },
+        select: {
+          id: true,
+          createdAt: true,
+          updatedAt: true,
+          fullname: true,
+          email: true,
+          isVerified: true,
+          profilePic: true,
+          isBanned:true,
+          shippingAddress: {
+            select: {
+              id: true,
+              createdAt: true,
+              address: true,
+              city: true,
+              state: true,
+              postalCode: true,
+              country: true,
+              phoneNumber: true,
+            },
+          },
+        },
+      });
+  
+      res.json(users);
     } catch (error) {
-      console.error(error);
-      res.status(500).send(error);
+      console.error('Error fetching users:', error);
+      res.status(500).json({ error: 'Internal server error' });
     }
   },
+
   getOneCustomers: async (req, res) => {
     const id = req.userId;
     try {
@@ -281,5 +309,72 @@ module.exports = {
       res.status(500).send(error);
     }
   },
+  banCustomerById: async (req, res) => {
+    const id = req.params.id;
+
+    try {
+        const foundUser = await user.findUnique({
+            where: {
+                id: parseInt(id),
+            },
+        });
+
+        if (!foundUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        if (foundUser.isBanned) {
+            return res.status(400).json({ message: "User is already banned" });
+        }
+        await user.update({
+          where: {
+              id: parseInt(id),
+          },
+          data: {
+              isBanned: true,
+          },
+      });
+
+        return res.status(200).json({ message: "User banned successfully" });
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+},
+unbanCustomerById: async (req, res) => {
+  const id = req.params.id;
+
+  try {
+      const foundUser = await user.findUnique({
+          where: {
+              id: parseInt(id),
+          },
+      });
+
+      if (!foundUser) {
+          return res.status(404).json({ message: "User not found" });
+      }
+
+      if (!foundUser.isBanned) {
+          return res.status(400).json({ message: "User is not banned" });
+      }
+      await user.update({
+        where: {
+            id: parseInt(id),
+        },
+        data: {
+            isBanned: false,
+        },
+    });
+
+      return res.status(200).json({ message: "User unbanned successfully" });
+  } catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Internal server error" });
+  }
+},
+
+
+
 
 }

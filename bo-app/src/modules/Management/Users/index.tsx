@@ -19,7 +19,7 @@ import {
   useExportDataMutation,
   useLazyGetUsersQuery,
   usersAPI,
-  useUpdateUserMutation,
+  useBanUserMutation
 } from './redux';
 
 const UsersContainer = (): JSX.Element => {
@@ -28,7 +28,7 @@ const UsersContainer = (): JSX.Element => {
   const { t } = useTranslation(['bo_users', 'fields', 'shared']);
   const usersList = useAppSelector(selectEndUsers);
   const endUsersFilters = useAppSelector(selectEndUsersFilters);
-  const [updateUseMutation] = useUpdateUserMutation();
+  const [triggerBanUser] =  useBanUserMutation();
   const [exportFeedbackMutation, { isLoading }] = useExportDataMutation();
   const { requestedPermissionStatus } = usePermissions({
     requestedPermissions: [
@@ -40,53 +40,44 @@ const UsersContainer = (): JSX.Element => {
 
   const tableColumns: Columns<IUser>[] = [
     {
-      header: t('fields:firstName'),
-      accessor: 'firstName',
-    },
-    {
-      header: t('fields:lastName'),
-      accessor: 'lastName',
+      header: t('fields:name'),
+      accessor: 'fullname',
     },
     {
       header: t('fields:email'),
       accessor: 'email',
     },
     {
-      header: t('fields:picture'),
-      accessor: 'picture',
-      cell: x => <Avatar src={x} />,
-    },
-    {
       header: t('fields:status'),
-      accessor: 'active',
+      accessor: 'isVerified',
       cell: x => (
         <Badge variant={x ? 'active' : 'inactive'}>
-          {x
-            ? t('fields:status', { context: 'active' })
-            : t('fields:status', { context: 'inactive' })}
+          { t('fields:status', { context:x ? 'verified':'pending' })}
         </Badge>
       ),
     },
+
+
     {
       header: t('fields:actions'),
       accessor: 'action',
       actions: [
         {
           name: data =>
-            data?.active
+            !data?.isBanned
               ? TABLE_ACTION.DEACTIVATE_USER
               : TABLE_ACTION.ACTIVATE_USER,
           handleClick: async (data: IUser): Promise<void> => {
             try {
               const payload = {
                 id: data?.id,
-                active: !data?.isBanned,
+               isBanned: data?.isBanned,
               };
-              await updateUseMutation(payload).unwrap();
+              await triggerBanUser(payload).unwrap();
               dispatch(updateUser(payload));
               displayToast(
                 t('shared:success_msgs.users_success', {
-                  context: data?.isBanned ? 'deactivate' : 'activate',
+                  context: !data?.isBanned ? 'deactivate' : 'activate',
                 }),
                 'success',
               );
