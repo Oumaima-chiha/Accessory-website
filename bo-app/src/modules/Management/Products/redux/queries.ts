@@ -47,7 +47,7 @@ export const productApi = createApi({
         body,
       }),
     }),
-    deleteBoUser: builder.mutation<IBOUser, Pick<IBOUser, 'id'>>({
+    deleteBoUser: builder.mutation<Jewelry, Pick<Jewelry, 'id'>>({
       query: body => ({
         url: `/jewelry/${body?.id}`,
         method: 'DELETE',

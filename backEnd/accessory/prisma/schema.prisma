@@ -21,6 +21,8 @@ model User {
   hasNotification Boolean          @default(false)
   hasNewMessage   Boolean          @default(false)
   isVerified      Boolean          @default(false)
+  deleted         Boolean          @default(false)
+  isbanned        Boolean          @default(false)
   verifyToken     String?
   otp             Int?
   resetCode       Int?

@@ -44,12 +44,13 @@ export const usersSlice = createSlice({
     builder.addMatcher(
       usersAPI.endpoints.getUsers.matchFulfilled,
       (state, { payload }) => {
-        if (Array.isArray(payload.content)) {
-          state.list =
-            payload.currentPage > 1
-              ? mergeArrays(state.list, payload.content)
-              : payload.content;
-        }
+        state.list = _.uniqBy([...state.list, ...payload], 'id');
+        // if (Array.isArray(payload.content)) {
+        //   state.list =
+        //     payload.currentPage > 1
+        //       ? mergeArrays(state.list, payload.content)
+        //       : payload.content;
+        // }
       },
     );
   },

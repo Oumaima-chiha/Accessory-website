@@ -80,13 +80,13 @@ const UsersContainer = (): JSX.Element => {
             try {
               const payload = {
                 id: data?.id,
-                active: !data?.active,
+                active: !data?.isBanned,
               };
               await updateUseMutation(payload).unwrap();
               dispatch(updateUser(payload));
               displayToast(
                 t('shared:success_msgs.users_success', {
-                  context: data?.active ? 'deactivate' : 'activate',
+                  context: data?.isBanned ? 'deactivate' : 'activate',
                 }),
                 'success',
               );

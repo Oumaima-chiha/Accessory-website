@@ -40,9 +40,12 @@ export const productsSlice = createSlice({
         // }
       },
     );
-    builder.addMatcher(productApi.endpoints?.addJewelry.matchFulfilled, state => {
-      state.list = [];
-    });
+    builder.addMatcher(
+      productApi.endpoints?.addJewelry.matchFulfilled,
+      state => {
+        state.list = [];
+      },
+    );
     builder.addMatcher(
       productApi.endpoints?.updateJewelry.matchFulfilled,
       (
@@ -65,7 +68,7 @@ export const productsSlice = createSlice({
         };
       },
     );
-  
+
     // builder.addMatcher(
     //   productApi.endpoints.deleteJewelry.matchFulfilled,
     //   (state, { payload }: { payload: Pick<IUser, 'id'> }) => {
