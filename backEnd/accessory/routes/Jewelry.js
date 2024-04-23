@@ -5,12 +5,22 @@ const isAuthenticated=require('../middlwares/isAuthenticated');
 
 const {
     getJeweleries, getTags, getJewelryByTagId, addTagOnJewelries, getFavorites, addToFavorites, removeFromFavorites,
-  removeAllFavorites
+  removeAllFavorites,
+  createJewelry,updateJewelry,deleteJewelry,getAllJeweleries
 } =require('../controller/Jewelry')
+const { authenticateBackoffice } = require('../middlwares/authenticateBackoffice');
 
 router
   .route("/")
   .get(getJeweleries)
+  .post(authenticateBackoffice,createJewelry)
+router
+  .route("/all")
+  .get(authenticateBackoffice,getAllJeweleries,)
+  router
+  .route("/:id")
+  .put(updateJewelry)
+  .delete(deleteJewelry)
   router
   .route("/tags")
   .get(getTags)

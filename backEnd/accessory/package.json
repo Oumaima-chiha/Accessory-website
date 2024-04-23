@@ -3,12 +3,16 @@
     "@babel/core": "^7.23.3",
     "@babel/node": "^7.22.19",
     "@babel/preset-env": "^7.23.3",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
     "prisma": "^5.5.2"
   },
   "dependencies": {
     "@prisma/client": "^5.6.0",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "cloudinary": "^2.0.1",
     "cors": "^2.8.5",
     "dateformat": "^5.0.3",
     "dotenv": "^16.3.1",
@@ -25,7 +29,11 @@
     "test": "test",
     "start": "nodemon app.js",
     "seed": "node models/seed.js",
-    "prisma:seed": "prisma db seed --preview-feature"
+    "prisma:seed": "prisma db seed --preview-feature",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
+    "lint:check": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "prisma": {
     "seed": "node model/seed.js"

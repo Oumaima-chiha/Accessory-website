@@ -523,11 +523,12 @@ async function seedRolePermissions() {
 
 
 // Call the seed function to execute the seeding process
-seedSuperAdminRole();
-seedRoleCategories();
-seedPermissions();
+//seedSuperAdminRole();
+//seedRoleCategories();
 seedRolePermissions();
 
-createCustomers()
-createJewelries()
-createTags()
+//seedPermissions();
+
+//createCustomers()
+//createJewelries()
+//createTags()

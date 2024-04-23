@@ -120,7 +120,7 @@ const CustomSelect: React.FC<SelectInputProps> = ({
             )}
           </HStack>
         </MenuButton>
-        <MenuList>
+        <MenuList bg={'#FFF'} zIndex={2}>
           {options.map(option => (
             <MenuItem
               key={option.value}

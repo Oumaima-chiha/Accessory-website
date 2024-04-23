@@ -16,14 +16,13 @@ const UsersForm = (): JSX.Element => {
 
   const formik = useFormik({
     initialValues: {
-      firstName: state?.form?.firstName ?? '',
-      lastName: state?.form?.lastName ?? '',
+      firstName: state?.form?.fullname.split(' ')[0] ?? '',
+      lastName: state?.form?.fullname.split(' ')[1] ?? '',
       email: state?.form?.email ?? '',
-      gender: state?.form?.gender ?? '',
-      mobileNumber: state?.form?.mobileNumber ?? '',
-      nationality: state?.form?.nationality ?? '',
-      country: state?.form?.country ?? '',
-      status: state?.form?.active ?? '',
+      mobileNumber: state?.form?.shippingAddress?.phoneNumber ?? '',
+      country: state?.form?.shippingAddress?.country ?? '',
+      status: state?.form?.isVerified ?? '',
+
     },
     onSubmit: () => console.info(''),
   });
@@ -46,12 +45,7 @@ const UsersForm = (): JSX.Element => {
             label="lastName"
             readOnly={true}
           />
-          <FormControlInput
-            formik={formik}
-            name="gender"
-            label="gender"
-            readOnly={true}
-          />
+
           <FormControlInput
             formik={formik}
             name="mobileNumber"
@@ -64,12 +58,7 @@ const UsersForm = (): JSX.Element => {
             label="email"
             readOnly={true}
           />
-          <FormControlInput
-            formik={formik}
-            name="nationality"
-            label="nationality"
-            readOnly={true}
-          />
+ 
           <FormControlInput
             formik={formik}
             name="country"
@@ -80,7 +69,7 @@ const UsersForm = (): JSX.Element => {
             name="status"
             label="status"
             formik={formik}
-            defaultValue={state?.form?.active ? 'active' : 'inactive'}
+            defaultValue={state?.form?.isVerified ? 'active' : 'inactive'}
             options={[
               { label: 'Active', value: 'active' },
               { label: 'Inactive', value: 'inactive' },
