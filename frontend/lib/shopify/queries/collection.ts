@@ -42,7 +42,7 @@ export const getCollectionProductsQuery = `
     $sortKey: ProductCollectionSortKeys
     $reverse: Boolean
   ) {
-    collectionByHandle(handle: $handle) {
+    collection(handle: $handle) {
       products(sortKey: $sortKey, reverse: $reverse, first: 100) {
         edges {
           node {
